@@ -1,0 +1,11 @@
+.idea/
+*.iml
+*.iws
+/out/
+/build/
+/dist/
+*.log
+
+node_modules/
+
+.DS_Store

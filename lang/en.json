@@ -1,0 +1,68 @@
+{
+    "U_HK_TTRPG": {
+        "Attributes": {
+            "Might": {
+                "long": "Might",
+                "abbr": "mit"
+            },
+            "Insight": {
+                "long": "Insight",
+                "abbr": "ins"
+            },
+            "Shell": {
+                "long": "Shell",
+                "abbr": "shl"
+            },
+            "Grace": {
+                "long": "Grace",
+                "abbr": "gra"
+            }
+        },
+        "SecondaryAttributes": {
+            "Load": {
+                "long": "Load",
+                "abbr": "load"
+            },
+            "Footwork": {
+                "long": "Footwork",
+                "abbr": "ftwk"
+            },
+            "BeltSize": {
+                "long": "Belt Size",
+                "abbr": "blt"
+            },
+            "TechniqueSlots": {
+                "long": "Technique Slots",
+                "abbr": "tchs"
+            }
+        },
+        "SheetLabels": {
+            "Actor": "UHkTtrpg Actor Sheet",
+            "Item": "UHkTtrpg Item Sheet"
+        },
+        "Item": {
+            "Spell": {
+                "SpellLVL": "Level {level} Spells",
+                "AddLVL": "Add LVL {level}"
+            }
+        },
+        "Effect": {
+            "Source": "Source",
+            "Toggle": "Toggle Effect",
+            "Temporary": "Temporary Effects",
+            "Passive": "Passive Effects",
+            "Inactive": "Inactive Effects"
+        }
+    },
+    "TYPES": {
+        "Actor": {
+            "character": "Character",
+            "npc": "NPC"
+        },
+        "Item": {
+            "item": "Item",
+            "feature": "Feature",
+            "spell": "Spell"
+        }
+    }
+}
