@@ -7,11 +7,11 @@ import {
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class UHkTtrpgActorSheet extends ActorSheet {
+export class UHkRpgActorSheet extends ActorSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['u-hk-ttrpg', 'sheet', 'actor'],
+            classes: ['u-hk-rpg', 'sheet', 'actor'],
             width: 600,
             height: 600,
             tabs: [
@@ -26,7 +26,7 @@ export class UHkTtrpgActorSheet extends ActorSheet {
 
     /** @override */
     get template() {
-        return `systems/u-hk-ttrpg/templates/actor/actor-${this.actor.type}-sheet.hbs`;
+        return `systems/u-hk-rpg/templates/actor/actor-${this.actor.type}-sheet.hbs`;
     }
 
     /* -------------------------------------------- */
@@ -46,8 +46,8 @@ export class UHkTtrpgActorSheet extends ActorSheet {
         context.system = actorData.system;
         context.flags = actorData.flags;
 
-        // Adding a pointer to CONFIG.U_HK_TTRPG
-        context.config = CONFIG.U_HK_TTRPG;
+        // Adding a pointer to CONFIG.U_HK_RPG
+        context.config = CONFIG.U_HK_RPG;
 
         // Prepare character data and items.
         if (actorData.type == 'character') {

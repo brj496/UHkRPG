@@ -43,17 +43,17 @@ export function prepareActiveEffectCategories(effects) {
     const categories = {
         temporary: {
             type: 'temporary',
-            label: game.i18n.localize('U_HK_TTRPG.Effect.Temporary'),
+            label: game.i18n.localize('U_HK_RPG.Effect.Temporary'),
             effects: [],
         },
         passive: {
             type: 'passive',
-            label: game.i18n.localize('U_HK_TTRPG.Effect.Passive'),
+            label: game.i18n.localize('U_HK_RPG.Effect.Passive'),
             effects: [],
         },
         inactive: {
             type: 'inactive',
-            label: game.i18n.localize('U_HK_TTRPG.Effect.Inactive'),
+            label: game.i18n.localize('U_HK_RPG.Effect.Inactive'),
             effects: [],
         },
     };

@@ -203,11 +203,11 @@
   text-align: center;
 }
 
-/* Styles limited to u-hk-ttrpg sheets */
-.u-hk-ttrpg .item-form {
+/* Styles limited to u-hk-rpg sheets */
+.u-hk-rpg .item-form {
   font-family: "Roboto", sans-serif;
 }
-.u-hk-ttrpg .sheet-header {
+.u-hk-rpg .sheet-header {
   flex: 0 auto;
   overflow: hidden;
   display: flex;
@@ -216,43 +216,43 @@
   justify-content: flex-start;
   margin-bottom: 10px;
 }
-.u-hk-ttrpg .sheet-header .profile-img {
+.u-hk-rpg .sheet-header .profile-img {
   flex: 0 0 100px;
   height: 100px;
   margin-right: 10px;
 }
-.u-hk-ttrpg .sheet-header .header-fields {
+.u-hk-rpg .sheet-header .header-fields {
   flex: 1;
 }
-.u-hk-ttrpg .sheet-header h1.charname {
+.u-hk-rpg .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
-.u-hk-ttrpg .sheet-header h1.charname input {
+.u-hk-rpg .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
-.u-hk-ttrpg .sheet-tabs {
+.u-hk-rpg .sheet-tabs {
   flex: 0;
 }
-.u-hk-ttrpg .sheet-body,
-.u-hk-ttrpg .sheet-body .tab,
-.u-hk-ttrpg .sheet-body .tab .editor {
+.u-hk-rpg .sheet-body,
+.u-hk-rpg .sheet-body .tab,
+.u-hk-rpg .sheet-body .tab .editor {
   height: 100%;
 }
-.u-hk-ttrpg .tox .tox-editor-container {
+.u-hk-rpg .tox .tox-editor-container {
   background: #fff;
 }
-.u-hk-ttrpg .tox .tox-edit-area {
+.u-hk-rpg .tox .tox-edit-area {
   padding: 0 8px;
 }
-.u-hk-ttrpg .resource-label {
+.u-hk-rpg .resource-label {
   font-weight: bold;
 }
-.u-hk-ttrpg .items-header {
+.u-hk-rpg .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -261,17 +261,17 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.u-hk-ttrpg .items-header > * {
+.u-hk-rpg .items-header > * {
   font-size: 14px;
   text-align: center;
 }
-.u-hk-ttrpg .items-header .item-name {
+.u-hk-rpg .items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
   display: flex;
 }
-.u-hk-ttrpg .items-list {
+.u-hk-rpg .items-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -279,12 +279,12 @@
   scrollbar-width: thin;
   color: #444;
 }
-.u-hk-ttrpg .items-list .item-list {
+.u-hk-rpg .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.u-hk-ttrpg .items-list .item-name {
+.u-hk-rpg .items-list .item-name {
   flex: 2;
   margin: 0;
   overflow: hidden;
@@ -293,46 +293,46 @@
   align-items: center;
   display: flex;
 }
-.u-hk-ttrpg .items-list .item-name h3, .u-hk-ttrpg .items-list .item-name h4 {
+.u-hk-rpg .items-list .item-name h3, .u-hk-rpg .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
-.u-hk-ttrpg .items-list .item-controls {
+.u-hk-rpg .items-list .item-controls {
   display: flex;
   flex: 0 0 100px;
   justify-content: flex-end;
 }
-.u-hk-ttrpg .items-list .item-controls a {
+.u-hk-rpg .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
-.u-hk-ttrpg .items-list .item {
+.u-hk-rpg .items-list .item {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
-.u-hk-ttrpg .items-list .item:last-child {
+.u-hk-rpg .items-list .item:last-child {
   border-bottom: none;
 }
-.u-hk-ttrpg .items-list .item .item-name {
+.u-hk-rpg .items-list .item .item-name {
   color: #191813;
 }
-.u-hk-ttrpg .items-list .item .item-name .item-image {
+.u-hk-rpg .items-list .item .item-name .item-image {
   flex: 0 0 30px;
   height: 30px;
   background-size: 30px;
   border: none;
   margin-right: 5px;
 }
-.u-hk-ttrpg .items-list .item-prop {
+.u-hk-rpg .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
-.u-hk-ttrpg .items-list .items-header {
+.u-hk-rpg .items-list .items-header {
   height: 28px;
   margin: 2px 0;
   padding: 0;
@@ -341,26 +341,26 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.u-hk-ttrpg .items-list .items-header > * {
+.u-hk-rpg .items-list .items-header > * {
   font-size: 12px;
   text-align: center;
 }
-.u-hk-ttrpg .items-list .items-header .item-name {
+.u-hk-rpg .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
-.u-hk-ttrpg .item-formula {
+.u-hk-rpg .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
 }
-.u-hk-ttrpg .effects .item .effect-source,
-.u-hk-ttrpg .effects .item .effect-duration,
-.u-hk-ttrpg .effects .item .effect-controls {
+.u-hk-rpg .effects .item .effect-source,
+.u-hk-rpg .effects .item .effect-duration,
+.u-hk-rpg .effects .item .effect-controls {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
-.u-hk-ttrpg .effects .item .effect-controls {
+.u-hk-rpg .effects .item .effect-controls {
   border: none;
 }

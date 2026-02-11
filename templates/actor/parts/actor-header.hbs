@@ -1,0 +1,79 @@
+<header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+        <h1 class="charname">
+            <input
+                    name="name"
+                    type="text"
+                    value="{{actor.name}}"
+                    placeholder="Name"
+            />
+            <label>Size: {{system.size}}</label>
+        </h1>
+
+
+        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+        use both the "grid" and "grid-Ncol" class where "N" can be any number
+        from 1 to 12 and will create that number of columns.  --}}
+        <div class="resources grid grid-3col">
+            {{!-- "flex-group-center" is also defined in the _grid.scss file
+            and it will add a small amount of padding, a border, and will
+            center all of its child elements content and text. --}}
+            <div class="resource flex-group-center">
+                <label for="system.pools.heart.value"
+                       class="resource-label">Heart</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                    {{!-- TODO: Change display of {{system.pools.heart.value}} / {{system.pools.heart.max}} to something else. --}}
+                    <input type="text"
+                           name="system.pools.heart.value"
+                           value="{{system.pools.heart.value}} / {{system.pools.heart.max}}"
+                           data-dtype="Number"/>
+                    <input type="text"
+                           name="system.pools.heart.lifeblood"
+                           value="{{system.pools.heart.lifeblood}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+                <label for="system.pools.soul.value"
+                       class="resource-label">Soul</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                    <input type="text"
+                           name="system.pools.soul.value"
+                           value="{{system.pools.soul.value}} / {{system.pools.soul.max}}"
+                           data-dtype="Number"/>
+                    <input type="text"
+                           name="system.pools.soul.glory"
+                           value="{{system.pools.soul.glory}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+                <label for="system.pools.stamina.value"
+                       class="resource-label">Stamina</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                    <input type="text"
+                           name="system.pools.stamina.value"
+                           value="{{system.pools.stamina.value}} / {{system.pools.stamina.max}}"
+                           data-dtype="Number"/>
+                    <input type="text"
+                           name="system.pools.stamina.glory"
+                           value="{{system.pools.stamina.glory}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            {{#each system.customPools as |customPool key|}}
+                <div class="resource flex-group-center">
+                    {{!-- TODO: name setting/localization --}}
+                    <label for="system.customPools.{{key}}.value" class="resource-label" data-label="{{customPool.key}}">{{customPool.key}}</label>
+                    <div class="resource-content flexrow flex-center flex-between">
+                        <input type="text" name="system.customPools.{{key}}.value" value="{{customPool.value}} / {{customPool.soul.max}}"
+                               data-dtype="Number"/>
+                        <input type="text" name="system.customPools.{{key}}.glory" value="{{customPool.glory}}" data-dtype="Number"/>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class
+    </div>
+</header>

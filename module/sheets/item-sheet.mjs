@@ -7,11 +7,11 @@ import {
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class UHkTtrpgItemSheet extends ItemSheet {
+export class UHkRpgItemSheet extends ItemSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['u-hk-ttrpg', 'sheet', 'item'],
+            classes: ['u-hk-rpg', 'sheet', 'item'],
             width: 520,
             height: 480,
             tabs: [
@@ -26,7 +26,7 @@ export class UHkTtrpgItemSheet extends ItemSheet {
 
     /** @override */
     get template() {
-        const path = 'systems/u-hk-ttrpg/templates/item';
+        const path = 'systems/u-hk-rpg/templates/item';
         // Return a single sheet for all item types.
         // return `${path}/item-sheet.hbs`;
 
@@ -65,8 +65,8 @@ export class UHkTtrpgItemSheet extends ItemSheet {
         context.system = itemData.system;
         context.flags = itemData.flags;
 
-        // Adding a pointer to CONFIG.U_HK_TTRPG
-        context.config = CONFIG.U_HK_TTRPG;
+        // Adding a pointer to CONFIG.U_HK_RPG
+        context.config = CONFIG.U_HK_RPG;
 
         // Prepare active effects for easier access
         context.effects = prepareActiveEffectCategories(this.item.effects);

@@ -1,6 +1,6 @@
-import UHkTtrpgActorBase from "./templates/base-actor.mjs";
+import UHkRpgActorBase from "./templates/base-actor.mjs";
 
-export default class UHkTtrpgNPC extends UHkTtrpgActorBase {
+export default class UHkRpgNPC extends UHkRpgActorBase {
 
     static defineSchema() {
         const fields = foundry.data.fields;

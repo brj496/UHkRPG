@@ -1,5 +1,5 @@
 {
-    "U_HK_TTRPG": {
+    "U_HK_RPG": {
         "Attributes": {
             "Might": {
                 "long": "Might",
@@ -37,8 +37,8 @@
             }
         },
         "SheetLabels": {
-            "Actor": "UHkTtrpg Actor Sheet",
-            "Item": "UHkTtrpg Item Sheet"
+            "Actor": "UHkRpg Actor Sheet",
+            "Item": "UHkRpg Item Sheet"
         },
         "Item": {
             "Spell": {

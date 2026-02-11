@@ -1,3 +1,3 @@
-import UHkTtrpgItemBase from "./templates/base-item.mjs";
+import UHkRpgItemBase from "./templates/base-item.mjs";
 
-export default class UHkTtrpgFeature extends UHkTtrpgItemBase {}
+export default class UHkRpgFeature extends UHkRpgItemBase {}

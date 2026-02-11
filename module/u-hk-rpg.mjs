@@ -1,12 +1,12 @@
 // Import document classes.
-import {UHkTtrpgActor} from './documents/actor.mjs';
-import {UHkTtrpgItem} from './documents/item.mjs';
+import {UHkRpgActor} from './documents/actor.mjs';
+import {UHkRpgItem} from './documents/item.mjs';
 // Import sheet classes.
-import {UHkTtrpgActorSheet} from './sheets/actor-sheet.mjs';
-import {UHkTtrpgItemSheet} from './sheets/item-sheet.mjs';
+import {UHkRpgActorSheet} from './sheets/actor-sheet.mjs';
+import {UHkRpgItemSheet} from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import {preloadHandlebarsTemplates} from './helpers/templates.mjs';
-import {U_HK_TTRPG} from './helpers/config.mjs';
+import {U_HK_RPG} from './helpers/config.mjs';
 // Import DataModel classes
 import * as actorModels from './data/actor/_module.mjs'
 import * as itemModels from './data/item/_module.mjs'
@@ -18,14 +18,14 @@ import * as itemModels from './data/item/_module.mjs'
 Hooks.once('init', function () {
     // Add utility classes to the global game object so that they're more easily
     // accessible in global contexts.
-    game.uhkttrpg = {
-        UHkTtrpgActor,
-        UHkTtrpgItem,
+    game.uhkrpg = {
+        UHkRpgActor: UHkRpgActor,
+        UHkRpgItem: UHkRpgItem,
         rollItemMacro,
     };
 
     // Add custom constants for configuration.
-    CONFIG.U_HK_TTRPG = U_HK_TTRPG;
+    CONFIG.U_HK_RPG = U_HK_RPG;
 
     /**
      * Set an initiative formula for the system
@@ -37,20 +37,20 @@ Hooks.once('init', function () {
     // };
 
     // Define custom Document and DataModel classes
-    CONFIG.Actor.documentClass = UHkTtrpgActor;
+    CONFIG.Actor.documentClass = UHkRpgActor;
 
     // Note that you don't need to declare a DataModel
     // for the base actor/item classes - they are included
     // with the Character/NPC as part of super.defineSchema()
     CONFIG.Actor.dataModels = {
-        character: actorModels.UHkTtrpgCharacter,
-        npc: actorModels.UHkTtrpgNPC
+        character: actorModels.UHkRpgCharacter,
+        npc: actorModels.UHkRpgNPC
     }
-    CONFIG.Item.documentClass = UHkTtrpgItem;
+    CONFIG.Item.documentClass = UHkRpgItem;
     CONFIG.Item.dataModels = {
-        item: itemModels.UHkTtrpgItem,
-        feature: itemModels.UHkTtrpgFeature,
-        spell: itemModels.UHkTtrpgSpell
+        item: itemModels.UHkRpgItem,
+        feature: itemModels.UHkRpgFeature,
+        spell: itemModels.UHkRpgSpell
     }
 
     // Active Effects are never copied to the Actor,
@@ -60,14 +60,14 @@ Hooks.once('init', function () {
 
     // Register sheet application classes
     Actors.unregisterSheet('core', ActorSheet);
-    Actors.registerSheet('u-hk-ttrpg', UHkTtrpgActorSheet, {
+    Actors.registerSheet('u-hk-rpg', UHkRpgActorSheet, {
         makeDefault: true,
-        label: 'U_HK_TTRPG.SheetLabels.Actor',
+        label: 'U_HK_RPG.SheetLabels.Actor',
     });
     Items.unregisterSheet('core', ItemSheet);
-    Items.registerSheet('u-hk-ttrpg', UHkTtrpgItemSheet, {
+    Items.registerSheet('u-hk-rpg', UHkRpgItemSheet, {
         makeDefault: true,
-        label: 'U_HK_TTRPG.SheetLabels.Item',
+        label: 'U_HK_RPG.SheetLabels.Item',
     });
 
     // Preload Handlebars templates.
@@ -116,7 +116,7 @@ async function createItemMacro(data, slot) {
     const item = await Item.fromDropData(data);
 
     // Create the macro command using the uuid.
-    const command = `game.uhkttrpg.rollItemMacro("${data.uuid}");`;
+    const command = `game.uhkrpg.rollItemMacro("${data.uuid}");`;
     let macro = game.macros.find(
         (m) => m.name === item.name && m.command === command
     );
@@ -126,7 +126,7 @@ async function createItemMacro(data, slot) {
             type: 'script',
             img: item.img,
             command: command,
-            flags: {'u-hk-ttrpg.itemMacro': true},
+            flags: {'u-hk-rpg.itemMacro': true},
         });
     }
     game.user.assignHotbarMacro(macro, slot);

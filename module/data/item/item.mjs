@@ -1,6 +1,6 @@
-import UHkTtrpgItemBase from "./templates/base-item.mjs";
+import UHkRpgItemBase from "./templates/base-item.mjs";
 
-export default class UHkTtrpgItem extends UHkTtrpgItemBase {
+export default class UHkRpgItem extends UHkRpgItemBase {
 
     static defineSchema() {
         const fields = foundry.data.fields;

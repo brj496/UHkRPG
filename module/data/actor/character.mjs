@@ -1,53 +1,103 @@
-import UHkTtrpgActorBase from "./templates/base-actor.mjs";
+import UHkRpgActorBase from "./templates/base-actor.mjs";
+import {U_HK_RPG} from "../../helpers/config.mjs";
 
-export default class UHkTtrpgCharacter extends UHkTtrpgActorBase {
+const {
+    HTMLField,
+    SchemaField,
+    NumberField,
+    StringField,
+    FilePathField,
+    ArrayField,
+    BooleanField,
+} = foundry.data.fields;
+
+export default class UHkRpgCharacter extends UHkRpgActorBase {
 
     static defineSchema() {
-        const fields = foundry.data.fields;
-        const requiredInteger = { required: true, nullable: false, integer: true };
-        const schema = super.defineSchema();
+        const actorBaseSchema = UHkRpgActorBase.defineSchema();
+        return {
 
-        // schema.attributes = new fields.SchemaField({
-        //   level: new fields.SchemaField({
-        //     value: new fields.NumberField({ ...requiredInteger, initial: 1 })
-        //   }),
-        // });
+            //inherit base schema.
+            ...actorBaseSchema,
 
-        // Iterate over ability names and create a new SchemaField for each.
-
-
-        return schema;
+            belly: new SchemaField({
+                value: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                min: new NumberField({required: true, integer: true, min: -100, initial: 0}),
+                max: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+            }),
+            // Hunger is equal to the trait cost + base size cost.
+            hunger: new SchemaField({
+                value: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+                min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+                max: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+            }),
+            geo: new NumberField({
+                value: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+            }),
+            notches: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+            customPools: new ArrayField(
+                new SchemaField({
+                    value: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                    min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
+                    max: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                    gloryPool: new NumberField({integer: true, min: 0, initial: 0}),
+                })
+            ),
+            proficiencies: new ArrayField(
+                new SchemaField({
+                    proficiencyName: new StringField({initial: "Proficiency Name"}),
+                    affectedSkills: new ArrayField(
+                        new SchemaField({
+                            skillName: new StringField({initial: "Skill Name"}),
+                            mastery: new BooleanField({initial: false})
+                        })
+                    )
+                })
+            ),
+            // inventory: new ArrayField({
+            //     item: new SchemaField({
+            //         type:
+            //         name:
+            //         description:
+            //         bulk:
+            //         damage:
+            //         range:
+            //         quality:
+            //         damageReduction:
+            //         durability:
+            //         onBelt:
+            //     })
+            // }),
+            load: new NumberField({required: true, integer: true, min: 0, initial: 10})
+        }
     }
 
     prepareDerivedData() {
-        // Loop through ability scores, and add their modifiers to our sheet output.
+        // Loop through attributes scores, and add their modifiers to our sheet output.
+
         for (const key in this.attributes) {
+            this.attributes[key].label = game.i18n.localize(CONFIG.U_HK_RPG.attributes[key]) ?? key;
+        }
+        console.log(this.attributes);
+        for (const key in this.secondaryAttributes) {
             //prepare secondary attributes here:
             switch (key) {
-                case "might":
-                    this.secondaryAttributes.load = Math.floor(this.attributes[key]);
-                    continue;
-                case "insight":
-                    this.secondaryAttributes.techniqueSlots = Math.floor(this.attributes[key]);
-                    continue;
-                case "shell":
-                    this.secondaryAttributes.beltSize = Math.floor(this.attributes[key]);
-                    continue;
-                case "grace":
-                    this.secondaryAttributes.footwork = Math.ceil(this.attributes[key]/2);
+                case "load":
+                    this.secondaryAttributes[key].value = Math.floor(this.attributes["might"].value);
+                    break;
+                case "techniqueSlots":
+                    this.secondaryAttributes[key].value = Math.floor(this.attributes["insight"].value);
+                    break;
+                case "beltSize":
+                    this.secondaryAttributes[key].value = Math.floor(this.attributes["shell"].value);
+                    break;
+                case "footwork":
+                    this.secondaryAttributes[key].value = Math.ceil(this.attributes["grace"].value / 2);
+                    break;
             }
+            this.secondaryAttributes[key].label = game.i18n.localize(CONFIG.U_HK_RPG.secondaryAttributes[key]) ?? key;
         }
-        for (const key in this.attributes) {
-            // Calculate the modifier using d20 rules.
-            this.attributes[key].mod = Math.floor((this.attributes[key].value - 10) / 2);
-            // Handle ability label localization.
-            // eslint-disable-next-line no-undef
-            console.log(key)
-            // eslint-disable-next-line no-undef
-            this.attributes[key].label = game.i18n.localize(CONFIG.U_HK_TTRPG.attributes[key]) ?? key;
-            // eslint-disable-next-line no-undef
-            console.log(this.attributes[key])
-        }
+        console.log(this.secondaryAttributes);
     }
 
     getRollData() {
