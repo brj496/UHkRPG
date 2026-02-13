@@ -20,10 +20,12 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/parts/actor-spells.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-effects.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-paths.hbs',
-        'systems/u-hk-rpg/templates/actor/parts/actor-proficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-techniques.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-traits.hbs',
         // Item partials
         'systems/u-hk-rpg/templates/item/parts/item-effects.hbs',
+
+        // Util partials
+        'systems/u-hk-rpg/templates/utils/accordionTemplate.hbs',
     ]);
 }

@@ -33,6 +33,11 @@
     }
 }
 
+.accordion-content {
+    display: none;
+    overflow: hidden;
+}
+
 .sheet-tabs {
     flex: 0;
 }

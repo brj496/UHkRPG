@@ -8,8 +8,8 @@
                     value="{{actor.name}}"
                     placeholder="Name"
             />
-            <label>Size: {{system.size}}</label>
         </h1>
+        <label>Size: {{system.size}} | Cute: {{system.cute}} | Spook: {{system.spook}}</label>
 
 
         {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -19,14 +19,19 @@
             {{!-- "flex-group-center" is also defined in the _grid.scss file
             and it will add a small amount of padding, a border, and will
             center all of its child elements content and text. --}}
+            {{!-- TODO: The pools could also be moved into a #each, as its just duplicated code, however, just make it work first --}}
             <div class="resource flex-group-center">
                 <label for="system.pools.heart.value"
                        class="resource-label">Heart</label>
                 <div class="resource-content flexrow flex-center flex-between">
-                    {{!-- TODO: Change display of {{system.pools.heart.value}} / {{system.pools.heart.max}} to something else. --}}
                     <input type="text"
                            name="system.pools.heart.value"
-                           value="{{system.pools.heart.value}} / {{system.pools.heart.max}}"
+                           value="{{system.pools.heart.value}}"
+                           data-dtype="Number"/>
+                    <label>/</label>
+                    <input type="text"
+                           name="system.pools.heart.max"
+                           value="{{system.pools.heart.max}}"
                            data-dtype="Number"/>
                     <input type="text"
                            name="system.pools.heart.lifeblood"
@@ -40,7 +45,12 @@
                 <div class="resource-content flexrow flex-center flex-between">
                     <input type="text"
                            name="system.pools.soul.value"
-                           value="{{system.pools.soul.value}} / {{system.pools.soul.max}}"
+                           value="{{system.pools.soul.value}}"
+                           data-dtype="Number"/>
+                    <label>/</label>
+                    <input type="text"
+                           name="system.pools.soul.max"
+                           value="{{system.pools.soul.max}}"
                            data-dtype="Number"/>
                     <input type="text"
                            name="system.pools.soul.glory"
@@ -54,12 +64,48 @@
                 <div class="resource-content flexrow flex-center flex-between">
                     <input type="text"
                            name="system.pools.stamina.value"
-                           value="{{system.pools.stamina.value}} / {{system.pools.stamina.max}}"
+                           value="{{system.pools.stamina.value}}"
+                           data-dtype="Number"/>
+                    <label>/</label>
+                    <input type="text"
+                           name="system.pools.stamina.max"
+                           value="{{system.pools.stamina.max}}"
                            data-dtype="Number"/>
                     <input type="text"
                            name="system.pools.stamina.glory"
                            value="{{system.pools.stamina.glory}}"
                            data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+                <label for="system.belly.value"
+                       class="resource-label">Belly</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                    <input type="text"
+                           name="system.belly.value"
+                           value="{{system.belly.value}}"
+                           data-dtype="Number"/>
+                    <label>/</label>
+                    <input type="text"
+                           name="system.belly.max"
+                           value="{{system.belly.max}}"
+                           data-dtype="Number"/>
+                </div>
+            </div>
+            <div class="resource flex-group-center">
+                <label for="system.speed.value"
+                       class="resource-label">Speed</label>
+                <div class="resource-content flexrow flex-center flex-between">
+                    <input type="text"
+                           name="system.speed.value"
+                           value="{{system.speed.value}}"
+                           data-dtype="Number"/>
+                    <label>/</label>
+                    <input type="text"
+                           name="system.speed.max"
+                           value="{{system.speed.max}}"
+                           data-dtype="Number"/>
+                    <label>Ftwk: {{system.secondaryAttributes.footwork.value}}</label>
                 </div>
             </div>
             {{#each system.customPools as |customPool key|}}
@@ -74,6 +120,5 @@
                 </div>
             {{/each}}
         </div>
-        <div class
     </div>
 </header>

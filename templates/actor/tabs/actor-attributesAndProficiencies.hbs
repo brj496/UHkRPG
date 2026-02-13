@@ -19,26 +19,13 @@
                     </div>
                 {{/each}}
             </div>
-            <div class="secondaryAttributes flexcol">
-                {{#each system.secondaryAttributes as |secondaryAttribute key|}}
-                    <div class="attribute flexrow flex-group-center">
-                        <label for="system.secondaryAttributes.{{key}}.value"
-                               class="resource-label rollable flexlarge align-left"
-                               data-roll="d6"
-                               data-label="{{localize (lookup @root.config.secondaryAttributes key)}}">{{localize
-                                (lookup @root.config.secondaryAttributes key)}}</label>
-                        <input type="text" name="system.secondaryAttributes.{{key}}.value" value="{{secondaryAttribute.value}}"
-                               data-dtype="Number"/>
-                    </div>
-                {{/each}}
-            </div>
         </aside>
 
         {{!-- For the main features list, span the right two columns --}}
         {{!-- TODO: Proficiency Section --}}
         <section class="main grid-span-2">
             {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-            {{> "systems/u-hk-rpg/templates/actor/parts/actor-features.hbs"}}
+            {{> "systems/u-hk-rpg/templates/actor/parts/actor-proficiencies.hbs"}}
         </section>
 
     </section>

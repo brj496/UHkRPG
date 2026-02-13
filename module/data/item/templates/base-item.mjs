@@ -1,14 +1,20 @@
 import UHkRpgDataModel from "../../base-model.mjs";
 
+const {
+    HTMLField,
+    SchemaField,
+    NumberField,
+    StringField,
+    FilePathField,
+    ArrayField,
+} = foundry.data.fields;
+
 export default class UHkRpgItemBase extends UHkRpgDataModel {
 
     static defineSchema() {
-        const fields = foundry.data.fields;
-        const schema = {};
-
-        schema.description = new fields.StringField({required: true, blank: true});
-
-        return schema;
+        return {
+            description: new StringField ({required: true, initial: "description"}),
+        }
     }
 
 }

@@ -62,7 +62,21 @@
         "Item": {
             "item": "Item",
             "feature": "Feature",
-            "spell": "Spell"
+            "spell": "Spell",
+            "proficiency": "Proficiency",
+            "trait": "Trait",
+            "path": "Path",
+            "charm": "Charm",
+            "technique": "Technique",
+            "weapon": "Weapon",
+            "armor": "Armor",
+            "shield": "Shield",
+            "arcaneFocus": "Arcane Focus",
+            "consumable": "Consumable",
+            "tool": "Tool",
+            "treasure": "Treasure",
+            "collectible": "Collectible",
+            "beltItem": "Belt Item",
         }
     }
 }

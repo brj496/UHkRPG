@@ -1,1 +1,47 @@
 <!--TODO Proficiency part-->
+<ol class='items-list'>
+    <li class='item flexrow items-header'>
+        <div class='item-name'>{{localize 'Name'}}</div>
+        <div class='item-controls'>
+            <a
+                    class='item-control item-create'
+                    title='Create item'
+                    data-type='proficiency'
+            >
+                <i class='fas fa-plus'></i>
+                {{localize 'DOCUMENT.New' type='proficiency'}}
+            </a>
+        </div>
+    </li>
+    <div id="accordion-container">
+        {{#each proficiencies as |item|}}
+            <div class="accordion-item item" data-item-id="{{item._id}}">
+                <div class="accordion-header accordion-toggle">
+                    {{item.name}}
+                    <div class='item-controls'>
+                        {{!-- TODO: EDIT SHEET DOESN'T WORK--}}
+                        <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                            <i class='fas fa-edit'></i>
+                        </a>
+                        <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                            <i class='fas fa-trash'></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="accordion-content" style="display: none;">
+                    <p>{{item.system.description}}</p>
+
+                    <ul class="skill-list">
+                        <li>{{item.system.skills.skill1.name}}</li>
+                        <li>{{item.system.skills.skill2.name}}</li>
+                        <li>{{item.system.skills.skill3.name}}</li>
+                        <li>{{item.system.skills.skill4.name}}</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        {{/each}}
+    </div>
+</ol>

@@ -50,7 +50,8 @@ Hooks.once('init', function () {
     CONFIG.Item.dataModels = {
         item: itemModels.UHkRpgItem,
         feature: itemModels.UHkRpgFeature,
-        spell: itemModels.UHkRpgSpell
+        spell: itemModels.UHkRpgSpell,
+        proficiency: itemModels.UHkRpgProficiency,
     }
 
     // Active Effects are never copied to the Actor,

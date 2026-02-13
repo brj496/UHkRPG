@@ -3,6 +3,8 @@ import {
     prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
 
+const { duplicate } = foundry.utils;
+
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
@@ -14,6 +16,7 @@ export class UHkRpgActorSheet extends ActorSheet {
             classes: ['u-hk-rpg', 'sheet', 'actor'],
             width: 600,
             height: 600,
+            // submitOnChange: false,
             tabs: [
                 {
                     navSelector: '.sheet-tabs',
@@ -117,6 +120,7 @@ export class UHkRpgActorSheet extends ActorSheet {
             8: [],
             9: [],
         };
+        const proficiencies = [];
 
         // Iterate through items, allocating to containers
         for (let i of context.items) {
@@ -135,12 +139,19 @@ export class UHkRpgActorSheet extends ActorSheet {
                     spells[i.system.spellLevel].push(i);
                 }
             }
+            // Append to proficiencies.
+            else if (i.type === 'proficiency') {
+                proficiencies.push(i);
+            }
         }
+
+        console.log(proficiencies);
 
         // Assign and return
         context.gear = gear;
         context.features = features;
         context.spells = spells;
+        context.proficiencies = proficiencies;
     }
 
     /* -------------------------------------------- */
@@ -193,6 +204,16 @@ export class UHkRpgActorSheet extends ActorSheet {
                 li.addEventListener('dragstart', handler, false);
             });
         }
+
+        //Accordion listener
+        html.find('.accordion-toggle').on('click', (event) => {
+            const content = $(event.currentTarget)
+                .closest('.accordion-item')
+                .find('.accordion-content');
+
+            content.slideToggle(200); // toggles visibility smoothly
+        });
+
     }
 
     /**
