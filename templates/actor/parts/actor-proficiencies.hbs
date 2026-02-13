@@ -13,13 +13,12 @@
             </a>
         </div>
     </li>
-    <div id="accordion-container">
+    <li id="accordion-container">
         {{#each proficiencies as |item|}}
             <div class="accordion-item item" data-item-id="{{item._id}}">
                 <div class="accordion-header accordion-toggle">
                     {{item.name}}
                     <div class='item-controls'>
-                        {{!-- TODO: EDIT SHEET DOESN'T WORK--}}
                         <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
                             <i class='fas fa-edit'></i>
                         </a>
@@ -28,20 +27,33 @@
                         </a>
                     </div>
                 </div>
-
+                <hr/>
                 <div class="accordion-content" style="display: none;">
-                    <p>{{item.system.description}}</p>
+                    {{{item.system.description}}}
+                    <p>Skills:</p>
+                    <ul>
+                        {{#each system.skills as |skill key|}}
+                            <li>
+                                <div class="flexrow">
+                                    <label
+                                            for="system.skills.{{key}}.value"
+                                            class="skill-label flexlarge flex-group-left"
+                                            data-label="{{skill.name}}"
+                                    >
+                                        {{skill.name}}
+                                    </label>
+                                    <label class="flex-group-right">
+                                        rerolls: {{skill.value}}
+                                    </label>
+                                    <div class="mastery-circle {{#if skill.mastery}}mastery-filled-circle{{/if}}"></div>
+                                </div>
 
-                    <ul class="skill-list">
-                        <li>{{item.system.skills.skill1.name}}</li>
-                        <li>{{item.system.skills.skill2.name}}</li>
-                        <li>{{item.system.skills.skill3.name}}</li>
-                        <li>{{item.system.skills.skill4.name}}</li>
+                            </li>
+                        {{/each}}
                     </ul>
+                    <hr/>
                 </div>
-
-
             </div>
         {{/each}}
-    </div>
+    </li>
 </ol>

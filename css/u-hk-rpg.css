@@ -212,7 +212,6 @@
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
@@ -231,9 +230,11 @@
   border-bottom: 0;
 }
 .u-hk-rpg .sheet-header h1.charname input {
-  width: 100%;
   height: 100%;
-  margin: 0;
+}
+.u-hk-rpg .accordion-content {
+  display: none;
+  overflow: hidden;
 }
 .u-hk-rpg .sheet-tabs {
   flex: 0;
@@ -243,11 +244,28 @@
 .u-hk-rpg .sheet-body .tab .editor {
   height: 100%;
 }
+.u-hk-rpg .skills-section {
+  flex: 1;
+  overflow: auto;
+}
 .u-hk-rpg .tox .tox-editor-container {
   background: #fff;
 }
 .u-hk-rpg .tox .tox-edit-area {
   padding: 0 8px;
+}
+.u-hk-rpg .mastery-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: white;
+  flex: 0 0 auto;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.u-hk-rpg .mastery-filled-circle {
+  background-color: black;
 }
 .u-hk-rpg .resource-label {
   font-weight: bold;
@@ -352,6 +370,9 @@
 .u-hk-rpg .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
+}
+.u-hk-rpg .skill-label {
+  font-weight: bold;
 }
 .u-hk-rpg .effects .item .effect-source,
 .u-hk-rpg .effects .item .effect-duration,

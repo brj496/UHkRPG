@@ -14,8 +14,12 @@
                                data-roll="d6"
                                data-label="{{localize (lookup @root.config.attributes key)}}">{{localize
                                 (lookup @root.config.attributes key)}}</label>
-                        <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}"
-                               data-dtype="Number"/>
+                        <input
+                                type="text"
+                                name="system.attributes.{{key}}.value"
+                                value="{{attribute.value}}"
+                                data-dtype="Number"
+                        />
                     </div>
                 {{/each}}
             </div>

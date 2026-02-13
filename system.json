@@ -30,6 +30,7 @@
     ],
     "styles": [
         "css/u-hk-rpg.css"
+
     ],
     "documentTypes": {
         "Actor": {

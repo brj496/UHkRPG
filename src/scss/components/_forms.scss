@@ -48,6 +48,11 @@
     height: 100%;
 }
 
+.skills-section {
+    flex: 1;
+    overflow: auto;
+}
+
 .tox {
     .tox-editor-container {
         background: $c-white;
@@ -56,4 +61,19 @@
     .tox-edit-area {
         padding: 0 8px;
     }
+}
+.mastery-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: white;
+    flex: 0 0 auto;
+
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.mastery-filled-circle {
+    background-color: black;
 }

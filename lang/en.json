@@ -76,7 +76,7 @@
             "tool": "Tool",
             "treasure": "Treasure",
             "collectible": "Collectible",
-            "beltItem": "Belt Item",
+            "beltItem": "Belt Item"
         }
     }
 }

@@ -22,21 +22,30 @@ export default class UHkRpgProficiency extends UHkRpgItemBase {
             skills: new SchemaField({
                 skill1: new SchemaField({
                     name: new StringField({required: true, initial: "Skill 1"}),
-                    mastery: new BooleanField({initial: false})
+                    mastery: new BooleanField({initial: false}),
+                    rerolls: new NumberField({required: true, integer: true})
                 }),
                 skill2: new SchemaField({
                     name: new StringField({required: true, initial: "Skill 2"}),
-                    mastery: new BooleanField({initial: false})
+                    mastery: new BooleanField({initial: false}),
+                    rerolls: new NumberField({required: true, integer: true})
                 }),
                 skill3: new SchemaField({
                     name: new StringField({required: true, initial: "Skill 3"}),
-                    mastery: new BooleanField({initial: false})
+                    mastery: new BooleanField({initial: false}),
+                    rerolls: new NumberField({required: true, integer: true})
                 }),
                 skill4: new SchemaField({
                     name: new StringField({required: true, initial: "Skill 4"}),
-                    mastery: new BooleanField({initial: false})
+                    mastery: new BooleanField({initial: false}),
+                    rerolls: new NumberField({required: true, integer: true})
                 })
             })
         }
     }
+
+    prepareDerivedData() {
+
+    }
+
 };

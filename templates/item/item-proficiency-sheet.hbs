@@ -1,0 +1,75 @@
+<form class='{{cssClass}}' autocomplete='off'>
+    <header class="sheet-header">
+        <img
+                class='profile-img'
+                src='{{item.img}}'
+                data-edit='img'
+                title='{{item.name}}'
+        />
+        <div class="header-fields">
+            <h1 class="charname">
+                <label>
+                    <input
+                            name="name"
+                            type="text"
+                            value="{{item.name}}"
+                            placeholder="Name"
+                    />
+                </label>
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <div class="skills-section">
+            <ul>
+                {{#each system.skills as |skill key|}}
+                    <li>
+                        <div class="skills flexrow flex-group-center">
+                            <div class="flexrow flex-group-center">
+                                <input
+                                        type="text"
+                                        name="system.skills.{{key}}.name"
+                                        value="{{skill.name}}"
+                                        data-dtype="String"
+                                />
+                                {{!-- TODO: probably a better way of doing this --}}
+                                <p></p>
+                            </div>
+                            <div class="flexrow flex-group-center">
+                                <label class="flex-group-right">
+                                    reroll(s):
+                                </label>
+                                <input
+                                        type="text"
+                                        name="system.skills.{{key}}.rerolls"
+                                        value="{{skill.rerolls}}"
+                                        data-dtype="Number"
+                                />
+                            </div>
+                            <input
+                                {{!-- TODO: Currently does not actually save the checkbox's value--}}
+                                {{!-- TODO: when a skill's mastery is check, make sure to toggle the other skill masteries, only one can be mastered --}}
+                                {{!-- ALSO a skill can be a part of multiple proficiencies, that skill has dice equal to their combined rank but never higher than 3--}}
+                                    type="checkbox"
+                                    name="system.skills.{{key}}.mastery"
+                                    value="{{skill.mastery}}"
+                                    data-dtype="Boolean"
+                            />
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+        <hr/>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
+</form>

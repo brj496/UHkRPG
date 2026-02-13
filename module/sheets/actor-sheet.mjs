@@ -255,7 +255,7 @@ export class UHkRpgActorSheet extends ActorSheet {
 
         // Handle item rolls.
         if (dataset.rollType) {
-            if (dataset.rollType == 'item') {
+            if (dataset.rollType === 'item') {
                 const itemId = element.closest('.item').dataset.itemId;
                 const item = this.actor.items.get(itemId);
                 if (item) return item.roll();
@@ -264,7 +264,7 @@ export class UHkRpgActorSheet extends ActorSheet {
 
         // Handle rolls that supply the formula directly.
         if (dataset.roll) {
-            let label = dataset.label ? `[attribute] ${dataset.label}` : '';
+            let label = dataset.label ? `${dataset.label}` : '';
             let roll = new Roll(dataset.roll, this.actor.getRollData());
             roll.toMessage({
                 speaker: ChatMessage.getSpeaker({actor: this.actor}),
