@@ -16,7 +16,6 @@ export default class UHkRpgProficiency extends UHkRpgItemBase {
         return {
             ...itemBaseSchema,
 
-            name: new StringField({required: true, initial: "Proficiency"}),
             rank: new NumberField({required: true, min: 1, max: 3, initial: 1}),
             //TODO: maybe make this more flexible at some point, rather than hard coding 4 skills.
             skills: new SchemaField({

@@ -52,6 +52,8 @@ Hooks.once('init', function () {
         feature: itemModels.UHkRpgFeature,
         spell: itemModels.UHkRpgSpell,
         proficiency: itemModels.UHkRpgProficiency,
+        trait: itemModels.UHkRpgTrait,
+        path: itemModels.UHkRpgPath,
     }
 
     // Active Effects are never copied to the Actor,

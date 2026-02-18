@@ -110,7 +110,6 @@
             </div>
             {{#each system.customPools as |customPool key|}}
                 <div class="resource flex-group-center">
-                    {{!-- TODO: name setting/localization --}}
                     <label for="system.customPools.{{key}}.value" class="resource-label" data-label="{{customPool.key}}">{{customPool.key}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <input type="text" name="system.customPools.{{key}}.value" value="{{customPool.value}} / {{customPool.soul.max}}"

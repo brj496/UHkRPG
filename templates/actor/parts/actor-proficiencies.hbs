@@ -1,4 +1,3 @@
-<!--TODO Proficiency part-->
 <ol class='items-list'>
     <li class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Name'}}</div>
@@ -16,9 +15,11 @@
     <li id="accordion-container">
         {{#each proficiencies as |item|}}
             <div class="accordion-item item" data-item-id="{{item._id}}">
-                <div class="accordion-header accordion-toggle">
-                    {{item.name}}
+                <div class="accordion-header accordion-toggle flexrow">
+                    <div>{{item.name}}</div>
+
                     <div class='item-controls'>
+                        Rank: {{item.system.rank}}
                         <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
                             <i class='fas fa-edit'></i>
                         </a>
@@ -43,7 +44,7 @@
                                         {{skill.name}}
                                     </label>
                                     <label class="flex-group-right">
-                                        rerolls: {{skill.value}}
+                                        rerolls: {{skill.rerolls}}
                                     </label>
                                     <div class="mastery-circle {{#if skill.mastery}}mastery-filled-circle{{/if}}"></div>
                                 </div>

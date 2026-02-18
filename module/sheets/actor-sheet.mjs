@@ -121,6 +121,8 @@ export class UHkRpgActorSheet extends ActorSheet {
             9: [],
         };
         const proficiencies = [];
+        const traits = [];
+        const paths = [];
 
         // Iterate through items, allocating to containers
         for (let i of context.items) {
@@ -143,15 +145,23 @@ export class UHkRpgActorSheet extends ActorSheet {
             else if (i.type === 'proficiency') {
                 proficiencies.push(i);
             }
-        }
 
-        console.log(proficiencies);
+            else if (i.type === 'trait') {
+                traits.push(i);
+            }
+
+            else if (i.type === 'path') {
+                paths.push(i);
+            }
+        }
 
         // Assign and return
         context.gear = gear;
         context.features = features;
         context.spells = spells;
         context.proficiencies = proficiencies;
+        context.traits = traits;
+        context.paths = paths;
     }
 
     /* -------------------------------------------- */
@@ -210,6 +220,8 @@ export class UHkRpgActorSheet extends ActorSheet {
             const content = $(event.currentTarget)
                 .closest('.accordion-item')
                 .find('.accordion-content');
+
+            console.log("toggle clicked")
 
             content.slideToggle(200); // toggles visibility smoothly
         });
