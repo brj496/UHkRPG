@@ -12,7 +12,7 @@ export default class UHkRpgTrait extends UHkRpgItemBase {
 
             cuteMod: new NumberField({initial: 0, float: true}),
             spookMod: new NumberField({initial: 0, float: true}),
-            HungerMod: new NumberField({initial: 0, integer: true}),
+            hungerMod: new NumberField({initial: 0, integer: true}),
         }
     }
 };

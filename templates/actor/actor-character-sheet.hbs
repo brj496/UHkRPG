@@ -18,21 +18,33 @@
     <section class="sheet-body">
 
         {{!-- Character Attributes and Proficiencies Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-attributesAndProficiencies.hbs"}}
+        <div class="tab attributesAndProficiencies" data-group="primary" data-tab="attributesAndProficiencies">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-attributesAndProficiencies.hbs"}}
+        </div>
 
         {{!-- Traits and Paths Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-traitsAndPaths.hbs"}}
+        <div class="tab traitsAndPaths" data-group="primary" data-tab="traitsAndPaths">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-traitsAndPaths.hbs"}}
+        </div>
 
         {{!-- Inventory Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-inventory.hbs"}}
+        <div class="tab inventory" data-group="primary" data-tab="inventory">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-inventory.hbs"}}
+        </div>
 
         {{!-- Techniques Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-techniques.hbs"}}
+        <div class="tab techniques" data-group="primary" data-tab="techniques">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-techniques.hbs"}}
+        </div>
 
         {{!-- Biography Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-biography.hbs"}}
+        <div class="tab biography" data-group="primary" data-tab="biography">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-biography.hbs"}}
+        </div>
 
         {{!-- Notes Tab --}}
-        {{> "systems/u-hk-rpg/templates/actor/tabs/actor-notes.hbs"}}
+        <div class="tab notes" data-group="primary" data-tab="notes">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-notes.hbs"}}
+        </div>
         </section>
 </form>

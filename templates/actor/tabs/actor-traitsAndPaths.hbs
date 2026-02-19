@@ -7,37 +7,38 @@
     {{localize 'DOCUMENT.New' type='trait'}}
 </a>
 {{!-- TODO: make an accordion header toggle so that the header doesn't also toggle all of its children. --}}
-<ol class='items-list accordion-item'>
-    <div class='item flexrow items-header accordion-toggle'>
+<ol class='items-list'>
+    <div class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Trait Name'}}</div>
         Cute | Spook | Hunger
     </div>
-    <div class="accordion-content">
-        {{#each traits as |item|}}
-            <div class="accordion-item item" data-item-id="{{item._id}}">
-                <div class="accordion-header accordion-toggle flexrow">
-                    <div>{{item.name}}</div>
+    {{#each traits as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
 
-                    <div class='item-controls'>
-                        {{!-- TODO: add item sheet for traits --}}
-                        <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
-                            <i class='fas fa-edit'></i>
-                        </a>
-                        <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
-                            <i class='fas fa-trash'></i>
-                        </a>
-                    </div>
-                </div>
-                <hr/>
-                <div class="accordion-content" style="display: none;">
-                    {{{item.system.description}}}
-                    <hr/>
+                <div class='item-controls'>
+                    {{item.system.cuteMod}}
+                    {{item.system.spookMod}}
+                    {{item.system.hungerMod}}
+                    {{!-- TODO: add item sheet for traits --}}
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
                 </div>
             </div>
-        {{/each}}
-    </div>
+            <hr/>
+            <div class="accordion-content" style="display: none;">
+                {{{item.system.description}}}
+                <hr/>
+            </div>
+        </div>
+    {{/each}}
 </ol>
-
+<br />
 <a
         class='item-control item-create'
         title='Create item'
@@ -46,36 +47,54 @@
     <i class='fas fa-plus'></i>
     {{localize 'DOCUMENT.New' type='path'}}
 </a>
-{{!-- TODO: make an accordion header toggle so that the header doesn't also toggle all of its children. --}}
-<ol class='items-list accordion-item'>
-    <div class='item flexrow items-header accordion-toggle'>
+<ol class='items-list'>
+    <div class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Path Name'}}</div>
         Path Rank
     </div>
     {{!-- TODO: This needs to handle displaying the appropriate ranks for the Path. --}}
-    <div class="accordion-content">
-        {{#each paths as |item|}}
-            <div class="accordion-item item" data-item-id="{{item._id}}">
-                <div class="accordion-header accordion-toggle flexrow">
-                    <div>{{item.name}}</div>
-
-                    <div class='item-controls'>
-                        {{!-- TODO: add item sheet for paths --}}
-                        <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
-                            <i class='fas fa-edit'></i>
-                        </a>
-                        {{!-- TODO: Deleting either a path or trait closes the accordion, its rather annoying. maybe start with them open? --}}
-                        <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
-                            <i class='fas fa-trash'></i>
-                        </a>
-                    </div>
-                </div>
-                <hr/>
-                <div class="accordion-content" style="display: none;">
-                    {{{item.system.description}}}
-                    <hr/>
+    {{#each paths as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+                <div class='item-controls'>
+                    Rank: {{item.system.rank}}
+                    {{!-- TODO: add item sheet for paths --}}
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    {{!-- TODO: Deleting either a path or trait closes the accordion, its rather annoying. maybe start with them open? --}}
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
                 </div>
             </div>
-        {{/each}}
-    </div>
+            <hr/>
+            <div class="accordion-content" style="display: none;">
+                {{{item.system.description}}}
+                <br/>
+                <ul>
+                    <li>
+                        Rank 1:
+                        <div>
+                            {{{item.system.ranks.rank1.description}}}
+                        </div>
+                    </li>
+                    <li>
+                        Rank 2:
+                        <div>
+                            {{{item.system.ranks.rank2.description}}}
+                        </div>
+                    </li>
+                    <li>
+                        Rank 3:
+                        <div>
+                            {{{item.system.ranks.rank3.description}}}
+                        </div>
+                    </li>
+                </ul>
+                <hr/>
+            </div>
+        </div>
+    {{/each}}
 </ol>
