@@ -3,15 +3,30 @@
     Bulk and Load
     Belt size and used belt slots.
 
-    Weapons & Shields: Bulk | Dmg | Range | Quality
+    Weapons: Damage | Range | Bulk | Quality | Cost
         Weapon/Shield Name
-        Bulk, Dmg, Range, Quality
-        Description
+        Type:
+        Hands: 0H, 1H, 2H, 2H+
+        Damage, Range, Bulk, Quality, Cost
+        Effect:
+        Modifier(s): Name | Effect | Cost Formula
+            Name, Effect, Cost
+            - Will largely have only one modifier with some exceptions
 
-    Armor: Bulk | Dmg Reduct | Durability
-        Armor name
-        Bulk, Dmg Reduct, Durability
-        Description
+    Shields:  Bulk | Quality | Cost
+        Name:
+        Hands: 1H
+        Bulk, Quality, Cost
+        Effect:
+        Modifier(s): Name | Effect | Cost Formula
+            Name, Effect, Cost
+
+    Armor: Max Durability | Damage Reduction | Bulk | Cost
+        Armor name:
+        Current Durability, Max Durability, Damage Reduction, Bulk, Cost
+        Effect:
+        Modifier(s): Name | Effect | Cost Formula
+            Name, Effect, Cost
 
     Equipment: Bulk | On belt
         Equipment name
@@ -26,12 +41,16 @@
         <div class='item-name'>{{localize 'Weapons and Shields'}}</div>
         {{localize "Bulk | Dmg | Range | Quality"}}
     </div>
-    <div class='item flexrow items-header'>
-        <div class='item-name'>{{localize 'Armor'}}</div>
-        {{localize "Bulk | Dmg Reduct | Durability"}}
-    </div>
+    {{#each weapon as |item|}}
+
+    {{/each}}
     <div class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Equipment'}}</div>
         {{localize "Bulk | Equipped"}}
     </div>
+    <div class='item flexrow items-header'>
+        <div class='item-name'>{{localize 'Armor'}}</div>
+        {{localize "Bulk | Dmg Reduct | Durability"}}
+    </div>
+
 </ol>

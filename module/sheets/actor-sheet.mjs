@@ -106,62 +106,91 @@ export class UHkRpgActorSheet extends ActorSheet {
      */
     _prepareItems(context) {
         // Initialize containers.
-        const gear = [];
-        const features = [];
-        const spells = {
-            0: [],
-            1: [],
-            2: [],
-            3: [],
-            4: [],
-            5: [],
-            6: [],
-            7: [],
-            8: [],
-            9: [],
-        };
         const proficiencies = [];
         const traits = [];
         const paths = [];
+        const charms = [];
+        const techniques = [];
+        const weapons = [];
+        const armor = [];
+        const shields = [];
+        const consumables = [];
+        const tools = [];
+        const treasures = [];
+        const collectibles = [];
+        const beltItems = [];
 
         // Iterate through items, allocating to containers
         for (let i of context.items) {
             i.img = i.img || Item.DEFAULT_ICON;
-            // Append to gear.
-            if (i.type === 'item') {
-                gear.push(i);
-            }
-            // Append to features.
-            else if (i.type === 'feature') {
-                features.push(i);
-            }
-            // Append to spells.
-            else if (i.type === 'spell') {
-                if (i.system.spellLevel != undefined) {
-                    spells[i.system.spellLevel].push(i);
-                }
-            }
             // Append to proficiencies.
-            else if (i.type === 'proficiency') {
+            if (i.type === 'proficiency') {
                 proficiencies.push(i);
             }
-
+            // Append to traits
             else if (i.type === 'trait') {
                 traits.push(i);
             }
-
+            // Append to paths
             else if (i.type === 'path') {
+                paths.push(i);
+            }
+            // Append to charms
+            else if (i.type === 'charm') {
+                paths.push(i);
+            }
+            // Append to techniques
+            else if (i.type === 'technique') {
+                paths.push(i);
+            }
+            // Append to weapons
+            else if (i.type === 'weapon') {
+                paths.push(i);
+            }
+            // Append to armor
+            else if (i.type === 'armor') {
+                paths.push(i);
+            }
+            // Append to shields
+            else if (i.type === 'shield') {
+                paths.push(i);
+            }
+            // Append to consumables
+            else if (i.type === 'consumable') {
+                paths.push(i);
+            }
+            // Append to tools
+            else if (i.type === 'tool') {
+                paths.push(i);
+            }
+            // Append to treasures
+            else if (i.type === 'treasure') {
+                paths.push(i);
+            }
+            // Append to collectibles
+            else if (i.type === 'collectible') {
+                paths.push(i);
+            }
+            // Append to beltItems
+            else if (i.type === 'beltItem') {
                 paths.push(i);
             }
         }
 
         // Assign and return
-        context.gear = gear;
-        context.features = features;
-        context.spells = spells;
         context.proficiencies = proficiencies;
         context.traits = traits;
         context.paths = paths;
+        context.charms = charms;
+        context.techniques = techniques;
+        context.weapons = weapons;
+        context.armor = armor;
+        context.shields = shields;
+        context.consumables = consumables;
+        context.tools = tools;
+        context.treasures = treasures;
+        context.collectibles = collectibles;
+        context.beltItems = beltItems;
     }
 
     /* -------------------------------------------- */
