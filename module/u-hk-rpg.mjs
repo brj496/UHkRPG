@@ -54,6 +54,10 @@ Hooks.once('init', function () {
         proficiency: itemModels.UHkRpgProficiency,
         trait: itemModels.UHkRpgTrait,
         path: itemModels.UHkRpgPath,
+        weapon: itemModels.UHkRpgWeapon,
+        shield: itemModels.UHkRpgShield,
+        armor: itemModels.UHkRpgArmor,
+        food: itemModels.UHkRpgFood,
     }
 
     // Active Effects are never copied to the Actor,

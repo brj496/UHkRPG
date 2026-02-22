@@ -5,3 +5,7 @@ export { default as UHkRpgSpell } from "./spell.mjs";
 export { default as UHkRpgProficiency } from "./proficiency.mjs";
 export { default as UHkRpgTrait } from "./trait.mjs";
 export { default as UHkRpgPath } from "./path.mjs";
+export { default as UHkRpgWeapon } from "./weapon.mjs";
+export { default as UHkRpgShield } from "./shield.mjs";
+export { default as UHkRpgArmor } from "./armor.mjs";
+export { default as UHkRpgFood } from "./food.mjs";
