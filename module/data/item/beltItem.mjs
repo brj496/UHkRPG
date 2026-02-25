@@ -10,7 +10,7 @@ const {
     BooleanField,
 } = foundry.data.fields;
 
-export default class UHkRpgTool extends UHkRpgItemBase {
+export default class UHkRpgBeltItem extends UHkRpgItemBase {
     static defineSchema() {
         const itemBaseSchema = UHkRpgItemBase.defineSchema();
         return {

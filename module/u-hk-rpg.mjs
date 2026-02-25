@@ -49,8 +49,8 @@ Hooks.once('init', function () {
     CONFIG.Item.documentClass = UHkRpgItem;
     CONFIG.Item.dataModels = {
         item: itemModels.UHkRpgItem,
-        feature: itemModels.UHkRpgFeature,
-        spell: itemModels.UHkRpgSpell,
+        feature: itemModels.UHkRpgFeature, // TODO: can be removed.
+        spell: itemModels.UHkRpgSpell, // TODO: can be removed.
         proficiency: itemModels.UHkRpgProficiency,
         trait: itemModels.UHkRpgTrait,
         path: itemModels.UHkRpgPath,
@@ -58,6 +58,14 @@ Hooks.once('init', function () {
         shield: itemModels.UHkRpgShield,
         armor: itemModels.UHkRpgArmor,
         food: itemModels.UHkRpgFood,
+        potion: itemModels.UHkRpgPotion,
+        flask: itemModels.UHkRpgFlask,
+        poison: itemModels.UHkRpgPoison,
+        trap: itemModels.UHkRpgTrap,
+        tool: itemModels.UHkRpgTool,
+        treasure: itemModels.UHkRpgTreasure,
+        collectible: itemModels.UHkRpgCollectible,
+        beltItem: itemModels.UHkRpgBeltItem,
     }
 
     // Active Effects are never copied to the Actor,
