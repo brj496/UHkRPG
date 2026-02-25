@@ -54,20 +54,6 @@ export default class UHkRpgCharacter extends UHkRpgActorBase {
                     )
                 })
             ),
-            // inventory: new ArrayField({
-            //     item: new SchemaField({
-            //         type:
-            //         name:
-            //         description:
-            //         bulk:
-            //         damage:
-            //         range:
-            //         quality:
-            //         damageReduction:
-            //         durability:
-            //         onBelt:
-            //     })
-            // }),
             load: new NumberField({required: true, integer: true, min: 0, initial: 10})
         }
     }

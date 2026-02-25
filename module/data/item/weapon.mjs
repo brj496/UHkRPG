@@ -17,9 +17,11 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             ...itemBaseSchema,
 
             //TODO: Might have to change how arrays are handled in Schemas.
-            type: new ArrayField({
-                typeName: new StringField({})
-            }),
+            type: new ArrayField(
+                new SchemaField({
+                    typeName: new StringField({initial: "type"})
+                })
+            ),
             damage: new SchemaField({
                 damageType: new StringField({}),
                 value: new NumberField({initial: 0, min: 0}),
@@ -38,9 +40,11 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             //TODO: Modifiers may potentially behave like items being added to a character's inventory. They have an
             // embedded collection that holds a dictionary of keys (the id of the item) and values (the item's object).
             // Look into how to handle that. for now modifiers will just be an empty array.
-            modifiers: new ArrayField({
+            // THERE IS AN EMBEDDEDDATAFIELD or EmbeddedCollectionField etc etc...
 
-            }),
+            // modifiers: new ArrayField({
+            //
+            // }),
         }
     }
 };

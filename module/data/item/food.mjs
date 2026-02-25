@@ -22,14 +22,14 @@ export default class UHkRpgFood extends UHkRpgItemBase {
                 isSpoiled: new BooleanField({initial: false}),
             }),
             belly: new SchemaField({
-                basePerServing: NumberField({initial: 0, min: 0}),
-                curBellyServing: NumberField({initial: 0, min: 0}),
+                basePerServing: new NumberField({initial: 0, min: 0}),
+                curBellyServing: new NumberField({initial: 0, min: 0}),
             }),
             bulk: new SchemaField({
-                bulkPerServing: NumberField({initial: 0, min: 0}),
-                curBulkServing: NumberField({initial: 0, min: 0}),
+                bulkPerServing: new NumberField({initial: 0, min: 0}),
+                curBulkServing: new NumberField({initial: 0, min: 0}),
             }),
-            costPerServing: NumberField({initial: 0, min: 0}),
+            costPerServing: new NumberField({initial: 0, min: 0}),
             count: new NumberField({initial: 0, min: 1}),
             effect: new StringField({initial: ""}),
         }

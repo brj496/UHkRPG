@@ -24,9 +24,11 @@ export default class UHkRpgArmor extends UHkRpgItemBase {
             //TODO: Modifiers may potentially behave like items being added to a character's inventory. They have an
             // embedded collection that holds a dictionary of keys (the id of the item) and values (the item's object).
             // Look into how to handle that. for now modifiers will just be an empty array.
-            modifiers: new ArrayField({
+            // THERE IS AN EMBEDDEDDATAFIELD
 
-            }),
+            // modifiers: new ArrayField({
+            //
+            // }),
         }
     }
 };
