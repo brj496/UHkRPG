@@ -42,7 +42,9 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
                 min: new NumberField({required: true, float: true, min: 0, initial: 0}),
                 max: new NumberField({required: true, float: true, min: 0, initial: 0}),
             }),
-            bulk: new NumberField({required: true, float: true, min: 1, initial: 1}),
+            bulk: new SchemaField({
+                value: new NumberField({required: true, integer: true, min: 1, initial: 1}),
+            }),
             size: new NumberField({required: true, Integer: true, min: 1, initial: 1}),
             absorption: new NumberField({float: true, min: 1, initial: 1}),
             pools: new SchemaField({

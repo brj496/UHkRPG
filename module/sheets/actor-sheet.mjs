@@ -53,13 +53,13 @@ export class UHkRpgActorSheet extends ActorSheet {
         context.config = CONFIG.U_HK_RPG;
 
         // Prepare character data and items.
-        if (actorData.type == 'character') {
+        if (actorData.type === 'character') {
             this._prepareItems(context);
             this._prepareCharacterData(context);
         }
 
         // Prepare NPC data and items.
-        if (actorData.type == 'npc') {
+        if (actorData.type === 'npc') {
             this._prepareItems(context);
         }
 
@@ -137,43 +137,43 @@ export class UHkRpgActorSheet extends ActorSheet {
             }
             // Append to charms
             else if (i.type === 'charm') {
-                paths.push(i);
+                charms.push(i);
             }
             // Append to techniques
             else if (i.type === 'technique') {
-                paths.push(i);
+                techniques.push(i);
             }
             // Append to weapons
             else if (i.type === 'weapon') {
-                paths.push(i);
+                weapons.push(i);
             }
             // Append to armor
             else if (i.type === 'armor') {
-                paths.push(i);
+                armor.push(i);
             }
             // Append to shields
             else if (i.type === 'shield') {
-                paths.push(i);
+                shields.push(i);
             }
             // Append to consumables
             else if (i.type === 'consumable') {
-                paths.push(i);
+                consumables.push(i);
             }
             // Append to tools
             else if (i.type === 'tool') {
-                paths.push(i);
+                tools.push(i);
             }
             // Append to treasures
             else if (i.type === 'treasure') {
-                paths.push(i);
+                treasures.push(i);
             }
             // Append to collectibles
             else if (i.type === 'collectible') {
-                paths.push(i);
+                collectibles.push(i);
             }
             // Append to beltItems
             else if (i.type === 'beltItem') {
-                paths.push(i);
+                beltItems.push(i);
             }
         }
 
@@ -217,6 +217,7 @@ export class UHkRpgActorSheet extends ActorSheet {
         html.on('click', '.item-delete', (ev) => {
             const li = $(ev.currentTarget).parents('.item');
             const item = this.actor.items.get(li.data('itemId'));
+            console.log(item)
             item.delete();
             li.slideUp(200, () => this.render(false));
         });

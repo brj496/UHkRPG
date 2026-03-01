@@ -16,7 +16,7 @@ export default class UHkRpgTrap extends UHkRpgItemBase {
         return {
             ...itemBaseSchema,
 
-            isReusable: BooleanField({initial: false}),
+            isReusable: new BooleanField({initial: false}),
             cost: new NumberField({initial: 0, min: 0}),
             count: new NumberField({initial: 0, min: 1}),
             rarity: new StringField({

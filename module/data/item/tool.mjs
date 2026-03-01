@@ -18,9 +18,12 @@ export default class UHkRpgTool extends UHkRpgItemBase {
 
             cost: new NumberField({initial: 0, min: 0}),
             bulk: new NumberField({initial: 0, min: 0}),
-            skills: new ArrayField({
-                skillName: new StringField({initial: "Skill Name"}),
-            }),
+            quality: new NumberField({initial: 0, min: -1, max: 3}),
+            skills: new ArrayField(
+                new SchemaField({
+                    skillName: new StringField({initial: "Skill Name"}),
+                }),
+            ),
             weaponType: new ArrayField(
                 new SchemaField({
                     typeName: new StringField({initial: "type"})

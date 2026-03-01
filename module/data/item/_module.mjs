@@ -17,3 +17,4 @@ export { default as UHkRpgTool } from "./tool.mjs";
 export { default as UHkRpgTreasure } from "./treasure.mjs";
 export { default as UHkRpgCollectible } from "./collectible.mjs";
 export { default as UHkRpgBeltItem } from "./beltItem.mjs";
+export { default as UHkRpgModifier } from "./modifier.mjs";

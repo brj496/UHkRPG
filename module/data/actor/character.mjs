@@ -31,7 +31,7 @@ export default class UHkRpgCharacter extends UHkRpgActorBase {
                 min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
                 max: new NumberField({required: true, integer: true, min: 0, initial: 0}),
             }),
-            geo: new NumberField({
+            geo: new SchemaField({
                 value: new NumberField({required: true, integer: true, min: 0, initial: 0}),
             }),
             notches: new NumberField({required: true, integer: true, min: 0, initial: 0}),
@@ -54,7 +54,7 @@ export default class UHkRpgCharacter extends UHkRpgActorBase {
                     )
                 })
             ),
-            load: new NumberField({required: true, integer: true, min: 0, initial: 10})
+            // load: new NumberField({required: true, integer: true, min: 0, initial: 10})
         }
     }
 

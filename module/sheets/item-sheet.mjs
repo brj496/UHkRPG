@@ -45,6 +45,8 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Use a safe clone of the item data for further operations.
         const itemData = this.document.toPlainObject();
 
+        this._prepareModifiers(context);
+
         // Enrich description info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
         context.enrichedDescription = await TextEditor.enrichHTML(
@@ -72,6 +74,20 @@ export class UHkRpgItemSheet extends ItemSheet {
         context.effects = prepareActiveEffectCategories(this.item.effects);
 
         return context;
+    }
+
+    _prepareModifiers(context) {
+        const modifiers = [];
+
+        //TODO: may have to adjust this based on modifier implementation
+
+        // just in case, only add the modifier to the context if it matches the item's type.
+
+        // for (let i of context.items) {
+        //     if (i.type )
+        // }
+
+        context.modifiers = modifiers;
     }
 
     /* -------------------------------------------- */
