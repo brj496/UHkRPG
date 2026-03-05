@@ -22,6 +22,14 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/parts/actor-paths.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-techniques.hbs',
         'systems/u-hk-rpg/templates/actor/parts/actor-traits.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-armor.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-beltItems.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-consumables.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-misc.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-shields.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-tools.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-weapons.hbs',
+        'systems/u-hk-rpg/templates/actor/parts/inventory/inventory-item-modifiers.hbs',
         // Item partials
         'systems/u-hk-rpg/templates/item/parts/item-effects.hbs',
 

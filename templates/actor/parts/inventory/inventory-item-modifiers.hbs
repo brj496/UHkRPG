@@ -1,0 +1,22 @@
+{{!-- TODO: This may need to change based on how modifiers are handled. --}}
+<div class='item flexrow modifier-header' style="margin-left: 50px">
+    <div class='item-name'>{{localize 'Modifiers'}}</div>
+    {{localize "Name | Effect | Cost"}}
+</div>
+{{#each system.modifiers as |modifier|}}
+    <div class="flexrow">
+        <div>{{item.name}}</div>
+
+        <div class='item-controls'>
+
+            {{!-- Display: Name | Cost --}}
+
+            <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                <i class='fas fa-edit'></i>
+            </a>
+            <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                <i class='fas fa-trash'></i>
+            </a>
+        </div>
+    </div>
+{{/each}}

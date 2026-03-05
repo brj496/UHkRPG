@@ -363,6 +363,23 @@
   padding-left: 5px;
   text-align: left;
 }
+.u-hk-rpg .items-list .modifier-header {
+  height: 28px;
+  padding: 0;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px groove #eeede0;
+  font-weight: bold;
+  margin: 2px 0 0 50px;
+}
+.u-hk-rpg .items-list .modifier-header > * {
+  font-size: 12px;
+  text-align: center;
+}
+.u-hk-rpg .items-list .modifier-header .modifier-name {
+  padding-left: 5px;
+  text-align: left;
+}
 .u-hk-rpg .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;

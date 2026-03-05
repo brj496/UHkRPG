@@ -1,0 +1,54 @@
+<li class='item flexrow items-header'>
+    <div class='item-name'>{{localize 'Misc'}}</div>
+    {{localize "Count | Bulk | Cost"}}
+</li>
+<li id="accordion-container">
+    {{#each treasures as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+    {{#each collectibles as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+</li>

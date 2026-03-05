@@ -1,0 +1,131 @@
+<li class='item flexrow items-header'>
+    <div class='item-name'>{{localize 'Consumables'}}</div>
+    {{localize "Count | Bulk | Cost"}}
+</li>
+<li id="accordion-container">
+    {{#each foods as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{!-- TODO: food accordion content --}}
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+    {{#each potions as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{!-- TODO: potion accordion content --}}
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+    {{#each flasks as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{!-- TODO: flask accordion content --}}
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+    {{#each poisons as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{!-- TODO: poison accordion content --}}
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+    {{#each traps as |item|}}
+        <div class="accordion-item item" data-item-id="{{item._id}}">
+            <div class="accordion-header accordion-toggle flexrow">
+                <div>{{item.name}}</div>
+
+                <div class='item-controls'>
+
+                    {{!-- Display: Bulk | Cost | Equipped --}}
+
+                    <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                        <i class='fas fa-edit'></i>
+                    </a>
+                    <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                        <i class='fas fa-trash'></i>
+                    </a>
+                </div>
+            </div>
+            <hr />
+            <div class="accordion-content" style="display: none;">
+                {{!-- TODO: trap accordion content --}}
+                {{{item.system.effect}}}
+                <br/>
+            </div>
+        </div>
+    {{/each}}
+</li>

@@ -24,6 +24,8 @@ export default class UHkRpgShield extends UHkRpgItemBase {
             bulk: new NumberField({initial: 0, min: 0}),
             cost: new NumberField({initial: 0, min: 0}),
             effect: new StringField({initial: ""}),
+            equipped: new BooleanField({initial: false}),
+            quality: new NumberField({initial: 0, min: 0, max: 3}),
             //TODO: Modifiers may potentially behave like items being added to a character's inventory. They have an
             // embedded collection that holds a dictionary of keys (the id of the item) and values (the item's object).
             // Look into how to handle that. for now modifiers will just be an empty array.\
