@@ -27,3 +27,21 @@ U_HK_RPG.secondaryAttributesAbbreviations = {
     blts: 'U_HK_RPG.SecondaryAttributes.BeltSize.abbr',
     techSlots: 'U_HK_RPG.SecondaryAttributes.TechniqueSlots.abbr'
 }
+
+U_HK_RPG.consumableTypes = {
+    food: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Food.Label',
+    },
+    potion: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Potion.Label',
+    },
+    flask: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Flask.Label',
+    },
+    poison: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Poison.Label',
+    },
+    trap: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Trap.Label',
+    }
+}

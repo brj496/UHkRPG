@@ -14,6 +14,7 @@ export { default as UHkRpgFlask } from "./flask.mjs";
 export { default as UHkRpgPoison } from "./Poison.mjs";
 export { default as UHkRpgTrap } from "./trap.mjs";
 export { default as UHkRpgTool } from "./tool.mjs";
+export { default as UHkRpgConsumable } from "./consumable.mjs";
 export { default as UHkRpgTreasure } from "./treasure.mjs";
 export { default as UHkRpgCollectible } from "./collectible.mjs";
 export { default as UHkRpgBeltItem } from "./beltItem.mjs";

@@ -57,16 +57,12 @@ Hooks.once('init', function () {
         weapon: itemModels.UHkRpgWeapon,
         shield: itemModels.UHkRpgShield,
         armor: itemModels.UHkRpgArmor,
-        food: itemModels.UHkRpgFood,
-        potion: itemModels.UHkRpgPotion,
-        flask: itemModels.UHkRpgFlask,
-        poison: itemModels.UHkRpgPoison,
-        trap: itemModels.UHkRpgTrap,
         tool: itemModels.UHkRpgTool,
         treasure: itemModels.UHkRpgTreasure,
         collectible: itemModels.UHkRpgCollectible,
         beltItem: itemModels.UHkRpgBeltItem,
-        modifiers: itemModels.UHkRpgModifier,
+        modifier: itemModels.UHkRpgModifier,
+        consumable: itemModels.UHkRpgConsumable
     }
 
     // Active Effects are never copied to the Actor,

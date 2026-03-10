@@ -52,6 +52,25 @@
             "Temporary": "Temporary Effects",
             "Passive": "Passive Effects",
             "Inactive": "Inactive Effects"
+        },
+        "CONSUMABLE": {
+            "Type": {
+                "Food": {
+                    "Label": "Food"
+                },
+                "Potion": {
+                    "Label": "Potion"
+                },
+                "Flask": {
+                    "Label": "Flask"
+                },
+                "Poison":{
+                    "Label": "Poison"
+                },
+                "Trap": {
+                    "Label": "Trap"
+                }
+            }
         }
     },
     "TYPES": {

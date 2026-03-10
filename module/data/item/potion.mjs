@@ -30,15 +30,6 @@ export default class UHkRpgPotion extends UHkRpgItemBase {
                 overdose: new StringField({initial: "overdose"}),
                 effect: new StringField({initial: "effect"}),
             }),
-
-            // effects: new SchemaField({
-            //     targeted: new StringField({initial: ""}),
-            //     terrain: new StringField({
-            //         initial: "",
-            //         isPlus: new BooleanField({initial: false}),
-            //     }),
-            //     ingested: new StringField({initial: ""}),
-            // }),
         }
     }
 };

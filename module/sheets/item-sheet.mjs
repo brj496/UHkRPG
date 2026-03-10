@@ -26,6 +26,7 @@ export class UHkRpgItemSheet extends ItemSheet {
 
     /** @override */
     get template() {
+        console.log("Opening Sheet")
         const path = 'systems/u-hk-rpg/templates/item';
         // Return a single sheet for all item types.
         // return `${path}/item-sheet.hbs`;
