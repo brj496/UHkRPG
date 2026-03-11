@@ -106,5 +106,12 @@ export class UHkRpgItemSheet extends ItemSheet {
         html.on('click', '.effect-control', (ev) =>
             onManageActiveEffect(ev, this.item)
         );
+
+        html.find('select[name="system.type"]').on("change", (event) => {
+            const select = event.currentTarget;
+            const newType = select.value;
+
+            this.document.update({ "system.type": newType});
+        });
     }
 }

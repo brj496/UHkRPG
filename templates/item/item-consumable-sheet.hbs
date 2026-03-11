@@ -21,18 +21,19 @@
     </header>
 
     <section class="sheet-body">
-        {{formField fields.type.value value=source.type.value choices=CONFIG.consumableTypes lableAttr="label" label="U_HK_RPG.CONSUMABLE.Type" localize=true}}
-
-
-        <label for="consumableType">Consumable Type</label>
-
-
-
-
-<!--        <select name="consumableType" id="consumableType">-->
-<!--            <option value=""></option>-->
-<!--        </select>-->
-
+        <label>
+            Type:
+            <select name="system.type">
+                <option value="" disabled {{#unless item.system.type}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.consumableTypes
+                        selected=system.type
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
     </section>
-
 </form>
