@@ -29,19 +29,58 @@ U_HK_RPG.secondaryAttributesAbbreviations = {
 }
 
 U_HK_RPG.consumableTypes = {
-    food: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Food.Label',
-    },
-    potion: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Potion.Label',
-    },
     flask: {
         label: 'U_HK_RPG.CONSUMABLE.Type.Flask.Label',
+    },
+    food: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Food.Label',
     },
     poison: {
         label: 'U_HK_RPG.CONSUMABLE.Type.Poison.Label',
     },
+    potion: {
+        label: 'U_HK_RPG.CONSUMABLE.Type.Potion.Label',
+    },
     trap: {
         label: 'U_HK_RPG.CONSUMABLE.Type.Trap.Label',
     }
+}
+
+U_HK_RPG.rarity = {
+    none: {
+        label: 'U_HK_RPG.RARITY.None.Label',
+    },
+    common: {
+        label: 'U_HK_RPG.RARITY.Common.Label',
+    },
+    uncommon: {
+        label: 'U_HK_RPG.RARITY.Uncommon.Label',
+    },
+    rare: {
+        label: 'U_HK_RPG.RARITY.Rare.Label',
+    },
+    legendary: {
+        label: 'U_HK_RPG.RARITY.Legendary.Label',
+    }
+}
+
+U_HK_RPG.weaponTypes = {
+    nail: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Nail.Label',
+    },
+    tusk: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Tusk.Label',
+    },
+    needle: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Needle.Label',
+    },
+    hook: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Hook.Label',
+    },
+    sling: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Sling.Label',
+    },
+    natural: {
+        label: 'U_HK_RPG.Item.Weapon.Type.Natural.Label',
+    },
 }

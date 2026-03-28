@@ -18,8 +18,9 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
 
             //TODO: Might have to change how arrays are handled in Schemas.
             type: new ArrayField(
-                new SchemaField({
-                    typeName: new StringField({initial: "type"})
+                new StringField({
+                    required: true,
+                    choices: Object.keys(CONFIG.U_HK_RPG.weaponTypes)
                 })
             ),
             damage: new SchemaField({

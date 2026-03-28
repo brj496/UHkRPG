@@ -35,5 +35,276 @@
                 }}
             </select>
         </label>
+        <br/>
+        <p>Rarity: </p>
+        <label>
+            <select name="system.rarity">
+                <option value="" disabled {{#unless item.system.rarity}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.rarity
+                        selected=system.rarity
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+
+        <div class="base-fields flexrow grid-2col">
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+
+            <p>Count: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.count"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+
+            <p>Bulk: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.bulk"
+                        type="number"
+                        value="{{system.bulk}}"
+                        data-dtype="Number"
+                />
+            </label>
+        </div>
+
+        {{#ifEquals system.type "flask"}}
+            <div class="flexrow grid-2col">
+                <p>Rejuvenating: </p>
+                <input
+                        type="checkbox"
+                        name="system.isRejuvenating"
+                    {{checked system.isRejuvenating}}
+                />
+            </div>
+            <p>Flask Effects: </p>
+            <hr/>
+            <p>Targeted: </p>
+            <hr/>
+            <div class="tab">
+                {{editor
+                        system.flaskEffects.targeted
+                        target="system.flaskEffects.targeted"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+            {{#if system.flaskEffects.isPlus}}
+                <p>Terrain+: </p>
+            {{else}}
+                <p>Terrain: </p>
+            {{/if}}
+            <hr/>
+            <div class="flexrow grid-2col">
+                <p>Terrain Plus: </p>
+                <input
+                        type="checkbox"
+                        name="system.flaskEffects.isPlus"
+                    {{checked system.flaskEffects.isPlus}}
+                />
+            </div>
+            <div class="tab">
+                {{editor
+                        system.flaskEffects.terrain
+                        target="system.flaskEffects.terrain"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+            <p>Ingested: </p>
+            <hr/>
+            <div class="tab">
+                {{editor
+                        system.flaskEffects.ingested
+                        target="system.flaskEffects.ingested"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+            <hr/>
+        {{/ifEquals}}
+        {{#ifEquals system.type "food"}}
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Belly: </div>
+                <div class="flex-group-left">
+                    Base Belly Per Serving:
+                    <input
+                            name="system.belly.basePerServing"
+                            type="number"
+                            value="{{system.belly.basePerServing}}"
+                            data-dtype="Number"
+                    />
+                    Current Belly Per Serving:
+                    <input
+                            name="system.belly.curBellyServing"
+                            type="number"
+                            value="{{system.belly.curBellyServing}}"
+                            data-dtype="Number"
+                    />
+                </div>
+            </div>
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Spoilage: </div>
+                <div class="flex-group-left">
+                    Spoil Rate:
+                    <input
+                            name="system.spoilage.spoilRate"
+                            type="number"
+                            value="{{system.spoilage.spoilRate}}"
+                            data-dtype="Number"
+                    />
+                    Cost Per Serving:
+                    <input
+                            name="system.costPerServing"
+                            type="number"
+                            value="{{system.costPerServing}}"
+                            data-dtype="Number"
+                    />
+                    Spoiled?:
+                    <input
+                            type="checkbox"
+                            name="system.spoilage.isSpoiled"
+                        {{checked system.spoilage.isSpoiled}}
+                    />
+                </div>
+            </div>
+            <hr/>
+            <p>Food Effect:</p>
+            <div class="tab">
+                {{editor
+                        system.foodEffect
+                        target="system.foodEffect"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+        {{/ifEquals}}
+        {{#ifEquals system.type "poison"}}
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Doses: </div>
+                <div class="flex-group-left">
+                    Dose Count:
+                    <input
+                            name="system.doses.value"
+                            type="number"
+                            value="{{system.doses.value}}"
+                            data-dtype="Number"
+                    />
+                    Current Dosage:
+                    <input
+                            name="system.doses.currentDose"
+                            type="number"
+                            value="{{system.doses.currentDose}}"
+                            data-dtype="Number"
+                    />
+                </div>
+            </div>
+            <p>Poison Effect: </p>
+            <div class="tab">
+                {{editor
+                        system.poisonEffect
+                        target="system.poisonEffect"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+        {{/ifEquals}}
+        {{#ifEquals system.type "potion"}}
+            <div class="flexrow grid-2col">
+                <p>Alcohol?: </p>
+                <input
+                        type="checkbox"
+                        name="system.isAlcohol"
+                    {{checked system.isAlcohol}}
+                />
+            </div>
+            <div class="flexrow grid-2col">
+                <p>Strain: </p>
+                <input
+                        name="system.strain"
+                        type="number"
+                        value="{{system.strain}}"
+                        data-dtype="Number"
+                />
+            </div>
+            <p>Potion Effects: </p>
+            <hr/>
+            <p>Overdose Effect: </p>
+            <hr/>
+            <div class="tab">
+                {{editor
+                        system.potionEffects.overdose
+                        target="system.potionEffects.overdose"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+            <p>Effect: </p>
+            <hr/>
+            <div class="tab">
+                {{editor
+                        system.potionEffects.effect
+                        target="system.potionEffects.effect"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+        {{/ifEquals}}
+        {{#ifEquals system.type "trap"}}
+            <div class="flexrow grid-2col">
+                <p>Reusable?: </p>
+                <input
+                        type="checkbox"
+                        name="system.isReusable"
+                    {{checked system.isReusable}}
+                />
+            </div>
+            <p>Food Effect:</p>
+            <div class="tab">
+                {{editor
+                        system.foodEffect
+                        target="system.foodEffect"
+                        engine="prosemirror"
+                        button=true
+                        editable=editable
+                }}
+            </div>
+        {{/ifEquals}}
+        <p>Description: </p>
+        <hr/>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
     </section>
 </form>

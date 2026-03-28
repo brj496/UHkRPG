@@ -10,6 +10,7 @@ import {U_HK_RPG} from './helpers/config.mjs';
 // Import DataModel classes
 import * as actorModels from './data/actor/_module.mjs'
 import * as itemModels from './data/item/_module.mjs'
+import * as utils from "./utils.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -82,6 +83,7 @@ Hooks.once('init', function () {
         label: 'U_HK_RPG.SheetLabels.Item',
     });
 
+    utils.registerHandlebarsHelpers();
     // Preload Handlebars templates.
     return preloadHandlebarsTemplates();
 });

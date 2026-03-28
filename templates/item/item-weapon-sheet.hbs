@@ -35,6 +35,37 @@
         Effect
         --}}
 
+        {{!-- TODO: For weapon types, because multiple can be selected, maybe use a tag system. each tag would have an 'x' to remove it. Could add upwards of 3? tags --}}
 
+        <div class="weapon-types">
+            <label>{{localize "U_HK_RPG.Item.Weapon.Type.Label"}}</label>
+
+            {{!-- Selected tags --}}
+            <div class="tags">
+                {{#each system.type as |type index|}}
+                    <span class="tag" data-index="{{index}}">
+                        {{localize (lookup (lookup @root.config.weaponTypes type) 'label')}}
+                        <a class="remove-tag" data-index="{{index}}">✖</a>
+                    </span>
+                {{/each}}
+            </div>
+
+            {{!-- Add from predefined list --}}
+            <div class="tag-controls">
+                <select name="new-type">
+                    {{#each config.weaponTypes as |data key|}}
+                        {{#unless (includes system.type key)}}
+                            <option value="{{key}}">
+                                {{localize data.label}}
+                            </option>
+                        {{/unless}}
+                    {{/each}}
+                </select>
+
+                <button type="button" class="add-tag">
+                    Add Type
+                </button>
+            </div>
+        </div>
     </section>
 </form>

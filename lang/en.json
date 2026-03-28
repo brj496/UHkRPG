@@ -44,6 +44,29 @@
             "Spell": {
                 "SpellLVL": "Level {level} Spells",
                 "AddLVL": "Add LVL {level}"
+            },
+            "Weapon": {
+                "Type": {
+                    "Label": "Weapon Type",
+                    "Nail": {
+                        "Label": "Nail"
+                    },
+                    "Tusk": {
+                        "Label": "Tusk"
+                    },
+                    "Needle": {
+                        "Label": "Needle"
+                    },
+                    "Hook": {
+                        "Label": "Hook"
+                    },
+                    "Sling": {
+                        "Label": "Sling"
+                    },
+                    "Natural": {
+                        "Label": "Natural"
+                    }
+                }
             }
         },
         "Effect": {
@@ -55,21 +78,38 @@
         },
         "CONSUMABLE": {
             "Type": {
-                "Food": {
-                    "Label": "Food"
-                },
-                "Potion": {
-                    "Label": "Potion"
-                },
                 "Flask": {
                     "Label": "Flask"
+                },
+                "Food": {
+                    "Label": "Food"
                 },
                 "Poison":{
                     "Label": "Poison"
                 },
+                "Potion": {
+                    "Label": "Potion"
+                },
                 "Trap": {
                     "Label": "Trap"
                 }
+            }
+        },
+        "RARITY": {
+            "None": {
+                "Label": "None"
+            },
+            "Common": {
+                "Label": "Common"
+            },
+            "Uncommon": {
+                "Label": "Uncommon"
+            },
+            "Rare": {
+                "Label": "Rare"
+            },
+            "Legendary": {
+                "Label": "Legendary"
             }
         }
     },

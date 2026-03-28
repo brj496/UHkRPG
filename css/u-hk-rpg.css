@@ -242,7 +242,7 @@
 .u-hk-rpg .sheet-body,
 .u-hk-rpg .sheet-body .tab,
 .u-hk-rpg .sheet-body .tab .editor {
-  height: 100%;
+  height: 100px;
 }
 .u-hk-rpg .skills-section {
   flex: 1;
@@ -266,6 +266,21 @@
 }
 .u-hk-rpg .mastery-filled-circle {
   background-color: black;
+}
+.u-hk-rpg .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.u-hk-rpg .tag {
+  background: #444;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.u-hk-rpg .tag a {
+  margin-left: 4px;
+  cursor: pointer;
 }
 .u-hk-rpg .resource-label {
   font-weight: bold;

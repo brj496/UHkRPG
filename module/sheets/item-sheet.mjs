@@ -103,8 +103,8 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Roll handlers, click handlers, etc. would go here.
 
         // Active Effect management
-        html.on('click', '.effect-control', (ev) =>
-            onManageActiveEffect(ev, this.item)
+        html.on('click', '.effect-control', (event) =>
+            onManageActiveEffect(event, this.item)
         );
 
         html.find('select[name="system.type"]').on("change", (event) => {
@@ -113,5 +113,27 @@ export class UHkRpgItemSheet extends ItemSheet {
 
             this.document.update({ "system.type": newType});
         });
+
+        html.find('.add-tag').click(event => {
+            const select = html.find('select[name="new-type"]');
+            const value = select.val();
+            if (!value) return;
+
+            const types = foundry.utils.deepClone(this.object.system.type ?? []);
+
+            if (!types.includes(value)) {
+                types.push(value);
+                this.object.update({ "system.type": types });
+            }
+        });
+
+        html.find('.remove-tag').click(event => {
+            const index = event.currentTarget.dataset.index;
+
+            const types = foundry.utils.duplicate(this.object.system.type || []);
+            types.splice(index, 1);
+
+            this.object.update({ "system.type": types });
+        })
     }
 }
