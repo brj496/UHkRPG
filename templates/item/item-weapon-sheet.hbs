@@ -21,20 +21,6 @@
     </header>
 
     <section class="sheet-body">
-        {{!-- Things to edit:
-        Weapon Name
-        Type
-        Damage
-        Range
-        Hands
-        Quality
-        Bulk
-        Cost
-        isArcane Focus
-        isAttuned
-        Effect
-        --}}
-
         {{!-- TODO: For weapon types, because multiple can be selected, maybe use a tag system. each tag would have an 'x' to remove it. Could add upwards of 3? tags --}}
 
         <div class="weapon-types">
@@ -50,13 +36,12 @@
                 {{/each}}
             </div>
 
-            {{!-- Add from predefined list --}}
             <div class="tag-controls">
                 <select name="new-type">
-                    {{#each config.weaponTypes as |data key|}}
+                    {{#each config.weaponTypes as |type key|}}
                         {{#unless (includes system.type key)}}
                             <option value="{{key}}">
-                                {{localize data.label}}
+                                {{localize type.label}}
                             </option>
                         {{/unless}}
                     {{/each}}
@@ -66,6 +51,94 @@
                     Add Type
                 </button>
             </div>
+        </div>
+
+        <div class="base-fields flexrow grid-2col">
+            <p>Damage Value: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.damage.value"
+                        type="number"
+                        value="{{system.damage.value}}"
+                        data-dtype="Number"
+                />
+            </label>
+                <p>Range: </p>
+                <label class="flexrow flex-group-left">
+                    <input
+                            name="system.range"
+                            type="number"
+                            value="{{system.range}}"
+                            data-dtype="Number"
+                    />
+                </label>
+            <p>Hands: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.hands"
+                        type="text"
+                        value="{{system.hands}}"
+                        data-dtype="String"
+                />
+            </label>
+            <p>Quality: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.quality"
+                        type="number"
+                        value="{{system.quality}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Bulk: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.bulk"
+                        type="number"
+                        value="{{system.bulk}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <div class="flexrow grid-2col">
+                <p>Arcane Focus?: </p>
+                <label>
+                    <input
+                            type="checkbox"
+                            name="system.isArcaneFocus"
+                        {{checked system.isArcaneFocus}}
+                    />
+                </label>
+            </div>
+            {{#if system.isArcaneFocus}}
+                <p>Attuned?: </p>
+                <label>
+                    <input
+                            type="checkbox"
+                            name="system.isAttuned"
+                        {{checked system.isAttuned}}
+                    />
+                </label>
+            {{/if}}
+        </div>
+        <p>Effect: </p>
+        <hr/>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.effect"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
         </div>
     </section>
 </form>

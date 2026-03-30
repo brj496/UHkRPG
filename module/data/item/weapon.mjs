@@ -27,10 +27,7 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
                 damageType: new StringField({}),
                 value: new NumberField({initial: 0, min: 0}),
             }),
-            range: new SchemaField({
-                melee: new BooleanField({initial: false}),
-                distance: new NumberField({initial: 0, min: 0}),
-            }),
+            range: new NumberField({initial: 0, min: 0}),
             hands: new StringField({initial: "1H"}),
             quality: new NumberField({initial: 0, min: 0, max: 3}),
             bulk: new NumberField({initial: 0, min: 0}),
