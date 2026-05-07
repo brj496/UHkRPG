@@ -21,8 +21,6 @@
     </header>
 
     <section class="sheet-body">
-        {{!-- TODO: For weapon types, because multiple can be selected, maybe use a tag system. each tag would have an 'x' to remove it. Could add upwards of 3? tags --}}
-
         <div class="weapon-types">
             <label>{{localize "U_HK_RPG.Item.Weapon.Type.Label"}}</label>
 
@@ -63,15 +61,15 @@
                         data-dtype="Number"
                 />
             </label>
-                <p>Range: </p>
-                <label class="flexrow flex-group-left">
-                    <input
-                            name="system.range"
-                            type="number"
-                            value="{{system.range}}"
-                            data-dtype="Number"
-                    />
-                </label>
+            <p>Range: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.range"
+                        type="number"
+                        value="{{system.range}}"
+                        data-dtype="Number"
+                />
+            </label>
             <p>Hands: </p>
             <label class="flexrow flex-group-left">
                 <input

@@ -1,0 +1,85 @@
+<form class='{{cssClass}}' autocomplete='off'>
+    <header class="sheet-header">
+        <img
+                class='profile-img'
+                src='{{item.img}}'
+                data-edit='img'
+                title='{{item.name}}'
+        />
+        <div class="header-fields">
+            <h1 class="charname">
+                <label>
+                    <input
+                            name="name"
+                            type="text"
+                            value="{{item.name}}"
+                            placeholder="Name"
+                    />
+                </label>
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <div class="base-fields flexrow grid-2col">
+            <p>Durability: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.durability.current"
+                        type="number"
+                        value="{{system.durability.current}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Damage Reduction: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.damageReduction"
+                        type="number"
+                        value="{{system.damageReduction}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Bulk: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.bulk"
+                        type="number"
+                        value="{{system.bulk}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <div class="flexrow grid-2col">
+                <p>Equipped?: </p>
+                <label>
+                    <input
+                            type="checkbox"
+                            name="system.equipped"
+                        {{checked system.equipped}}
+                    />
+                </label>
+            </div>
+        </div>
+        <p>Effect: </p>
+        <hr/>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.effect"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
+    {{!TODO: Display Modifiers here.}}
+</form>
