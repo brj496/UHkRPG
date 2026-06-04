@@ -50,8 +50,6 @@ Hooks.once('init', function () {
     CONFIG.Item.documentClass = UHkRpgItem;
     CONFIG.Item.dataModels = {
         item: itemModels.UHkRpgItem,
-        feature: itemModels.UHkRpgFeature, // TODO: can be removed.
-        spell: itemModels.UHkRpgSpell, // TODO: can be removed.
         proficiency: itemModels.UHkRpgProficiency,
         trait: itemModels.UHkRpgTrait,
         path: itemModels.UHkRpgPath,

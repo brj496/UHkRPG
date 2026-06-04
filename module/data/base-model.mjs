@@ -1,4 +1,8 @@
 export default class UHkRpgDataModel extends foundry.abstract.TypeDataModel {
+    static defineSchema() {
+        return {};
+    }
+
     /**
      * Convert the schema to a plain object.
      *

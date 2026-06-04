@@ -1,11 +1,11 @@
 import UHkRpgDataModel from "../../base-model.mjs";
+import { poolField } from "../../utils/fields.mjs"
 
 const {
     HTMLField,
     SchemaField,
     NumberField,
     StringField,
-    FilePathField,
     ArrayField,
 } = foundry.data.fields;
 
@@ -29,10 +29,10 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
             }, {})),
             traits: new ArrayField(
                 new SchemaField({
-                    hungerCost: new NumberField ({float: true, initial: 0}),
-                    spookMod: new NumberField ({float: true, initial: 0}),
-                    cuteMod: new NumberField ({float: true, initial: 0}),
-                    description: new StringField ({required: true, initialValue: "Description here"}),
+                    hungerCost: new NumberField({float: true, initial: 0}),
+                    spookMod: new NumberField({float: true, initial: 0}),
+                    cuteMod: new NumberField({float: true, initial: 0}),
+                    description: new StringField({required: true, initialValue: "Description here"}),
                 })
             ),
             spook: new NumberField({required: true, float: true, initial: 0}),
@@ -45,33 +45,21 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
             bulk: new SchemaField({
                 value: new NumberField({required: true, integer: true, min: 1, initial: 1}),
             }),
-            size: new NumberField({required: true, Integer: true, min: 1, initial: 1}),
+            size: new NumberField({required: true, integer: true, min: 1, initial: 1}),
             absorption: new NumberField({float: true, min: 1, initial: 1}),
             pools: new SchemaField({
-                heart: new SchemaField({
-                    value: new NumberField({required: true, integer: true, min: 0, initial: 10}),
-                    min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
-                    max: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                heart: poolField({value: 10, max: 10, extraFields: {
                     lifeblood: new NumberField({integer: true, min: 0, initial: 0}),
-                }),
-                soul: new SchemaField({
-                    value: new NumberField({required: true, integer: true, min: 0, initial: 10}),
-                    min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
-                    max: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                }}),
+                soul: poolField({value: 10, max: 10, extraFields: {
                     glory: new NumberField({integer: true, min: 0, initial: 0}),
-                }),
-                stamina: new SchemaField({
-                    value: new NumberField({required: true, integer: true, min: 0, initial: 3}),
-                    min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
-                    max: new NumberField({required: true, integer: true, min: 0, initial: 3}),
+                }}),
+                stamina: poolField({value: 3, max: 3, extraFields: {
                     glory: new NumberField({integer: true, min: 0, initial: 0}),
-                }),
-                stash: new SchemaField({
-                    value: new NumberField({required: true, integer: true, min: 0, initial: 10}),
-                    min: new NumberField({required: true, integer: true, min: 0, initial: 0}),
-                    max: new NumberField({required: true, integer: true, min: 0, initial: 10}),
+                }}),
+                stash: poolField({value: 10, max: 10, extraFields: {
                     glory: new NumberField({integer: true, min: 0, initial: 0}),
-                })
+                }}),
             }),
             description: new StringField({initial: "Description here"}),
             notes: new StringField({initial: "Notes here"}),

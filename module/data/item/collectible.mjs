@@ -1,22 +1,13 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
 
-const {
-    HTMLField,
-    SchemaField,
-    NumberField,
-    StringField,
-    FilePathField,
-    ArrayField,
-    BooleanField,
-} = foundry.data.fields;
+const { StringField } = foundry.data.fields;
 
 export default class UHkRpgCollectible extends UHkRpgItemBase {
     static defineSchema() {
-        const itemBaseSchema = UHkRpgItemBase.defineSchema();
         return {
-            ...itemBaseSchema,
+            ...super.defineSchema(),
 
-            effect: new StringField({initial: "effect"}),
+            effect: new StringField({initial: ""}),
         }
     }
 };

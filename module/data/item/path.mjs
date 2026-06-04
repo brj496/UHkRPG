@@ -1,29 +1,23 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
 
 const {
+    SchemaField,
     NumberField,
     StringField,
-    SchemaField
+    ArrayField,
 } = foundry.data.fields;
 
 export default class UHkRpgPath extends UHkRpgItemBase {
     static defineSchema() {
-        const itemBaseSchema = UHkRpgItemBase.defineSchema();
         return {
-            ...itemBaseSchema,
+            ...super.defineSchema(),
 
-            pathRank: new NumberField({initial: 1, float: true}),
-            ranks: new SchemaField({
-                rank1: new SchemaField({
-                    description: new StringField({required: true, initial: "description"}),
-                }),
-                rank2: new SchemaField({
-                    description: new StringField({required: true, initial: "description"}),
-                }),
-                rank3: new SchemaField({
+            pathRank: new NumberField({initial: 1, integer: true, min: 1}),
+            ranks: new ArrayField(
+                new SchemaField({
                     description: new StringField({required: true, initial: "description"}),
                 })
-            })
+            ),
         }
     }
 };

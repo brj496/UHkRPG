@@ -1,20 +1,21 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
 
+const { NumberField } = foundry.data.fields;
+
 export default class UHkRpgSpell extends UHkRpgItemBase {
 
     static defineSchema() {
-        const fields = foundry.data.fields;
-        const schema = super.defineSchema();
+        return {
+            ...super.defineSchema(),
 
-        schema.spellLevel = new fields.NumberField({
-            required: true,
-            nullable: false,
-            integer: true,
-            initial: 1,
-            min: 1,
-            max: 9
-        });
-
-        return schema;
+            spellLevel: new NumberField({
+                required: true,
+                nullable: false,
+                integer: true,
+                initial: 1,
+                min: 1,
+                max: 9
+            }),
+        }
     }
 }

@@ -6,7 +6,7 @@
 export async function preloadHandlebarsTemplates() {
     return loadTemplates([
         // Actor partials.
-        'systems/u-hk-rpg/templates/actor-character-sheet.hbs',
+        'systems/u-hk-rpg/templates/actor/actor-character-sheet.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-attributesAndProficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-biography.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-inventory.hbs',
