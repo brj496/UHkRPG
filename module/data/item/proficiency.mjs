@@ -19,7 +19,7 @@ export default class UHkRpgProficiency extends UHkRpgItemBase {
                 skill2: skillField({skillName: "Skill 2"}),
                 skill3: skillField({skillName: "Skill 3"}),
                 skill4: skillField({skillName: "Skill 4"}),
-            })
+            }),
         }
     }
 };

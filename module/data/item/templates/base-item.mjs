@@ -8,6 +8,7 @@ export default class UHkRpgItemBase extends UHkRpgDataModel {
         return {
             ...super.defineSchema(),
             description: new StringField({required: true, initial: "description"}),
+            // Items that are added to other items are stored in the object's collection key.
         }
     }
 

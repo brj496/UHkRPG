@@ -1,15 +1,16 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    {{> "systems/u-hk-rpg/templates/actor/parts/actor-header.hbs"}}
+    {{> "systems/u-hk-rpg/templates/actor/partials/actor-header.hbs"}}
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         {{!-- Default tab is specified in actor-sheet.mjs --}}
-        <a class="item" data-tab="attributesAndProficiencies">Attributes/Proficiencies</a>
-        <a class="item" data-tab="traitsAndPaths">Traits/Paths</a>
+        <a class="item" data-tab="details">Details</a>
         <a class="item" data-tab="inventory">Inventory</a>
         <a class="item" data-tab="techniques">Techniques</a>
+        <a class="item" data-tab="paths">Paths</a>
+        <a class="item" data-tab="combat">Combat</a>
         <a class="item" data-tab="biography">Biography</a>
         <a class="item" data-tab="notes">Notes</a>
     </nav>
@@ -17,14 +18,9 @@
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Character Attributes and Proficiencies Tab --}}
-        <div class="tab attributesAndProficiencies" data-group="primary" data-tab="attributesAndProficiencies">
-            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-attributesAndProficiencies.hbs"}}
-        </div>
-
-        {{!-- Traits and Paths Tab --}}
-        <div class="tab traitsAndPaths" data-group="primary" data-tab="traitsAndPaths">
-            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-traitsAndPaths.hbs"}}
+        {{!-- Details Tab --}}
+        <div class="tab details" data-group="primary" data-tab="details">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-details.hbs"}}
         </div>
 
         {{!-- Inventory Tab --}}
@@ -35,6 +31,16 @@
         {{!-- Techniques Tab --}}
         <div class="tab techniques" data-group="primary" data-tab="techniques">
             {{> "systems/u-hk-rpg/templates/actor/tabs/actor-techniques.hbs"}}
+        </div>
+
+        {{!-- Paths Tab --}}
+        <div class="tab paths" data-group="primary" data-tab="paths">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-paths.hbs"}}
+        </div>
+
+        {{!-- Combat Tab --}}
+        <div class="tab combat" data-group="primary" data-tab="combat">
+            {{> "systems/u-hk-rpg/templates/actor/tabs/actor-combat.hbs"}}
         </div>
 
         {{!-- Biography Tab --}}

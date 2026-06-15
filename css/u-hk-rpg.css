@@ -282,6 +282,20 @@
   margin-left: 4px;
   cursor: pointer;
 }
+.u-hk-rpg .stat-card {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 4px;
+  text-align: center;
+}
+.u-hk-rpg .stat-card-header {
+  font-weight: bold;
+  padding: 0.25rem;
+  background: rgba(0, 0, 0, 0.1);
+}
+.u-hk-rpg .stat-card-value {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
 .u-hk-rpg .resource-label {
   font-weight: bold;
 }

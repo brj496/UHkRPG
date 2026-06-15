@@ -21,7 +21,7 @@ export class UHkRpgActorSheet extends ActorSheet {
                 {
                     navSelector: '.sheet-tabs',
                     contentSelector: '.sheet-body',
-                    initial: 'features',
+                    initial: 'details',
                 },
             ],
         });

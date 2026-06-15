@@ -38,6 +38,6 @@ export function skillField({skillName = ""}) {
     return new SchemaField({
         name: new StringField({required: true, initial: skillName}),
         mastery: new BooleanField({initial: false}),
-        rerolls: new NumberField({required: true, integer: true})
+        rerolls: new NumberField({required: true, integer: true, initial: 0})
     });
 }

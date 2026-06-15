@@ -17,9 +17,7 @@ export default class UHkRpgCharacter extends UHkRpgActorBase {
 
             belly: poolField({value: 10, max: 10}),
             hunger: poolField({value: 0, min: 0, max: 0}),
-            geo: new SchemaField({
-                value: new NumberField({required: true, integer: true, min: 0, initial: 0}),
-            }),
+            geo: new NumberField({required: true, integer: true, min: 0, initial: 0}),
             notches: new NumberField({required: true, integer: true, min: 0, initial: 0}),
             customPools: new ArrayField(
                 new SchemaField({
@@ -40,31 +38,11 @@ export default class UHkRpgCharacter extends UHkRpgActorBase {
                     )
                 })
             ),
+            load: new NumberField({required: true, integer: true, min: 0, initial: 0}),
         }
     }
 
-    prepareDerivedData() {
-        for (const key in this.attributes) {
-            this.attributes[key].label = game.i18n.localize(CONFIG.U_HK_RPG.attributes[key]) ?? key;
-        }
-        for (const key in this.secondaryAttributes) {
-            switch (key) {
-                case "load":
-                    this.secondaryAttributes[key].value = Math.floor(this.attributes["might"].value);
-                    break;
-                case "techniqueSlots":
-                    this.secondaryAttributes[key].value = Math.floor(this.attributes["insight"].value);
-                    break;
-                case "beltSize":
-                    this.secondaryAttributes[key].value = Math.floor(this.attributes["shell"].value);
-                    break;
-                case "footwork":
-                    this.secondaryAttributes[key].value = Math.ceil(this.attributes["grace"].value / 2);
-                    break;
-            }
-            this.secondaryAttributes[key].label = game.i18n.localize(CONFIG.U_HK_RPG.secondaryAttributes[key]) ?? key;
-        }
-    }
+
 
     getRollData() {
         const data = {};

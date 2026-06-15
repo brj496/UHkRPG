@@ -9,9 +9,16 @@ export function registerHandlebarsHelpers() {
             }
         }
     })
+
     Handlebars.registerHelper({
         "includes": function (array, value) {
             return Array.isArray(array) && array.includes(value);
+        }
+    })
+
+    Handlebars.registerHelper({
+        "add": function (num1, num2) {
+            return num1 + num2;
         }
     })
 }

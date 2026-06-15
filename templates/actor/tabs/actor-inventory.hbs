@@ -3,7 +3,7 @@
     Geo: {{system.geo.value}}
 </div>
 <div>
-    Carried Bulk: {{system.bulk.value}} {{!-- TODO: This bulk here should be the combined bulk of the carried/equipped items --}}
+    Carried Bulk: {{system.bulk}} {{!-- TODO: This bulk here should be the combined bulk of the carried/equipped items --}}
 </div>
 <div>
     Load: {{system.secondaryAttributes.load.value}}
@@ -14,30 +14,30 @@
 <ol class="items-list">
     {{!-- Weapons --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-weapons.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-weapons.hbs"}}
 
     {{!-- Shields --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-shields.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-shields.hbs"}}
 
     {{!-- Armor --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-armor.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-armor.hbs"}}
 
     {{!-- Belt Items --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-beltItems.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-beltItems.hbs"}}
 
     {{!-- Consumables --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-consumables.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-consumables.hbs"}}
 
     {{!-- Tools --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-tools.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-tools.hbs"}}
 
     {{!-- Other (Treasures/Collectibles) --}}
 
-    {{>"systems/u-hk-rpg/templates/actor/parts/inventory/inventory-list-misc.hbs"}}
+    {{>"systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-misc.hbs"}}
 
 </ol>

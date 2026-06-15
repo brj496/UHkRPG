@@ -31,6 +31,10 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             hands: new StringField({initial: "1H"}),
             isArcaneFocus: new BooleanField({initial: false}),
             attuned: new BooleanField({initial: false}),
+
+            //Modifiers can be added to the collection of the item by clicking and dragging.
+            // e.g. this.collection stores what items have beed added to this item's inventory.
+            // be somewhat careful, the item itself is also stored in that collection.
         }
     }
 };

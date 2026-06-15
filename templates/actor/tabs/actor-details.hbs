@@ -1,0 +1,77 @@
+{{!-- TODO: Details Tab --}}
+
+
+<div class="tab details" data-group="primary" data-tab="details">
+    Attributes
+    <hr>
+    <section class="grid grid-4col">
+        {{#each system.attributes}}
+            {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"}}
+        {{/each}}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Bulk"
+                value=system.bulk
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+            label="Belly"
+            value=system.belly.value
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Spook"
+                value=system.spook
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Speed"
+                value=system.speed
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Load"
+                value=system.load
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Hunger"
+                value=system.hunger.value
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Cute"
+                value=system.cute
+        }}
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+                label="Absorption"
+                value=system.absorption
+        }}
+
+    </section>
+
+    {{!--TODO: Rest/ Check Roll Buttons" --}}
+
+<!--    <aside class="sidebar">-->
+
+<!--        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,-->
+<!--        use both the "grid" and "grid-Ncol" class where "N" can be any number-->
+<!--        from 1 to 12 and will create that number of columns.  --}}-->
+<!--        <div class="attributes flexcol">-->
+<!--            {{#each system.attributes as |attribute key|}}-->
+<!--                <div class="attribute flexrow flex-group-center">-->
+<!--                    <label for="system.attributes.{{key}}.value"-->
+<!--                           class="resource-label rollable flexlarge align-left"-->
+<!--                           data-roll="d6"-->
+<!--                           data-label="{{localize (lookup @root.config.attributes key)}}">{{localize (lookup @root.config.attributes key)}}</label>-->
+<!--                    <input-->
+<!--                            type="text"-->
+<!--                            name="system.attributes.{{key}}.value"-->
+<!--                            value="{{attribute.value}}"-->
+<!--                            data-dtype="Number"-->
+<!--                    />-->
+<!--                </div>-->
+<!--            {{/each}}-->
+<!--        </div>-->
+<!--    </aside>-->
+
+    {{!-- For the main features list, span the right two columns --}}
+    Proficiencies:
+    <section class="main grid-span-2">
+        {{!-- This is a Handlebars partial. They're stored in the `/partials` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+        {{> "systems/u-hk-rpg/templates/actor/partials/actor-proficiencies.hbs"}}
+    </section>
+</div>

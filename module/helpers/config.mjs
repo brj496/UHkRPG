@@ -30,37 +30,37 @@ U_HK_RPG.secondaryAttributesAbbreviations = {
 
 U_HK_RPG.consumableTypes = {
     flask: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Flask.Label',
+        label: 'U_HK_RPG.Item.Consumable.Type.Flask.Label',
     },
     food: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Food.Label',
+        label: 'U_HK_RPG.Item.Consumable.Type.Food.Label',
     },
     poison: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Poison.Label',
+        label: 'U_HK_RPG.Item.Consumable.Type.Poison.Label',
     },
     potion: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Potion.Label',
+        label: 'U_HK_RPG.Item.Consumable.Type.Potion.Label',
     },
     trap: {
-        label: 'U_HK_RPG.CONSUMABLE.Type.Trap.Label',
+        label: 'U_HK_RPG.Item.Consumable.Type.Trap.Label',
     }
 }
 
 U_HK_RPG.rarity = {
     none: {
-        label: 'U_HK_RPG.RARITY.None.Label',
+        label: 'U_HK_RPG.Item.Rarity.None.Label',
     },
     common: {
-        label: 'U_HK_RPG.RARITY.Common.Label',
+        label: 'U_HK_RPG.Item.Rarity.Common.Label',
     },
     uncommon: {
-        label: 'U_HK_RPG.RARITY.Uncommon.Label',
+        label: 'U_HK_RPG.Item.Rarity.Uncommon.Label',
     },
     rare: {
-        label: 'U_HK_RPG.RARITY.Rare.Label',
+        label: 'U_HK_RPG.Item.Rarity.Rare.Label',
     },
     legendary: {
-        label: 'U_HK_RPG.RARITY.Legendary.Label',
+        label: 'U_HK_RPG.Item.Rarity.Legendary.Label',
     }
 }
 
@@ -83,4 +83,34 @@ U_HK_RPG.weaponTypes = {
     natural: {
         label: 'U_HK_RPG.Item.Weapon.Type.Natural.Label',
     },
+}
+
+U_HK_RPG.traitTypes = {
+    naturalWeapon: {
+        label: "U_HK_RPG.Item.Trait.NaturalWeapon.Label",
+    },
+    attribute: {
+        label: "U_HK_RPG.Item.Trait.Attribute.Label"
+    },
+    mental: {
+        label: "U_HK_RPG.Item.Trait.Mental.Label"
+    },
+    physical: {
+        label: "U_HK_RPG.Item.Trait.Physical.Label"
+    },
+    sense: {
+        label: "U_HK_RPG.Item.Trait.Sense.Label"
+    },
+    mystical: {
+        label: "U_HK_RPG.Item.Trait.Mystical.Label"
+    },
+    body: {
+        label: "U_HK_RPG.Item.Trait.Body.Label"
+    },
+    movement: {
+        label: "U_HK_RPG.Item.Trait.Movement.Label"
+    },
+    naturalDefense: {
+        label: "U_HK_RPG.Item.Trait.NaturalDefense.Label"
+    }
 }

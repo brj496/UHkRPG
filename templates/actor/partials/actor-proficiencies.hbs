@@ -30,7 +30,6 @@
                 </div>
                 <hr/>
                 <div class="accordion-content" style="display: none;">
-                    {{{item.system.description}}}
                     <p>Skills:</p>
                     <ul>
                         {{#each system.skills as |skill key|}}
@@ -44,7 +43,7 @@
                                         {{skill.name}}
                                     </label>
                                     <label class="flex-group-right">
-                                        rerolls: {{skill.rerolls}}
+                                        rerolls: {{add skill.rerolls item.system.rank}}
                                     </label>
                                     <div class="mastery-circle {{#if skill.mastery}}mastery-filled-circle{{/if}}"></div>
                                 </div>
@@ -52,6 +51,9 @@
                             </li>
                         {{/each}}
                     </ul>
+                    {{!-- TODO: Only display the description when there is actually a mastery. --}}
+                    Mastery:
+                    {{{item.system.description}}}
                     <hr/>
                 </div>
             </div>
