@@ -2,7 +2,7 @@
 
 
 <div class="tab details" data-group="primary" data-tab="details">
-    Attributes
+    Attributes:
     <hr>
     <section class="grid grid-4col">
         {{#each system.attributes}}
@@ -12,9 +12,11 @@
                 label="Bulk"
                 value=system.bulk
         }}
-        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card-max.hbs"
             label="Belly"
+            name="system.belly.value"
             value=system.belly.value
+            max=system.belly.max
         }}
         {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
                 label="Spook"
@@ -24,8 +26,9 @@
                 label="Speed"
                 value=system.speed
         }}
-        {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
+        {{> "systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card.hbs"
                 label="Load"
+                name="system.load"
                 value=system.load
         }}
         {{> "systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs"
@@ -43,35 +46,28 @@
 
     </section>
 
-    {{!--TODO: Rest/ Check Roll Buttons" --}}
+    {{!--TODO: Add functionality to Rest/ Check Roll Buttons" --}}
 
-<!--    <aside class="sidebar">-->
-
-<!--        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,-->
-<!--        use both the "grid" and "grid-Ncol" class where "N" can be any number-->
-<!--        from 1 to 12 and will create that number of columns.  --}}-->
-<!--        <div class="attributes flexcol">-->
-<!--            {{#each system.attributes as |attribute key|}}-->
-<!--                <div class="attribute flexrow flex-group-center">-->
-<!--                    <label for="system.attributes.{{key}}.value"-->
-<!--                           class="resource-label rollable flexlarge align-left"-->
-<!--                           data-roll="d6"-->
-<!--                           data-label="{{localize (lookup @root.config.attributes key)}}">{{localize (lookup @root.config.attributes key)}}</label>-->
-<!--                    <input-->
-<!--                            type="text"-->
-<!--                            name="system.attributes.{{key}}.value"-->
-<!--                            value="{{attribute.value}}"-->
-<!--                            data-dtype="Number"-->
-<!--                    />-->
-<!--                </div>-->
-<!--            {{/each}}-->
-<!--        </div>-->
-<!--    </aside>-->
+    <section>
+        <button>
+            Rest
+        </button>
+        <button>
+            Roll
+        </button>
+    </section>
 
     {{!-- For the main features list, span the right two columns --}}
     Proficiencies:
+    <hr>
     <section class="main grid-span-2">
         {{!-- This is a Handlebars partial. They're stored in the `/partials` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
         {{> "systems/u-hk-rpg/templates/actor/partials/actor-proficiencies.hbs"}}
+    </section>
+
+    Traits:
+    <hr>
+    <section>
+        {{> "systems/u-hk-rpg/templates/actor/partials/actor-traits.hbs"}}
     </section>
 </div>

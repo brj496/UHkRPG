@@ -128,6 +128,102 @@
                 "NaturalDefense": {
                     "Label": "Natural Defense"
                 }
+            },
+            "Technique": {
+                "TechniqueType": {
+                    "Arcana": {
+                        "Label": "Arcana"
+                    },
+                    "WeaponArt": {
+                        "Label": "Weapon Art"
+                    },
+                    "Ritual": {
+                        "Label": "Ritual"
+                    }
+                },
+                "ActivationCost": {
+                    "Stamina": {
+                        "Label": "Stamina"
+                    },
+                    "FocusAction": {
+                        "Label": "Focus Action"
+                    },
+                    "Soul": {
+                        "Label": "Soul"
+                    },
+                    "Shell": {
+                        "Label": "Shell"
+                    },
+                    "Item": {
+                        "Label": "Item"
+                    },
+                    "Custom": {
+                        "Label": "Custom"
+                    }
+                },
+                "ActivationType": {
+                    "Reaction": {
+                        "Label": "Reaction"
+                    },
+                    "Augment": {
+                        "Label": "Augment"
+                    },
+                    "Normal": {
+                        "Label": "Normal"
+                    },
+                    "Unique": {
+                        "Label": "Unique"
+                    },
+                    "Special": {
+                        "Label":"Special"
+                    }
+                },
+                "WeaponArtType": {
+                    "General": {
+                        "Label": "General"
+                    },
+                    "Unarmed": {
+                        "Label": "Unarmed"
+                    },
+                    "Needle": {
+                        "Label": "Needle"
+                    },
+                    "Tusk": {
+                        "Label": "Tusk"
+                    },
+                    "Sling": {
+                        "Label": "Sling"
+                    },
+                    "Shield": {
+                        "Label": "Shield"
+                    },
+                    "Counter": {
+                        "Label": "Counter"
+                    }
+                },
+                "ArcanaType": {
+                    "Spire": {
+                        "Label": "Spire"
+                    },
+                    "Cloak": {
+                        "Label": "Cloak"
+                    },
+                    "Dream": {
+                        "Label": "Dream"
+                    },
+                    "Nightmare": {
+                        "Label": "Nightmare"
+                    },
+                    "Bloom": {
+                        "Label": "Bloom"
+                    },
+                    "Thorn": {
+                        "Label": "Thorn"
+                    },
+                    "Dust": {
+                        "Label": "Dust"
+                    }
+                }
             }
         },
         "Effect": {
@@ -136,6 +232,63 @@
             "Temporary": "Temporary Effects",
             "Passive": "Passive Effects",
             "Inactive": "Inactive Effects"
+        },
+        "Range": {
+            "Self": {
+                "Label": "Self"
+            },
+            "Touch": {
+                "Label": "Touch"
+            },
+            "Close": {
+                "Label": "Close"
+            },
+            "Far": {
+                "Label": "Far"
+            },
+            "Sense": {
+                "Label": "Sense"
+            }
+        },
+        "Duration": {
+            "Concentration": {
+                "Label": "Concentration"
+            },
+            "Brief": {
+                "Label": "Brief"
+            },
+            "Scene": {
+                "Label": "Scene"
+            },
+            "Scenes": {
+                "Label": "Scenes"
+            },
+            "Rests": {
+                "Label": "Rests"
+            },
+            "Lifetime": {
+                "Label": "Lifetime"
+            },
+            "Eternal": {
+                "Label": "Eternal"
+            }
+        },
+        "DamageType": {
+            "Normal": {
+                "Label": "Normal"
+            },
+            "Magic": {
+                "Label": "Magic"
+            },
+            "Environmental": {
+                "Label": "Environmental"
+            },
+            "Stamina": {
+                "Label": "Stamina"
+            },
+            "Soul": {
+                "Label": "Soul"
+            }
         }
     },
     "TYPES": {

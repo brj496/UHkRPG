@@ -1,1 +1,15 @@
-{{!-- TODO: A stat card that can have its value edited --}}
+<div class="stat-card">
+    <div class="stat-card-header">
+        {{label}}
+    </div>
+
+    <div class="stat-card-content">
+        <input
+            type="number"
+            class="stat-card-value"
+            name="{{name}}"
+            value="{{value}}"
+            data-dtype="Number"
+        />
+    </div>
+</div>

@@ -1,16 +1,6 @@
 <ol class='items-list'>
     <li class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Name'}}</div>
-        <div class='item-controls'>
-            <a
-                    class='item-control item-create'
-                    title='Create item'
-                    data-type='proficiency'
-            >
-                <i class='fas fa-plus'></i>
-                {{localize 'DOCUMENT.New' type='proficiency'}}
-            </a>
-        </div>
     </li>
     <li id="accordion-container">
         {{#each proficiencies as |item|}}

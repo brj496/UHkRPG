@@ -114,3 +114,168 @@ U_HK_RPG.traitTypes = {
         label: "U_HK_RPG.Item.Trait.NaturalDefense.Label"
     }
 }
+
+U_HK_RPG.techiqueTypes = {
+    arcana: {
+        label: "U_HK_RPG.Item.Techniques.TechniqueType.Arcana.Label"
+    },
+    weaponArt: {
+        label: "U_HK_RPG.Item.Techniques.TechniqueType.WeaponArt.Label"
+    },
+    ritual: {
+        label: "U_HK_RPG.Item.Techniques.TechniqueType.Ritual.Label"
+    }
+}
+
+U_HK_RPG.activationCosts = {
+    stamina: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.Stamina.Label",
+    },
+    focusAction: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.FocusAction.Label",
+    },
+    soul: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.Soul.Label",
+    },
+    shell: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.Shell.Label",
+    },
+    item: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.Item.Label"
+    },
+    custom: {
+        label: "U_HK_RPG.Item.Technique.ActivationCost.Custom.Label"
+    }
+}
+
+U_HK_RPG.activationTypes = {
+    reaction: {
+        label: "U_HK_RPG.Item.Technique.ActivationType.Reaction.Label",
+    },
+    augment: {
+        label: "U_HK_RPG.Item.Technique.ActivationType.Augment.Label"
+    },
+    normal: {
+        label: "U_HK_RPG.Item.Technique.ActivationType.Normal.Label"
+    },
+    unique: {
+        label: "U_HK_RPG.Item.Technique.ActivationType.Unique.Label"
+    },
+    special: {
+        label: "U_HK_RPG.Item.Techniques.ActivationType.Special.Label"
+    }
+}
+
+U_HK_RPG.weaponArtTypes = {
+    general: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.General.Label",
+    },
+    unarmed: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Unarmed.Label",
+    },
+    needle: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Needle.Label",
+    },
+    tusk: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Tusk.Label",
+    },
+    natural: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Natural.Label",
+    },
+    hook: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Hook.Label",
+    },
+    sling: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Sling.Label",
+    },
+    shield: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Shield.Label",
+    },
+    counter: {
+        label: "U_HK_RPG.Item.Technique.WeaponArtType.Counter.Label",
+    }
+}
+
+U_HK_RPG.arcanaTypes = {
+    spire: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Spire.Label",
+    },
+    cloak: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Cloak.Label",
+    },
+    dream: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Dream.Label",
+    },
+    nightmare: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Nightmare.Label",
+    },
+    bloom: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Bloom.Label",
+    },
+    thorn: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Thorne.Label",
+    },
+    dust: {
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Dust.Label",
+    }
+}
+
+U_HK_RPG.durations = {
+    concentration: {
+        label: "U_HK_RPG.Duration.Concentration.Label",
+    },
+    brief: {
+        label: "U_HK_RPG.Duration.Brief.Label",
+    },
+    scene: {
+        label: "U_HK_RPG.Duration.Scene.Label",
+    },
+    scenes: {
+        label: "U_HK_RPG.Duration.Scenes.Label",
+    },
+    rests: {
+        label: "U_HK_RPG.Duration.Rests.Label",
+    },
+    lifetime: {
+        label: "U_HK_RPG.Duration.Lifetime.Label",
+    },
+    eternal: {
+        label: "U_HK_RPG.Duration.Eternal.Label",
+    }
+}
+
+U_HK_RPG.ranges = {
+    self: {
+        label: "U_HK_RPG.Range.Self.Label",
+    },
+    touch: {
+        label: "U_HK_RPG.Range.Close.Label",
+    },
+    close: {
+        label: "U_HK_RPG.Range.Close.Label",
+    },
+    far: {
+        label: "U_HK_RPG.Range.Far.Label",
+    },
+    sense: {
+        label: "U_HK_RPG.Range.Sense.Label"
+    }
+}
+
+U_HK_RPG.damageTypes = {
+    normal: {
+        label: "U_HK_RPG.DamageType.Normal.Label",
+    },
+    magic: {
+        label: "U_HK_RPG.DamageType.Magic.Label",
+    },
+    environmental: {
+        label: "U_HK_RPG.DamageType.Environmental.Label",
+    },
+    stamina: {
+        label: "U_HK_RPG.DamageType.Stamina.Label",
+    },
+    soul: {
+        label: "U_HK_RPG.DamageType.Soul.Label",
+    }
+}

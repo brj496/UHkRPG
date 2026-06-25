@@ -5,8 +5,10 @@
  */
 export async function preloadHandlebarsTemplates() {
     return loadTemplates([
-        // Actor partials.
+        // Actor
         'systems/u-hk-rpg/templates/actor/actor-character-sheet.hbs',
+
+        //Actor Tabs
         'systems/u-hk-rpg/templates/actor/tabs/actor-attributesAndProficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-biography.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-inventory.hbs',
@@ -14,9 +16,18 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/tabs/actor-combat.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-details.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-paths.hbs',
-        'systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-techniques.hbs',
         'systems/u-hk-rpg/templates/actor/tabs/actor-traitsAndPaths.hbs',
+
+        //Actor Partials
+
+        //  Stats
+        'systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs',
+        'systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card.hbs',
+        'systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card-max.hbs',
+        'systems/u-hk-rpg/templates/actor/partials/stats/rollable-stat-card-max.hbs',
+
+
         'systems/u-hk-rpg/templates/actor/partials/actor-proficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-header.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-features.hbs',
@@ -24,7 +35,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/partials/actor-spells.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-effects.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-paths.hbs',
-        'systems/u-hk-rpg/templates/actor/partials/actor-techniques.hbs',
+        'systems/u-hk-rpg/templates/actor/partials/actor-weapon-arts.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-traits.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-armor.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-beltItems.hbs',
@@ -34,6 +45,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-tools.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-weapons.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-item-modifiers.hbs',
+
         // Item partials
         'systems/u-hk-rpg/templates/item/partials/item-effects.hbs',
 
