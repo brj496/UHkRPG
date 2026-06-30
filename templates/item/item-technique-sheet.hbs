@@ -1,0 +1,244 @@
+{{!-- TODO: Technique Item Page --}}
+
+<form class='{{cssClass}}' autocomplete='off'>
+    <header class="sheet-header">
+        <img
+                class='profile-img'
+                src='{{item.img}}'
+                data-edit='img'
+                title='{{item.name}}'
+        />
+        <div class="header-fields">
+            <h1 class="charname">
+                <label>
+                    <input
+                            name="name"
+                            type="text"
+                            value="{{item.name}}"
+                            placeholder="Name"
+                    />
+                </label>
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <label>
+            Type:
+            <select name="system.techniqueType">
+                <option value="" disabled {{#unless item.system.techniqueType}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.techniqueTypes
+                        selected=system.techniqueType
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+
+        <br/>
+
+        <label>
+            Damage Type:
+            <select name="system.damageType">
+                <option value="" disabled {{#unless item.system.damageType}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.damageTypes
+                        selected=system.damageType
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+
+        <div class="base-fields flexrow grid-2col">
+            <p>Damage Formula: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.damage"
+                        type="text"
+                        value="{{system.damage}}"
+                        data-dtype="String"
+                />
+            </label>
+        </div>
+        {{#ifEquals system.techniqueType "weaponArt"}}
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Activation: </div>
+                <div class="flex-group-left">
+                    Activation Type:
+                    <label>
+                        <select name="system.activation.activationType">
+                            <option value="" disabled {{#unless item.system.activation.activationType}}selected{{/unless}}>
+                                Select Type
+                            </option>
+                            {{selectOptions
+                                    config.activationTypes
+                                    selected=system.activation.activationType
+                                    labelAttr="label"
+                                    localize=true
+                            }}
+                        </select>
+                    </label>
+                    Activation Cost:
+                    <label>
+                        <select name="system.activation.costType">
+                            <option value="" disabled {{#unless item.system.activation.costType}}selected{{/unless}}>
+                                Select Type
+                            </option>
+                            {{selectOptions
+                                    config.activationCosts
+                                    selected=system.activation.costType
+                                    labelAttr="label"
+                                    localize=true
+                            }}
+                        </select>
+                    </label>
+                    {{!-- TODO: This should only appear IF there is a value to enter based on the type of activation cost. --}}
+                    {{#if (includes config.activationCostWithValue system.activation.costType)}}
+                        Activation Cost Value
+                        <input
+                                name="system.activation.cost"
+                                type="text"
+                                value="{{system.activation.cost}}"
+                                data-dtype="String"
+                        />
+                    {{/if}}
+                </div>
+            </div>
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Weapon Art Type: </div>
+                <div class="flex-group-left">
+                    <label>
+                        <select name="system.weaponArtType">
+                            <option value="" disabled {{#unless item.system.weaponArtType}}selected{{/unless}}>
+                                Select Type
+                            </option>
+                            {{selectOptions
+                                    config.weaponArtTypes
+                                    selected=system.weaponArtType
+                                    labelAttr="label"
+                                    localize=true
+                            }}
+                        </select>
+                    </label>
+                </div>
+            </div>
+        {{/ifEquals}}
+        {{!-- TODO: Arcana Techniques --}}
+        {{#ifEquals system.techniqueType "arcana"}}
+            <div class="flexrow grid-2col">
+                <p>Base Difficulty</p>
+                <input
+                        name="system.baseDifficulty"
+                        type="number"
+                        value="{{system.baseDifficulty}}"
+                        data-dtype="Number"
+                />
+                <p>Range</p>
+                <label>
+                    <select name="system.range">
+                        <option value="" disabled {{#unless item.system.range}}selected{{/unless}}>
+                            Select Range
+                        </option>
+                        {{selectOptions
+                                config.ranges
+                                selected=system.range
+                                labelAttr="label"
+                                localize=true
+                        }}
+                    </select>
+                </label>
+                <p>Duration</p>
+                <label>
+                    <select name="system.duration">
+                        <option value="" disabled {{#unless item.system.duration}}selected{{/unless}}>
+                            Select Duration
+                        </option>
+                        {{selectOptions
+                                config.durations
+                                selected=system.duration
+                                labelAttr="label"
+                                localize=true
+                        }}
+                    </select>
+                </label>
+                <p>Arcana Type</p>
+                <label>
+                    <select name="system.arcanaType">
+                        <option value="" disabled {{#unless item.system.arcanaType}}selected{{/unless}}>
+                            Select Type
+                        </option>
+                        {{selectOptions
+                                config.arcanaTypes
+                                selected=system.arcanaType
+                                labelAttr="label"
+                                localize=true
+                        }}
+                    </select>
+                </label>
+            </div>
+
+        {{/ifEquals}}
+        {{!-- TODO: Ritual Techniques --}}
+        {{#ifEquals system.techniqueType "ritual"}}
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Requirements: </div>
+                <div class="flex-group-left">
+                    Arcana Type:
+                    <label>
+                        <select name="system.arcanaType">
+                            <option value="" disabled {{#unless item.system.arcanaType}}selected{{/unless}}>
+                                Select Type
+                            </option>
+                            {{selectOptions
+                                    config.arcanaTypes
+                                    selected=system.arcanaType
+                                    labelAttr="label"
+                                    localize=true
+                            }}
+                        </select>
+                    </label>
+                    Rank:
+                    <input
+                            name="system.activation.cost"
+                            type="number"
+                            value="{{system.activation.cost}}"
+                            data-dtype="Number"
+                            max="3"
+                            min="0"
+                    />
+                </div>
+            </div>
+            <div class="flexrow grid-2col">
+                <p>Ritual Cost: </p>
+                <div class="tab">
+                    {{editor
+                            system.flaskEffects.ingested
+                            target="system.flaskEffects.ingested"
+                            engine="prosemirror"
+                            button=true
+                            editable=editable
+                    }}
+                </div>
+            </div>
+        {{/ifEquals}}
+        <p>Description: </p>
+        <hr/>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
+</form>

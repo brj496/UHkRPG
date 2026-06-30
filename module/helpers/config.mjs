@@ -115,15 +115,15 @@ U_HK_RPG.traitTypes = {
     }
 }
 
-U_HK_RPG.techiqueTypes = {
+U_HK_RPG.techniqueTypes = {
     arcana: {
-        label: "U_HK_RPG.Item.Techniques.TechniqueType.Arcana.Label"
+        label: "U_HK_RPG.Item.Technique.TechniqueType.Arcana.Label"
     },
     weaponArt: {
-        label: "U_HK_RPG.Item.Techniques.TechniqueType.WeaponArt.Label"
+        label: "U_HK_RPG.Item.Technique.TechniqueType.WeaponArt.Label"
     },
     ritual: {
-        label: "U_HK_RPG.Item.Techniques.TechniqueType.Ritual.Label"
+        label: "U_HK_RPG.Item.Technique.TechniqueType.Ritual.Label"
     }
 }
 
@@ -162,7 +162,7 @@ U_HK_RPG.activationTypes = {
         label: "U_HK_RPG.Item.Technique.ActivationType.Unique.Label"
     },
     special: {
-        label: "U_HK_RPG.Item.Techniques.ActivationType.Special.Label"
+        label: "U_HK_RPG.Item.Technique.ActivationType.Special.Label"
     }
 }
 
@@ -279,3 +279,7 @@ U_HK_RPG.damageTypes = {
         label: "U_HK_RPG.DamageType.Soul.Label",
     }
 }
+
+U_HK_RPG.activationCostWithValue = [
+    "stamina", "soul", "shell", "item", "custom"
+]

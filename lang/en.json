@@ -191,6 +191,12 @@
                     "Tusk": {
                         "Label": "Tusk"
                     },
+                    "Natural": {
+                        "Label": "Natural"
+                    },
+                    "Hook": {
+                        "Label": "Hook"
+                    },
                     "Sling": {
                         "Label": "Sling"
                     },

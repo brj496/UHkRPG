@@ -12,6 +12,8 @@ export function registerHandlebarsHelpers() {
 
     Handlebars.registerHelper({
         "includes": function (array, value) {
+            console.log(array, value);
+            console.log(Array.isArray(array) && array.includes(value));
             return Array.isArray(array) && array.includes(value);
         }
     })
@@ -21,4 +23,16 @@ export function registerHandlebarsHelpers() {
             return num1 + num2;
         }
     })
+
+    Handlebars.registerHelper({
+        "loop": function (n, block) {
+            let accum = "";
+
+            for (let i = 1; i <= n; i++) {
+                accum += block.fn(i);
+            }
+
+            return accum;
+        }
+    });
 }

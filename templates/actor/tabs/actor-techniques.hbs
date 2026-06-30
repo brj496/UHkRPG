@@ -1,3 +1,14 @@
 {{!-- TODO: Technique slots --}}
 
+<div class="pip-tracker">
+    {{#loop system.secondaryAttributes.techniqueSlots.max}}
+        <i
+            class = "pip {{#if (lte this ../system.secondaryAttributes.techniqueSlots.value)}}filled{{/if}}"
+            data-index="{{this}}">
+        </i>
+    {{/loop}}
+</div>
+
 {{> "systems/u-hk-rpg/templates/actor/partials/actor-weapon-arts.hbs"}}
+
+{{> "systems/u-hk-rpg/templates/actor/partials/actor-arcana.hbs"}}

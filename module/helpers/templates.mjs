@@ -36,6 +36,7 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/partials/actor-effects.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-paths.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-weapon-arts.hbs',
+        'systems/u-hk-rpg/templates/actor/partials/actor-arcana.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-traits.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-armor.hbs',
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-list-beltItems.hbs',

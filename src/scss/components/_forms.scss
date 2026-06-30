@@ -134,3 +134,21 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
+.pip-tracker {
+    display: flex;
+    gap: 4px;
+}
+
+.pip {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #666;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+
+.pip.filled {
+    background: #c22;
+}

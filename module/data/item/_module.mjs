@@ -1,7 +1,5 @@
 export { default as UHkRpgItemBase } from "./templates/base-item.mjs";
 export { default as UHkRpgItem } from "./item.mjs";
-export { default as UHkRpgFeature } from "./feature.mjs";
-export { default as UHkRpgSpell } from "./spell.mjs";
 export { default as UHkRpgProficiency } from "./proficiency.mjs";
 export { default as UHkRpgTrait } from "./trait.mjs";
 export { default as UHkRpgPath } from "./path.mjs";
@@ -10,6 +8,7 @@ export { default as UHkRpgShield } from "./shield.mjs";
 export { default as UHkRpgArmor } from "./armor.mjs";
 export { default as UHkRpgTool } from "./tool.mjs";
 export { default as UHkRpgConsumable } from "./consumable.mjs";
+export { default as UHkRpgTechnique } from "./technique.mjs";
 export { default as UHkRpgTreasure } from "./treasure.mjs";
 export { default as UHkRpgCollectible } from "./collectible.mjs";
 export { default as UHkRpgBeltItem } from "./beltItem.mjs";

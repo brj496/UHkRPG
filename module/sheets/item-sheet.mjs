@@ -33,6 +33,7 @@ export class UHkRpgItemSheet extends ItemSheet {
 
         // Alternatively, you could use the following return statement to do a
         // unique item sheet by type, like `weapon-sheet.hbs`.
+        console.log(`${path}/item-${this.item.type}-sheet.hbs`)
         return `${path}/item-${this.item.type}-sheet.hbs`;
     }
 
@@ -134,6 +135,6 @@ export class UHkRpgItemSheet extends ItemSheet {
             types.splice(index, 1);
 
             this.object.update({ "system.type": types });
-        })
+        });
     }
 }

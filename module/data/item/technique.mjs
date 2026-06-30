@@ -1,26 +1,25 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
 import { physicalItemFields, qualityField } from "../utils/fields.mjs";
+import {BooleanField} from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/fields";
 
 const {
     SchemaField,
     StringField,
     ArrayField,
-    NumberField
+    NumberField,
+    BooleanField
 } = foundry.data.fields;
 
-export default class UHkRpgTool extends UHkRpgItemBase {
+export default class UHkRpgTechnique extends UHkRpgItemBase {
     static defineSchema() {
         return {
             ...super.defineSchema(),
 
             // Non Specific
             techniqueType: new StringField({initial: ""}), //Arcana/Weapon Art/Ritual
-            damageTypes: new ArrayField(
-                new StringField({
-                    required: true,
-                    choices: Object.keys(CONFIG.U_HK_RPG.damageTypes)
-                })
-            ),
+            damageType: new StringField({initial: ""}),
+            damage: new StringField({initial: ""}),
+            prepared: new BooleanField({initial: false}),
 
             // Weapon Art Specific
             weaponArtType: new StringField({initial: ""}), //General/Unarmed/Needle/Tusk/Natual/Hook/Sling/Shield/Counter
@@ -39,8 +38,8 @@ export default class UHkRpgTool extends UHkRpgItemBase {
             ritualCost: new StringField({initial: ""}),
             requirements: new StringField({initial: ""}),
             castingTime: new SchemaField({
-                rounds: new StringField({initial: ""}),
-                action: new StringField({initial: ""}),
+                actionType: new StringField({initial: ""}),
+                count: new StringField({initial: ""}),
             }),
 
             // Arcana + Ritual Specific

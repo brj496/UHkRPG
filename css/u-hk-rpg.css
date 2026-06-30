@@ -315,6 +315,21 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.u-hk-rpg .pip-tracker {
+  display: flex;
+  gap: 4px;
+}
+.u-hk-rpg .pip {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+}
+.u-hk-rpg .pip.filled {
+  background: #c22;
+}
 .u-hk-rpg .resource-label {
   font-weight: bold;
 }

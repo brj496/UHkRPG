@@ -20,6 +20,8 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
                 });
                 return obj;
             }, {})),
+            // TODO: Technique slots are handled differently, may have to take it out of this. alternatively,
+            //  have the number of technique slots change based on what is equipped.
             secondaryAttributes: new SchemaField(Object.keys(CONFIG.U_HK_RPG.secondaryAttributes).reduce((obj, attribute) => {
                 obj[attribute] = new SchemaField({
                     value: new NumberField({required: true, float: true, initial: 0, min: 0}),
@@ -55,7 +57,6 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
                     glory: new NumberField({integer: true, min: 0, initial: 0}),
                 }}),
             }),
-
             description: new StringField({initial: "Description here"}),
             notes: new StringField({initial: "Notes here"}),
         }

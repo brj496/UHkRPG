@@ -56,6 +56,7 @@ Hooks.once('init', function () {
         weapon: itemModels.UHkRpgWeapon,
         shield: itemModels.UHkRpgShield,
         armor: itemModels.UHkRpgArmor,
+        technique: itemModels.UHkRpgTechnique,
         tool: itemModels.UHkRpgTool,
         treasure: itemModels.UHkRpgTreasure,
         collectible: itemModels.UHkRpgCollectible,
