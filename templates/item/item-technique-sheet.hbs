@@ -65,6 +65,16 @@
                         data-dtype="String"
                 />
             </label>
+            <div class="flexrow grid-2col">
+                <p>Prepared?: </p>
+                <label>
+                    <input
+                        type="checkbox"
+                        name="system.prepared"
+                        {{checked system.prepared}}
+                    />
+                </label>
+            </div>
         </div>
         {{#ifEquals system.techniqueType "weaponArt"}}
             <hr/>
@@ -100,7 +110,7 @@
                         </select>
                     </label>
                     {{!-- TODO: This should only appear IF there is a value to enter based on the type of activation cost. --}}
-                    {{#if (includes config.activationCostWithValue system.activation.costType)}}
+                    {{#if (includes (array "stamina" "soul" "shell" "item" "custom") system.activation.costType)}}
                         Activation Cost Value
                         <input
                                 name="system.activation.cost"
@@ -155,20 +165,6 @@
                         }}
                     </select>
                 </label>
-                <p>Duration</p>
-                <label>
-                    <select name="system.duration">
-                        <option value="" disabled {{#unless item.system.duration}}selected{{/unless}}>
-                            Select Duration
-                        </option>
-                        {{selectOptions
-                                config.durations
-                                selected=system.duration
-                                labelAttr="label"
-                                localize=true
-                        }}
-                    </select>
-                </label>
                 <p>Arcana Type</p>
                 <label>
                     <select name="system.arcanaType">
@@ -184,51 +180,117 @@
                     </select>
                 </label>
             </div>
-
         {{/ifEquals}}
         {{!-- TODO: Ritual Techniques --}}
         {{#ifEquals system.techniqueType "ritual"}}
+            <hr/>
             <div class="flexrow grid-3col">
                 <div class="grid-span-2">Requirements: </div>
                 <div class="flex-group-left">
                     Arcana Type:
                     <label>
-                        <select name="system.arcanaType">
-                            <option value="" disabled {{#unless item.system.arcanaType}}selected{{/unless}}>
+                        <select name="system.requirements.arcanaType">
+                            <option value="" disabled {{#unless item.system.requirements.arcanaType}}selected{{/unless}}>
                                 Select Type
                             </option>
                             {{selectOptions
                                     config.arcanaTypes
-                                    selected=system.arcanaType
+                                    selected=system.requirements.arcanaType
                                     labelAttr="label"
                                     localize=true
                             }}
                         </select>
                     </label>
+                    <br/>
                     Rank:
                     <input
-                            name="system.activation.cost"
+                            name="system.requirements.rank"
                             type="number"
-                            value="{{system.activation.cost}}"
+                            value="{{system.requirements.rank}}"
                             data-dtype="Number"
                             max="3"
                             min="0"
                     />
                 </div>
             </div>
-            <div class="flexrow grid-2col">
-                <p>Ritual Cost: </p>
-                <div class="tab">
-                    {{editor
-                            system.flaskEffects.ingested
-                            target="system.flaskEffects.ingested"
-                            engine="prosemirror"
-                            button=true
-                            editable=editable
-                    }}
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Casting Time: </div>
+                <div class="flex-group-left">
+                    Duration Type:
+                    <input
+                            name="system.castingTime.actionType"
+                            type="text"
+                            value="{{system.castingTime.actionType}}"
+                            data-dtype="String"
+                    />
+                    <br/>
+                    Count:
+                    <input
+                            name="system.castingTime.count"
+                            type="number"
+                            value="{{system.castingTime.count}}"
+                            data-dtype="Number"
+                            min="0"
+                    />
+                </div>
+            </div>
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Ritual Cost: </div>
+                <div class="flex-group-left">
+                    Cost Type:
+                    <input
+                            name="system.ritualCost.costType"
+                            type="text"
+                            value="{{system.ritualCost.costType}}"
+                            data-dtype="String"
+                    />
+                    <br/>
+                    Count:
+                    <input
+                            name="system.ritualCost.count"
+                            type="number"
+                            value="{{system.ritualCost.count}}"
+                            data-dtype="Number"
+                            min="0"
+                    />
                 </div>
             </div>
         {{/ifEquals}}
+        {{#if (includes (array "ritual" "arcana") system.techniqueType)}}
+            <hr/>
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Duration: </div>
+                <div class="flex-group-left">
+                    Duration Type:
+                    <label>
+                        <select name="system.duration.durationType">
+                            <option value="" disabled {{#unless item.system.duration.durationType}}selected{{/unless}}>
+                                Select Duration
+                            </option>
+                            {{selectOptions
+                                    config.durations
+                                    selected=system.duration.durationType
+                                    labelAttr="label"
+                                    localize=true
+                            }}
+                        </select>
+                    </label>
+                    {{#if (includes (array "rests" "scenes") system.duration.durationType)}}
+                        <br/>
+                        Duration Length:
+                        <input
+                                name="system.duration.length"
+                                type="number"
+                                value="{{system.duration.length}}"
+                                data-dtype="Number"
+                        />
+                    {{/if}}
+                </div>
+            </div>
+            <hr/>
+        {{/if}}
         <p>Description: </p>
         <hr/>
         <div class="tab">

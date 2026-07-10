@@ -1,12 +1,9 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
 
 const {
-    HTMLField,
     SchemaField,
     NumberField,
     StringField,
-    FilePathField,
-    ArrayField,
     BooleanField,
 } = foundry.data.fields;
 

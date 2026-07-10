@@ -258,28 +258,18 @@ export class UHkRpgActorSheet extends ActorSheet {
 
         // Pip Listener
         html.find(".pip").click(async event => {
-
-
             const clicked = Number(event.currentTarget.dataset.index);
 
-            console.log("Clicked: ", clicked);
-
             const current = this.actor.system.secondaryAttributes.techniqueSlots.value;
-
-            console.log("Current Value: ", current);
 
             const newValue = (clicked === current)
                 ? clicked - 1
                 : clicked;
 
-            console.log("New Value: ", newValue);
-
             try {
                 await this.actor.update({
                     "system.secondaryAttributes.techniqueSlots.value": newValue
                 });
-
-                console.log("Updated!");
             }
             catch (err) {
                 console.error(err);

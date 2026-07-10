@@ -230,6 +230,16 @@
                         "Label": "Dust"
                     }
                 }
+            },
+            "Path": {
+                "PathType": {
+                    "Martial": {
+                        "Label": "Martial"
+                    },
+                    "Mystic": {
+                        "Label": "Mystic"
+                    }
+                }
             }
         },
         "Effect": {

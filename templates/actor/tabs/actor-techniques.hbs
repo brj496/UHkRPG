@@ -1,5 +1,15 @@
 {{!-- TODO: Technique slots --}}
 
+{{!--
+    TODO: Technique rolling/description chat pasting
+    Should be able to paste the description of the technique in chat for others to read
+    Should also add the capability of making a roll or something. Or something that indicates
+    the ability to use an action
+
+    Though this requires some test play so it would have to wait.
+--}}
+
+Technique Slots:
 <div class="pip-tracker">
     {{#loop system.secondaryAttributes.techniqueSlots.max}}
         <i
@@ -12,3 +22,5 @@
 {{> "systems/u-hk-rpg/templates/actor/partials/actor-weapon-arts.hbs"}}
 
 {{> "systems/u-hk-rpg/templates/actor/partials/actor-arcana.hbs"}}
+
+{{> "systems/u-hk-rpg/templates/actor/partials/actor-rituals.hbs"}}

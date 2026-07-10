@@ -1,26 +1,18 @@
+{{!-- TODO: Ritual Partial --}}
+
 <ol class="items-list">
     <div class='item flexrow items-header'>
-        <div class='item-name'>{{localize 'Weapon Art'}}</div>
-         Action Cost | Cost | Type | Prepared
+        <div class='item-name'>{{localize 'Ritual'}}</div>
+        Cost | Casting Time | Duration
     </div>
 
     {{#each techniques as |item|}}
-        {{#ifEquals this.system.techniqueType "weaponArt"}}
+        {{#ifEquals this.system.techniqueType "ritual"}}
             <div class="accordion-item item" data-item-id="{{item._id}}">
                 <div class="accordion-header accordion-toggle flexrow">
                     <div>{{item.name}}</div>
 
-                    {{!-- TODO: Align properly--}}
-                    <div>
-                        {{item.system.activation.costType}} | {{item.system.activation.cost}} | {{item.system.activation.activationType}} |
-                        <label>
-                            <input
-                                type="checkbox"
-                                name="system.prepared"
-                                {{checked system.prepared}}
-                            />
-                        </label>
-                    </div>
+                    {{item.system.ritualCost.count}} {{item.system.ritualCost.costType}} | {{item.system.castingTime.count}} {{item.system.castingTime.actionType}} | {{item.system.duration.length}} {{item.system.duration.durationType}}
 
                     <div class='item-controls'>
                         <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
@@ -33,11 +25,7 @@
                 </div>
                 <hr/>
                 <div class="accordion-content" style="display: none;">
-                    Weapon Art Type: {{item.system.weaponArtType}}
-                    <br/>
-                    Damage: {{item.system.damage}}
-                    <br/>
-                    Damage Type: {{item.system.damageType}}
+                    Requirements: {{item.system.requirements.arcanaType}} {{item.system.requirements.rank}}
                     <br/>
                     Description:
                     {{{item.system.description}}}

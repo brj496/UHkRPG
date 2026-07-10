@@ -1,1 +1,256 @@
-{{!-- TODO: Path item sheet--}}
+{{!-- TODO: For later - Could change the skill 1/2/3 in the top left to be the textbox for the skill name.--}}
+
+<form class='{{cssClass}}' autocomplete='off'>
+    <header class="sheet-header">
+        <img
+            class='profile-img'
+            src='{{item.img}}'
+            data-edit='img'
+            title='{{item.name}}'
+        />
+        <div class="header-fields">
+            <h1 class="charname">
+                <label>
+                    <input
+                        name="name"
+                        type="text"
+                        value="{{item.name}}"
+                        placeholder="Name"
+                    />
+                </label>
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <label>
+            Type:
+            <select name="system.pathType">
+                <option value="" disabled {{#unless item.system.pathType}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.pathTypes
+                        selected=system.pathType
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+        <br/>
+        Path Flavour:
+        <div class="tab">
+            {{editor
+                    system.description
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+        {{!-- RANK 1 ATTRIBUTES --}}
+
+        Rank 1:
+        <hr/>
+        <div class="base-fields flexrow grid-2col">
+            <p>Rank Name: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.ranks.rank1.name"
+                        type="text"
+                        value="{{system.ranks.rank1.name}}"
+                        data-dtype="String"
+                />
+            </label>
+        </div>
+
+        {{!-- RANK 1 SKILLS --}}
+        <h3>Rank 1 Skills</h3>
+
+        <div class="skills-list">
+
+            {{#each system.ranks.rank1.skills as |skill index|}}
+                <div class="skill-entry">
+                    <h4>Skill {{add index 1}}</h4>
+
+                    <label>
+                        Name:
+                        <input
+                                type="text"
+                                name="system.ranks.rank1.skills.{{index}}.name"
+                                value="{{skill.name}}"
+                        />
+                    </label>
+
+                    <label>
+                        Stash Bonus:
+                        <input
+                                type="number"
+                                name="system.ranks.rank1.skills.{{index}}.stashBonus"
+                                value="{{skill.stashBonus}}"
+                        />
+                    </label>
+
+                    <label>Description:</label>
+
+                    <div class="tab">
+                        {{editor
+                                skill.description
+                                target=(concat "system.ranks.rank1.skills." index ".description")
+                                engine="prosemirror"
+                                button=true
+                                editable=editable
+                        }}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        <button type="button" class="add-skill" data-rank="rank1">
+            Add Skill
+        </button>
+
+        {{!-- RANK 2 ATTRIBUTES --}}
+
+        Rank 2:
+        <hr/>
+        <div class="base-fields flexrow grid-2col">
+            <p>Rank Name: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.ranks.rank2.name"
+                        type="text"
+                        value="{{system.ranks.rank2.name}}"
+                        data-dtype="String"
+                />
+            </label>
+        </div>
+
+        {{!-- RANK 2 SKILLS --}}
+        <h3>Rank 2 Skills</h3>
+
+        <div class="skills-list">
+
+            {{#each system.ranks.rank2.skills as |skill index|}}
+                <fieldset class="skill-entry">
+                    <legend>Skill {{add index 1}}</legend>
+
+                    <label>
+                        Name:
+                        <input
+                                type="text"
+                                name="system.ranks.rank2.skills.{{index}}.name"
+                                value="{{skill.name}}"
+                        />
+                    </label>
+
+                    <label>
+                        Stash Bonus:
+                        <input
+                                type="number"
+                                name="system.ranks.rank2.skills.{{index}}.stashBonus"
+                                value="{{skill.stashBonus}}"
+                        />
+                    </label>
+
+                    <label>
+                        Description:
+                    </label>
+
+                    <div class="tab">
+                        {{editor
+                                skill.description
+                                target=(concat "system.ranks.rank2.skills." index ".description")
+                                button=true
+                                editable=true
+                        }}
+                    </div>
+
+                    <button
+                            type="button"
+                            class="remove-skill"
+                            data-rank="rank2"
+                            data-index="{{index}}">
+                        Remove Skill
+                    </button>
+                </fieldset>
+            {{/each}}
+        </div>
+
+        <button type="button" class="add-skill" data-rank="rank2">
+            Add Skill
+        </button>
+
+        {{!-- RANK 3 ATTRIBUTES --}}
+
+        Rank 3:
+        <hr/>
+        <div class="base-fields flexrow grid-2col">
+            <p>Rank Name: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.ranks.rank3.name"
+                        type="text"
+                        value="{{system.ranks.rank3.name}}"
+                        data-dtype="String"
+                />
+            </label>
+        </div>
+
+        {{!-- RANK 3 SKILLS --}}
+        <h3>Rank 3 Skills</h3>
+
+        <div class="skills-list">
+
+            {{#each system.ranks.rank3.skills as |skill index|}}
+                <fieldset class="skill-entry">
+                    <legend>Skill {{add index 1}}</legend>
+
+                    <label>
+                        Name:
+                        <input
+                                type="text"
+                                name="system.ranks.rank3.skills.{{index}}.name"
+                                value="{{skill.name}}"
+                        />
+                    </label>
+
+                    <label>
+                        Stash Bonus:
+                        <input
+                                type="number"
+                                name="system.ranks.rank3.skills.{{index}}.stashBonus"
+                                value="{{skill.stashBonus}}"
+                        />
+                    </label>
+
+                    <label>
+                        Description:
+                    </label>
+
+                    <div class="tab">
+                        {{editor
+                                skill.description
+                                target=(concat "system.ranks.rank3.skills." index ".description")
+                                engine="prosemirror"
+                                button=true
+                                editable=editable
+                        }}
+                    </div>
+
+                    <button
+                            type="button"
+                            class="remove-skill"
+                            data-rank="rank3"
+                            data-index="{{index}}">
+                        Remove Skill
+                    </button>
+                </fieldset>
+            {{/each}}
+        </div>
+
+        <button type="button" class="add-skill" data-rank="rank3">
+            Add Skill
+        </button>
+    </section>
+</form>

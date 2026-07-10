@@ -213,7 +213,7 @@ U_HK_RPG.arcanaTypes = {
         label: "U_HK_RPG.Item.Technique.ArcanaType.Bloom.Label",
     },
     thorn: {
-        label: "U_HK_RPG.Item.Technique.ArcanaType.Thorne.Label",
+        label: "U_HK_RPG.Item.Technique.ArcanaType.Thorn.Label",
     },
     dust: {
         label: "U_HK_RPG.Item.Technique.ArcanaType.Dust.Label",
@@ -280,6 +280,11 @@ U_HK_RPG.damageTypes = {
     }
 }
 
-U_HK_RPG.activationCostWithValue = [
-    "stamina", "soul", "shell", "item", "custom"
-]
+U_HK_RPG.pathTypes = {
+    martial: {
+        label: "U_HK_RPG.Item.Path.PathType.Martial.Label",
+    },
+    mystic: {
+        label: "U_HK_RPG.Item.Path.PathType.Mystic.Label",
+    },
+}

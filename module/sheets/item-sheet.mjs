@@ -39,6 +39,26 @@ export class UHkRpgItemSheet extends ItemSheet {
 
     /* -------------------------------------------- */
 
+    async _updateObject(event, formData) {
+        const expanded = foundry.utils.expandObject(formData);
+
+        if (this.item.type === "path") {
+            const ranks = ["rank1", "rank2", "rank3"];
+
+            for (const rank of ranks) {
+                const existingSkills = this.item.system.ranks[rank].skills ?? [];
+                const submittedSkills = expanded.system?.ranks?.[rank]?.skills ?? [];
+
+                expanded.system.ranks[rank].skills = existingSkills.map((skill, i) => ({
+                    ...skill,
+                    ...(submittedSkills[i] ?? {})
+                }));
+            }
+        }
+
+        return this.item.update(expanded);
+    }
+
     /** @override */
     async getData() {
         // Retrieve base data structure.
@@ -135,6 +155,47 @@ export class UHkRpgItemSheet extends ItemSheet {
             types.splice(index, 1);
 
             this.object.update({ "system.type": types });
+        });
+
+        html.find(".add-skill").click(this._onAddSkill.bind(this));
+        html.find(".remove-skill").click(this._onRemoveSkill.bind(this));
+    }
+
+    async _onAddSkill(event) {
+        event.preventDefault();
+
+        const rank = event.currentTarget.dataset.rank;
+
+        const skills = foundry.utils.deepClone(
+            this.item.system.ranks[rank].skills
+        );
+
+        skills.push({
+            name: "",
+            description: "",
+            stashBonus: 0,
+            skillID: foundry.utils.randomID()
+        });
+
+        await this.item.update({
+            [`system.ranks.${rank}.skills`]: skills
+        });
+    }
+
+    async _onRemoveSkill(event) {
+        event.preventDefault();
+
+        const rank = event.currentTarget.dataset.rank;
+        const index = Number(event.currentTarget.dataset.index);
+
+        const skills = foundry.utils.deepClone(
+            this.item.system.ranks[rank].skills
+        );
+
+        skills.splice(index, 1);
+
+        await this.item.update({
+            [`system.ranks.${rank}.skills`]: skills
         });
     }
 }

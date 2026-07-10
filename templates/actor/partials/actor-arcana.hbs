@@ -3,18 +3,28 @@
 <ol class="items-list">
     <div class='item flexrow items-header'>
         <div class='item-name'>{{localize 'Arcana'}}</div>
-        Cost | Action Cost | Type | Difficulty | Duration
+         Difficulty | Range | Duration | Prepared
     </div>
 
-    {{#each techiques as |item|}}
-        {{#if (eq (this.techniqueType) "Arcana")}}
+    {{#each techniques as |item|}}
+        {{#ifEquals this.system.techniqueType "arcana"}}
             <div class="accordion-item item" data-item-id="{{item._id}}">
                 <div class="accordion-header accordion-toggle flexrow">
                     <div>{{item.name}}</div>
 
-                    <div class='item-controls'>
+                    {{!-- TODO: Align properly--}}
+                    <div>
+                        {{item.system.baseDifficulty}} | {{item.system.range}} | {{item.system.duration.length}} {{item.system.duration.durationType}} |
+                        <label>
+                            <input
+                                    type="checkbox"
+                                    name="system.prepared"
+                                {{checked system.prepared}}
+                            />
+                        </label>
+                    </div>
 
-                        {{!-- TODO: add item sheet for traits --}}
+                    <div class='item-controls'>
                         <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
                             <i class='fas fa-edit'></i>
                         </a>
@@ -25,10 +35,17 @@
                 </div>
                 <hr/>
                 <div class="accordion-content" style="display: none;">
+                    Arcana Type: {{item.system.arcanaType}}
+                    <br/>
+                    Damage: {{item.system.damage}}
+                    <br/>
+                    Damage Type: {{item.system.damageType}}
+                    <br/>
+                    Description:
                     {{{item.system.description}}}
                     <hr/>
                 </div>
             </div>
-        {{/if}}
+        {{/ifEquals}}
     {{/each}}
 </ol>

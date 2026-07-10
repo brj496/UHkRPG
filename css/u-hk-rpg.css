@@ -242,7 +242,7 @@
 .u-hk-rpg .sheet-body,
 .u-hk-rpg .sheet-body .tab,
 .u-hk-rpg .sheet-body .tab .editor {
-  height: 100px;
+  height: 150px;
 }
 .u-hk-rpg .skills-section {
   flex: 1;
@@ -328,7 +328,7 @@
   background: transparent;
 }
 .u-hk-rpg .pip.filled {
-  background: #c22;
+  background: #000000;
 }
 .u-hk-rpg .resource-label {
   font-weight: bold;
@@ -449,6 +449,12 @@
 }
 .u-hk-rpg .skill-label {
   font-weight: bold;
+}
+.u-hk-rpg .skill-entry {
+  border: 1px solid var(--color-border-light-tertiary);
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 8px;
 }
 .u-hk-rpg .effects .item .effect-source,
 .u-hk-rpg .effects .item .effect-duration,

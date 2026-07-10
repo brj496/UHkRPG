@@ -1,11 +1,8 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
-import { physicalItemFields, qualityField } from "../utils/fields.mjs";
-import {BooleanField} from "@league-of-foundry-developers/foundry-vtt-types/src/foundry/common/data/fields";
 
 const {
     SchemaField,
     StringField,
-    ArrayField,
     NumberField,
     BooleanField
 } = foundry.data.fields;
@@ -14,6 +11,8 @@ export default class UHkRpgTechnique extends UHkRpgItemBase {
     static defineSchema() {
         return {
             ...super.defineSchema(),
+
+            //TODO: Maybe add a new action field or something. If it has an action and isn't passive
 
             // Non Specific
             techniqueType: new StringField({initial: ""}), //Arcana/Weapon Art/Ritual
@@ -35,16 +34,24 @@ export default class UHkRpgTechnique extends UHkRpgItemBase {
             baseDifficulty: new NumberField({initial: 0}),
 
             //Ritual Specific
-            ritualCost: new StringField({initial: ""}),
-            requirements: new StringField({initial: ""}),
+            ritualCost: new SchemaField({
+                costType: new StringField({initial: ""}),
+                count: new StringField({initial: ""}),
+            }),
+            requirements: new SchemaField({
+                arcanaType: new StringField({initial: ""}),
+                rank: new NumberField({initial: 0}),
+            }),
             castingTime: new SchemaField({
                 actionType: new StringField({initial: ""}),
                 count: new StringField({initial: ""}),
             }),
 
             // Arcana + Ritual Specific
-            duration: new StringField({initial: ""}),
-
+            duration: new SchemaField({
+                durationType: new StringField({initial: ""}),
+                length: new StringField({initial: ""}),
+            })
         }
     }
 };

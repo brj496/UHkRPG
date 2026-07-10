@@ -12,8 +12,6 @@ export function registerHandlebarsHelpers() {
 
     Handlebars.registerHelper({
         "includes": function (array, value) {
-            console.log(array, value);
-            console.log(Array.isArray(array) && array.includes(value));
             return Array.isArray(array) && array.includes(value);
         }
     })
@@ -34,5 +32,19 @@ export function registerHandlebarsHelpers() {
 
             return accum;
         }
+    });
+
+    Handlebars.registerHelper({
+        "array": function () {
+            return Array.prototype.slice.call(arguments, 0, -1);
+        }
+    })
+
+    Handlebars.registerHelper(
+        "concat", function (...args) {
+        // Last argument is the Handlebars options object
+        args.pop();
+
+        return args.join("");
     });
 }

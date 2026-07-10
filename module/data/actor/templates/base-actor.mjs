@@ -6,7 +6,6 @@ const {
     SchemaField,
     NumberField,
     StringField,
-    ArrayField,
 } = foundry.data.fields;
 
 export default class UHkRpgActorBase extends UHkRpgDataModel {
@@ -17,25 +16,38 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
             attributes: new SchemaField(Object.keys(CONFIG.U_HK_RPG.attributes).reduce((obj, attribute) => {
                 obj[attribute] = new SchemaField({
                     value: new NumberField({required: true, float: true, initial: 3, min: 0, max: 7}),
+                    bonus: new NumberField({required: true, float: true, initial: 0, min: 0}),
                 });
                 return obj;
             }, {})),
-            // TODO: Technique slots are handled differently, may have to take it out of this. alternatively,
-            //  have the number of technique slots change based on what is equipped.
-            secondaryAttributes: new SchemaField(Object.keys(CONFIG.U_HK_RPG.secondaryAttributes).reduce((obj, attribute) => {
-                obj[attribute] = new SchemaField({
-                    value: new NumberField({required: true, float: true, initial: 0, min: 0}),
-                });
-                return obj;
-            }, {})),
-            //NOTE: Something like this may not be necessary, as the traits are stored as items in the character's inventory/embedded collection
-            traits: new ArrayField(
-                new SchemaField({
-                    hungerCost: new NumberField({float: true, initial: 0}),
-                    spookMod: new NumberField({float: true, initial: 0}),
-                    cuteMod: new NumberField({float: true, initial: 0}),
-                    description: new StringField({required: true, initialValue: "Description here"}),
-                })
+            secondaryAttributes: new SchemaField(
+                Object.keys(CONFIG.U_HK_RPG.secondaryAttributes).reduce((obj, attribute) => {
+                    const fields = {
+                        value: new NumberField({
+                            required: true,
+                            float: true,
+                            initial: 0,
+                            min: 0
+                        }),
+                        bonus: new NumberField({
+                            required: true,
+                            integer: true,
+                            initial: 0,
+                            min:0
+                        })
+                    };
+
+                    if (attribute === "techniqueSlots") {
+                        fields.max = new NumberField({
+                            required: true,
+                            float: true,
+                            initial: 0,
+                            min: 0
+                        });
+                    }
+                    obj[attribute] = new SchemaField(fields);
+                    return obj;
+                }, {})
             ),
             spook: new NumberField({required: true, float: true, initial: 0}),
             cute: new NumberField({required: true, float: true, initial: 0}),
@@ -57,7 +69,7 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
                     glory: new NumberField({integer: true, min: 0, initial: 0}),
                 }}),
             }),
-            description: new StringField({initial: "Description here"}),
+            description: new HTMLField({initial: "Description here"}),
             notes: new StringField({initial: "Notes here"}),
         }
     }
@@ -72,7 +84,7 @@ export default class UHkRpgActorBase extends UHkRpgDataModel {
                     this.secondaryAttributes[key].value = Math.floor(this.attributes["might"].value);
                     break;
                 case "techniqueSlots":
-                    this.secondaryAttributes[key].value = Math.floor(this.attributes["insight"].value);
+                    this.secondaryAttributes[key].max = Math.floor(this.attributes["insight"].value);
                     break;
                 case "beltSize":
                     this.secondaryAttributes[key].value = Math.floor(this.attributes["shell"].value);
