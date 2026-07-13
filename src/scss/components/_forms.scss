@@ -153,3 +153,54 @@
     background: #000000;
 }
 
+.path {
+    border: 1px solid var(--color-border-light-primary);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.path-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border-light-primary);
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.path-header h2 {
+    margin: 0;
+}
+
+.path-description {
+    margin-bottom: 0.75rem;
+}
+
+.path-rank {
+    margin-top: 0.75rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--color-border-light-primary);
+}
+
+.path-rank h3 {
+    margin: 0 0 0.35rem 0;
+}
+
+.skill {
+    margin-left: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dotted var(--color-border-light-primary);
+}
+
+.skill:last-child {
+    border-bottom: none;
+}
+
+.item-controls {
+    display: flex;
+    gap: 0.35rem;
+}
+

@@ -1,1 +1,40 @@
 {{!-- TODO: Paths Tab --}}
+
+<h1>Paths</h1>
+
+{{#each paths}}
+    {{log item}}
+    <div class="item path" data-item-id="{{item._id}}">
+
+        <div class="path-header">
+            <h2>{{item.name}}</h2>
+
+            <div class='item-controls'>
+                <a class='item-control item-edit' title='{{localize "DOCUMENT.Edit"}}'>
+                    <i class='fas fa-edit'></i>
+                </a>
+                <a class='item-control item-delete' title='{{localize "DOCUMENT.Delete"}}'>
+                    <i class='fas fa-trash'></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="path-description">
+            {{{item.system.description}}}
+        </div>
+
+        {{#each unlockedRanks}}
+            <section class="path-rank">
+                <h3>{{name}}</h3>
+
+                {{#each skills}}
+                    <div class="skill">
+                        <strong>{{name}}</strong>
+                        {{{description}}}
+                    </div>
+                {{/each}}
+            </section>
+        {{/each}}
+
+    </div>
+{{/each}}

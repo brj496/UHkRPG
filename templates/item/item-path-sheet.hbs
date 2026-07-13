@@ -38,6 +38,17 @@
             </select>
         </label>
         <br/>
+        Rank:
+        <div class="pip-tracker">
+            {{#loop 3}}
+                <i
+                        class = "pip {{#if (lte this ../system.currRank)}}filled{{/if}}"
+                        data-index="{{this}}"
+                        data-valuePath="currRank"
+                >
+                </i>
+            {{/loop}}
+        </div>
         Path Flavour:
         <div class="tab">
             {{editor
@@ -127,13 +138,13 @@
         </div>
 
         {{!-- RANK 2 SKILLS --}}
-        <h3>Rank 2 Skills</h3>
+        <h3>Rank 1 Skills</h3>
 
         <div class="skills-list">
 
             {{#each system.ranks.rank2.skills as |skill index|}}
-                <fieldset class="skill-entry">
-                    <legend>Skill {{add index 1}}</legend>
+                <div class="skill-entry">
+                    <h4>Skill {{add index 1}}</h4>
 
                     <label>
                         Name:
@@ -153,27 +164,18 @@
                         />
                     </label>
 
-                    <label>
-                        Description:
-                    </label>
+                    <label>Description:</label>
 
                     <div class="tab">
                         {{editor
                                 skill.description
                                 target=(concat "system.ranks.rank2.skills." index ".description")
+                                engine="prosemirror"
                                 button=true
-                                editable=true
+                                editable=editable
                         }}
                     </div>
-
-                    <button
-                            type="button"
-                            class="remove-skill"
-                            data-rank="rank2"
-                            data-index="{{index}}">
-                        Remove Skill
-                    </button>
-                </fieldset>
+                </div>
             {{/each}}
         </div>
 

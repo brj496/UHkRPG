@@ -159,6 +159,30 @@ export class UHkRpgItemSheet extends ItemSheet {
 
         html.find(".add-skill").click(this._onAddSkill.bind(this));
         html.find(".remove-skill").click(this._onRemoveSkill.bind(this));
+
+        // Pip Listener
+        html.find(".pip").click(async event => {
+            console.log("Clicked!")
+
+            const clicked = Number(event.currentTarget.dataset.index);
+
+            const valuePath = Number(event.currentTarget.dataset.valuePath);
+
+            const current = this.item.system[valuePath];
+
+            const newValue = (clicked === current)
+                ? clicked - 1
+                : clicked;
+
+            try {
+                await this.item.update({
+                    "system.currRank": newValue
+                });
+            }
+            catch (err) {
+                console.error(err);
+            }
+        });
     }
 
     async _onAddSkill(event) {

@@ -133,7 +133,20 @@ export class UHkRpgActorSheet extends ActorSheet {
             }
             // Append to paths
             else if (i.type === 'path') {
-                paths.push(i);
+                // prepare the unlocked ranks of the item
+                const unlockedRanks = [];
+
+                for (let rank = 1; rank <= i.system.currRank; rank++) {
+                    unlockedRanks.push({
+                        rank,
+                        ...i.system.ranks[`rank${rank}`]
+                    });
+                }
+
+                paths.push({
+                    item: i,
+                    unlockedRanks
+                });
             }
             // Append to charms
             else if (i.type === 'charm') {
