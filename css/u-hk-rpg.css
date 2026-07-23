@@ -274,7 +274,7 @@
 }
 .u-hk-rpg .tag {
   background: #444;
-  color: white;
+  color: black;
   padding: 2px 6px;
   border-radius: 4px;
 }
@@ -371,6 +371,61 @@
 .u-hk-rpg .item-controls {
   display: flex;
   gap: 0.35rem;
+}
+.u-hk-rpg .weapon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.u-hk-rpg .weapon-list-header {
+  margin-bottom: 6px;
+  border-bottom: 2px solid var(--color-border-dark);
+  padding-bottom: 4px;
+}
+.u-hk-rpg .weapon-card {
+  border: 1px solid var(--color-border-light-primary);
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.05);
+}
+.u-hk-rpg .weapon-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.u-hk-rpg .weapon-type {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+.u-hk-rpg .weapon-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.u-hk-rpg .weapon-card-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+.u-hk-rpg .weapon-card hr {
+  margin: 8px 0;
+  border: none;
+  border-top: 1px solid var(--color-border-light-primary);
+}
+.u-hk-rpg .weapon-description {
+  font-size: 0.9em;
+}
+.u-hk-rpg .tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--color-bg-btn);
+  border: 1px solid var(--color-border-light-primary);
+  font-size: 0.8em;
+  font-weight: 600;
 }
 .u-hk-rpg .resource-label {
   font-weight: bold;

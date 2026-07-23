@@ -27,10 +27,11 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
                 damageType: new StringField({}),
                 value: new NumberField({initial: 0, min: 0}),
             }),
-            range: new NumberField({initial: 0, min: 0}),
-            hands: new StringField({initial: "1H"}),
+            range: new StringField({initial: ""}),
+            hands: new StringField({initial: ""}),
             isArcaneFocus: new BooleanField({initial: false}),
             attuned: new BooleanField({initial: false}),
+            naturalWeapon: new BooleanField({initial: false}),
 
             //Modifiers can be added to the collection of the item by clicking and dragging.
             // e.g. this.collection stores what items have beed added to this item's inventory.

@@ -1,1 +1,59 @@
 {{!-- TODO: Combat Tab --}}
+
+<h2>Attack Buttons</h2>
+<section>
+    <button>
+        Attack
+    </button>
+    <button>
+        Damage
+    </button>
+</section>
+
+<hr/>
+
+<section class="weapon-list">
+    <h2 class="weapon-list-header">Equipped Weapons</h2>
+
+    {{#each equippedWeapons as |weapon|}}
+        {{!-- TODO: Paired weapons, a weapon can be paired if its bulk is 0, so if bulk = 0 add a paired tag--}}
+        {{!-- TODO: Display any attached modifiers items--}}
+
+        <article class="weapon-card">
+
+            <header class="weapon-card-header">
+                <h2>{{weapon.name}}</h2>
+
+                <div class="weapon-stats">
+                    <span class="weapon-type">{{localizeList weapon.system.type "weaponTypes" "label"}}</span>
+                    <span><strong>Damage:</strong> {{weapon.system.damage.value}} {{weapon.system.damage.damageType}}</span>
+                    <span><strong>Range:</strong> {{weapon.system.range}}m</span>
+                    <span><strong>Quality:</strong> Q{{weapon.system.quality}}</span>
+                </div>
+            </header>
+
+            <div class="weapon-card-meta">
+                <span><strong>Hands:</strong> {{localize (lookup (lookup @root.config.handTypes weapon.system.hands) "amount")}}</span>
+
+                {{#if weapon.system.isArcaneFocus}}
+                    <span class="tag">Arcane Focus</span>
+                {{/if}}
+
+                {{#if weapon.system.attuned}}
+                    <span class="tag">Attuned</span>
+                {{/if}}
+            </div>
+
+            <hr>
+
+            <div class="weapon-description">
+                {{{weapon.system.description}}}
+            </div>
+
+        </article>
+    {{else}}
+        <p>No equipped weapons.</p>
+    {{/each}}
+
+
+</section>

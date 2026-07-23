@@ -249,7 +249,7 @@ U_HK_RPG.ranges = {
         label: "U_HK_RPG.Range.Self.Label",
     },
     touch: {
-        label: "U_HK_RPG.Range.Close.Label",
+        label: "U_HK_RPG.Range.Touch.Label",
     },
     close: {
         label: "U_HK_RPG.Range.Close.Label",
@@ -287,4 +287,39 @@ U_HK_RPG.pathTypes = {
     mystic: {
         label: "U_HK_RPG.Item.Path.PathType.Mystic.Label",
     },
+}
+
+U_HK_RPG.handTypes = {
+    noHands: {
+        label: "U_HK_RPG.Item.Weapon.Hands.NoHands.Label",
+        amount: "U_HK_RPG.Item.Weapon.Hands.NoHands.Amount",
+        abbr: "U_HK_RPG.Item.Weapon.Hands.NoHands.Abbr"
+    },
+    oneHand: {
+        label: "U_HK_RPG.Item.Weapon.Hands.OneHand.Label",
+        amount: "U_HK_RPG.Item.Weapon.Hands.OneHand.Amount",
+        abbr: "U_HK_RPG.Item.Weapon.Hands.OneHand.Abbr"
+    },
+    twoHands: {
+        label: "U_HK_RPG.Item.Weapon.Hands.TwoHands.Label",
+        amount: "U_HK_RPG.Item.Weapon.Hands.TwoHands.Amount",
+        abbr: "U_HK_RPG.Item.Weapon.Hands.TwoHands.Abbr"
+    },
+    twoHandsPlus: {
+        label: "U_HK_RPG.Item.Weapon.Hands.TwoHandsPlus.Label",
+        amount: "U_HK_RPG.Item.Weapon.Hands.TwoHandsPlus.Amount",
+        abbr: "U_HK_RPG.Item.Weapon.Hands.TwoHandsPlus.Abbr"
+    }
+}
+
+U_HK_RPG.modifierTypes = {
+    weapon: {
+        label: "U_HK_RPG.Item.ModifierTypes.Weapon.Label",
+    },
+    shield: {
+        label: "U_HK_RPG.Item.ModifierTypes.Shield.Label",
+    },
+    armor: {
+        label: "U_HK_RPG.Item.ModifierTypes.Armor.Label",
+    }
 }

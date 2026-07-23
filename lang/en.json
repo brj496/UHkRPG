@@ -62,6 +62,28 @@
                     "Natural": {
                         "Label": "Natural"
                     }
+                },
+                "Hands": {
+                    "NoHands": {
+                        "Label": "No Hands",
+                        "Amount": "0",
+                        "Abbr": "0H"
+                    },
+                    "OneHand": {
+                        "Label": "One Hand",
+                        "Amount": "1",
+                        "Abbr": "1H"
+                    },
+                    "TwoHands": {
+                        "Label": "Two Hands",
+                        "Amount": "2",
+                        "Abbr": "2H"
+                    },
+                    "TwoHandsPlus": {
+                        "Label": "Two Hands +",
+                        "Amount": "2+",
+                        "Abbr": "2H+"
+                    }
                 }
             },
             "Consumable": {
@@ -240,6 +262,17 @@
                         "Label": "Mystic"
                     }
                 }
+            },
+            "ModifierType": {
+                "Armor": {
+                    "Label": "Armor"
+                },
+                "Shield": {
+                    "Label": "Shield"
+                },
+                "Weapon": {
+                    "Label": "Weapon"
+                }
             }
         },
         "Effect": {
@@ -313,8 +346,6 @@
             "npc": "NPC"
         },
         "Item": {
-            "item": "Item",
-            "feature": "Feature",
             "proficiency": "Proficiency",
             "trait": "Trait",
             "path": "Path",
@@ -323,12 +354,42 @@
             "weapon": "Weapon",
             "armor": "Armor",
             "shield": "Shield",
-            "arcaneFocus": "Arcane Focus",
             "consumable": "Consumable",
             "tool": "Tool",
             "treasure": "Treasure",
             "collectible": "Collectible",
-            "beltItem": "Belt Item"
+            "beltItem": "Belt Item",
+            "modifier": "Modifier"
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

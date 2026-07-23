@@ -7,9 +7,6 @@
     },
     "Item": {
         "types": [
-            "item",
-            "feature",
-            "spell",
             "proficiency",
             "trait",
             "consumable"

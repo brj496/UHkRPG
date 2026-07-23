@@ -103,11 +103,13 @@ export class UHkRpgItemSheet extends ItemSheet {
 
         //TODO: may have to adjust this based on modifier implementation
 
-        // just in case, only add the modifier to the context if it matches the item's type.
+        for (let i of context.items) {
+            i.img = i.img || Item.DEFAULT_ICON;
 
-        // for (let i of context.items) {
-        //     if (i.type )
-        // }
+            if (i.type === 'modifier') {
+                modifiers.push(i);
+            }
+        }
 
         context.modifiers = modifiers;
     }

@@ -86,6 +86,18 @@ export class UHkRpgActorSheet extends ActorSheet {
             this.actor.allApplicableEffects()
         );
 
+        context.equippedWeapons = this.actor.items.filter(i =>
+            i.type === "weapon" &&
+            i.system.equipped
+        );
+
+        context.equippedWeapons = this.actor.items
+            .filter(i => i.type === "weapon" && i.system.equipped)
+            .map(w => ({
+                ...w,
+                displayType: w.system.type.join(", ")
+            }));
+
         return context;
     }
 

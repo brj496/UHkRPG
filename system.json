@@ -86,11 +86,6 @@
                     "description"
                 ]
             },
-            "arcaneFocus": {
-                "htmlFields": [
-                    "description"
-                ]
-            },
             "consumable": {
                 "htmlFields": [
                     "description"
@@ -112,6 +107,11 @@
                 ]
             },
             "beltItem": {
+                "htmlFields": [
+                    "description"
+                ]
+            },
+            "modifier": {
                 "htmlFields": [
                     "description"
                 ]

@@ -21,7 +21,7 @@ export function equippableItemFields() {
 
 export function qualityField() {
     return {
-        quality: new NumberField({initial: 0, min: 0, max: 3}),
+        quality: new NumberField({initial: 1, min: 0, max: 3}),
     };
 }
 

@@ -1,3 +1,6 @@
+{{!-- TODO: Handle Damage properly, currently does not have a damage type set--}}
+{{!-- TODO: Handle Hands properly, its just a string currently, should be a selection box--}}
+
 <form class='{{cssClass}}' autocomplete='off'>
     <header class="sheet-header">
         <img
@@ -62,23 +65,32 @@
                 />
             </label>
             <p>Range: </p>
-            <label class="flexrow flex-group-left">
-                <input
-                        name="system.range"
-                        type="number"
-                        value="{{system.range}}"
-                        data-dtype="Number"
-                />
+            <label>
+                <select name="system.range">
+                    <option value="" disabled {{#unless item.system.range}}selected{{/unless}}>
+                        Select Range
+                    </option>
+                    {{selectOptions
+                            config.ranges
+                            selected=system.range
+                            labelAttr="label"
+                            localize=true
+                    }}
+                </select>
             </label>
-            {{!-- TODO: Make this a selection box--}}
             <p>Hands: </p>
-            <label class="flexrow flex-group-left">
-                <input
-                        name="system.hands"
-                        type="text"
-                        value="{{system.hands}}"
-                        data-dtype="String"
-                />
+            <label>
+                <select name="system.hands">
+                    <option value="" disabled {{#unless item.system.hands}}selected{{/unless}}>
+                        Select Hands
+                    </option>
+                    {{selectOptions
+                            config.handTypes
+                            selected=system.hands
+                            labelAttr="label"
+                            localize=true
+                    }}
+                </select>
             </label>
             <p>Quality: </p>
             <label class="flexrow flex-group-left">
@@ -108,6 +120,22 @@
                 />
             </label>
             <div class="flexrow grid-2col">
+                <p>Equipped?: </p>
+                <label>
+                    <input
+                            type="checkbox"
+                            name="system.equipped"
+                        {{checked system.equipped}}
+                    />
+                </label>
+                <p>Natural Weapon?: </p>
+                <label>
+                    <input
+                            type="checkbox"
+                            name="system.naturalWeapon"
+                        {{checked system.naturalWeapon}}
+                    />
+                </label>
                 <p>Arcane Focus?: </p>
                 <label>
                     <input
@@ -133,7 +161,7 @@
         <div class="tab">
             {{editor
                     enrichedDescription
-                    target="system.effect"
+                    target="system.description"
                     engine="prosemirror"
                     button=true
                     editable=editable

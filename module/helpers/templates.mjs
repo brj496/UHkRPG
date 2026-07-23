@@ -30,9 +30,7 @@ export async function preloadHandlebarsTemplates() {
 
         'systems/u-hk-rpg/templates/actor/partials/actor-proficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-header.hbs',
-        'systems/u-hk-rpg/templates/actor/partials/actor-features.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-items.hbs',
-        'systems/u-hk-rpg/templates/actor/partials/actor-spells.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-effects.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-paths.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-weapon-arts.hbs',

@@ -11,6 +11,7 @@ import {U_HK_RPG} from './helpers/config.mjs';
 import * as actorModels from './data/actor/_module.mjs'
 import * as itemModels from './data/item/_module.mjs'
 import * as utils from "./utils.mjs";
+import UHkRpgModifier from "./data/item/modifier.mjs";
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
@@ -49,7 +50,6 @@ Hooks.once('init', function () {
     }
     CONFIG.Item.documentClass = UHkRpgItem;
     CONFIG.Item.dataModels = {
-        item: itemModels.UHkRpgItem,
         proficiency: itemModels.UHkRpgProficiency,
         trait: itemModels.UHkRpgTrait,
         path: itemModels.UHkRpgPath,
