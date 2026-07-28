@@ -263,7 +263,7 @@
                     }
                 }
             },
-            "ModifierType": {
+            "ModifierTypes": {
                 "Armor": {
                     "Label": "Armor"
                 },

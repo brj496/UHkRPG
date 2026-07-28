@@ -14,6 +14,7 @@ export class UHkRpgItemSheet extends ItemSheet {
             classes: ['u-hk-rpg', 'sheet', 'item'],
             width: 520,
             height: 480,
+            dragDrop: [{ dragSelector: ".item-list .item", dropSelector: null }],
             tabs: [
                 {
                     navSelector: '.sheet-tabs',
@@ -67,8 +68,6 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Use a safe clone of the item data for further operations.
         const itemData = this.document.toPlainObject();
 
-        this._prepareModifiers(context);
-
         // Enrich description info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
         context.enrichedDescription = await TextEditor.enrichHTML(
@@ -86,7 +85,7 @@ export class UHkRpgItemSheet extends ItemSheet {
         );
 
         // Add the item's data to context.data for easier access, as well as flags.
-        context.system = itemData.system;
+        context.system = this.item.system;
         context.flags = itemData.flags;
 
         // Adding a pointer to CONFIG.U_HK_RPG
@@ -95,23 +94,11 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Prepare active effects for easier access
         context.effects = prepareActiveEffectCategories(this.item.effects);
 
+        //context.modifiers = this.item.system.modifiers;
+
+        context.modifier = this.item.system.modifier;
+
         return context;
-    }
-
-    _prepareModifiers(context) {
-        const modifiers = [];
-
-        //TODO: may have to adjust this based on modifier implementation
-
-        for (let i of context.items) {
-            i.img = i.img || Item.DEFAULT_ICON;
-
-            if (i.type === 'modifier') {
-                modifiers.push(i);
-            }
-        }
-
-        context.modifiers = modifiers;
     }
 
     /* -------------------------------------------- */
@@ -223,5 +210,41 @@ export class UHkRpgItemSheet extends ItemSheet {
         await this.item.update({
             [`system.ranks.${rank}.skills`]: skills
         });
+    }
+
+    async _onDrop(event) {
+        if (!this.isEditable) return false;
+
+        const data = TextEditor.getDragEventData(event);
+
+        if (data.type !== "Item") return;
+
+        const droppedItem = await Item.fromDropData(data);
+        if (!droppedItem) return;
+
+        if (droppedItem.type !== 'modifier') {
+            return ui.notifications.warn("You can only add modifiers to this item.");
+        }
+        if (this.item.type !== 'weapon') {
+            return ui.notifications.warn("Modifiers can only be added to weapons, armor, and shields.");
+        }
+        if (this.item.system.modifierId.length > 0) {
+            return ui.notifications.warn("Items can only have a single modifier.");
+        }
+
+        let modifierToId = droppedItem;
+
+        // If the weapon is on an actor, the modifier must also be on the actor to be "owned"
+        if (this.item.actor && droppedItem.parent !== this.item.actor) {
+            const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
+            modifierToId = created;
+        }
+
+        else if (!this.item.actor && droppedItem.pack) {
+            const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
+            modifierToId = created;
+        }
+
+        return this.item.update({"system.modifierId": modifierToId.id});
     }
 }

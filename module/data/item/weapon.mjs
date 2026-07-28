@@ -33,9 +33,17 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             attuned: new BooleanField({initial: false}),
             naturalWeapon: new BooleanField({initial: false}),
 
-            //Modifiers can be added to the collection of the item by clicking and dragging.
-            // e.g. this.collection stores what items have beed added to this item's inventory.
-            // be somewhat careful, the item itself is also stored in that collection.
+            modifierId: new StringField({initial: ""}),
         }
+    }
+
+    /**
+     * Returns the actual Item documents for the modifier.
+     * Logic: Look on the parent Actor first, then the World.
+     */
+    get modifier() {
+        const parentActor = this.parent.actor;
+
+        return parentActor?.items.get(this.modifierId) || game.items.get(this.modifierId);
     }
 };

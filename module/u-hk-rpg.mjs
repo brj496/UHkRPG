@@ -103,11 +103,46 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 Hooks.once('ready', function () {
     // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
     Hooks.on('hotbarDrop', (bar, data, slot) => createItemMacro(data, slot));
+
+    Hooks.on("createItem", async (item, options, userId) => {
+        // Only run for the person who performed the creation
+        if (game.user.id !== userId) return;
+
+        // Only run if a weapon is being created on an Actor
+        if (item.type === "weapon" && item.parent instanceof Actor) {
+            const actor = item.parent;
+            const modifierId = item.system.modifierId;
+
+            // If there is no modifier set, stop
+            if (!modifierId) return;
+
+            // Check if the modifier is already on the actor
+            let actorModifier = actor.items.get(modifierId);
+
+            // If not on the actor, find it in the World items
+            if (!actorModifier) {
+                const worldItem = game.items.get(modifierId);
+
+                if (worldItem) {
+                    // Check if the actor already has a modifier with the same name (can't use ids, ids are different between the character and world.)
+                    actorModifier = actor.items.find(i => i.name === worldItem.name);
+
+                    if (!actorModifier) {
+                        const [created] = await actor.createEmbeddedDocuments("Item", [worldItem.toObject()]);
+                        actorModifier = created;
+                    }
+                }
+            }
+
+            if (actorModifier && actorModifier.id !== modifierId) {
+                await item.update({ "system.modifierId": actorModifier.id });
+            }
+        }
+    });
 });
 
 /* -------------------------------------------- */
 /*  Hotbar Macros                               */
-
 /* -------------------------------------------- */
 
 /**
