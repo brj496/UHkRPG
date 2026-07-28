@@ -243,13 +243,16 @@ export class UHkRpgActorSheet extends ActorSheet {
             const li = $(ev.currentTarget).parents('.item');
             const item = this.actor.items.get(li.data('itemId'));
 
-            if (item.type === "weapon") {
+            if (["weapon", "armor", "shield"].includes(item.type)) {
                 if (item.system.modifierId.length > 0) {
                     const modId = item.system.modifierId || "";
 
                     const deleteItem = item.actor.items.find(i => i.id === modId);
 
-                    item.actor.deleteEmbeddedDocuments("Item", [deleteItem.id]);
+
+                    if (deleteItem) {
+                        item.actor.deleteEmbeddedDocuments("Item", [deleteItem.id]);
+                    }
                 }
             }
 

@@ -108,21 +108,24 @@ Hooks.once('ready', function () {
         // Only run for the person who performed the creation
         if (game.user.id !== userId) return;
 
-        // Only run if a weapon is being created on an Actor
-        if (item.type === "weapon" && item.parent instanceof Actor) {
+        // Only run if a weapon/armor/shield is being created on an Actor
+        if (["weapon", "armor", "shield"].includes(item.type) && item.parent instanceof Actor) {
+
             const actor = item.parent;
             const modifierId = item.system.modifierId;
+            const worldItem = game.items.get(modifierId);
 
             // If there is no modifier set, stop
             if (!modifierId) return;
+
+            //check if the modifier being added matches the item's type
+            if (worldItem.system.itemType !== item.type) return;
 
             // Check if the modifier is already on the actor
             let actorModifier = actor.items.get(modifierId);
 
             // If not on the actor, find it in the World items
             if (!actorModifier) {
-                const worldItem = game.items.get(modifierId);
-
                 if (worldItem) {
                     // Check if the actor already has a modifier with the same name (can't use ids, ids are different between the character and world.)
                     actorModifier = actor.items.find(i => i.name === worldItem.name);

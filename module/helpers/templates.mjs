@@ -25,8 +25,6 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/partials/stats/stat-card.hbs',
         'systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card.hbs',
         'systems/u-hk-rpg/templates/actor/partials/stats/editable-stat-card-max.hbs',
-        'systems/u-hk-rpg/templates/actor/partials/stats/rollable-stat-card-max.hbs',
-
 
         'systems/u-hk-rpg/templates/actor/partials/actor-proficiencies.hbs',
         'systems/u-hk-rpg/templates/actor/partials/actor-header.hbs',
@@ -47,9 +45,9 @@ export async function preloadHandlebarsTemplates() {
         'systems/u-hk-rpg/templates/actor/partials/inventory/inventory-item-modifiers.hbs',
 
         // Item partials
-        'systems/u-hk-rpg/templates/item/partials/item-effects.hbs',
+
 
         // Util partials
-        'systems/u-hk-rpg/templates/utils/accordionTemplate.hbs',
+
     ]);
 }

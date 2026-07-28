@@ -94,9 +94,22 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Prepare active effects for easier access
         context.effects = prepareActiveEffectCategories(this.item.effects);
 
-        //context.modifiers = this.item.system.modifiers;
+        const modifier = this.item.system.modifier;
 
-        context.modifier = this.item.system.modifier;
+        if (modifier) {
+            // Enrich the modifier's description and attach it to the modifier object
+            modifier.enrichedDescription = await TextEditor.enrichHTML(
+                modifier.system.description || "",
+                {
+                    secrets: this.document.isOwner,
+                    async: true,
+                    rollData: modifier.getRollData(),
+                    relativeTo: modifier,
+                }
+            );
+
+            context.modifier = modifier;
+        }
 
         return context;
     }
@@ -148,6 +161,12 @@ export class UHkRpgItemSheet extends ItemSheet {
 
         html.find(".add-skill").click(this._onAddSkill.bind(this));
         html.find(".remove-skill").click(this._onRemoveSkill.bind(this));
+
+        html.find(".remove-modifier").click(async (event) => {
+            event.preventDefault();
+
+            await this.item.update({ "system.modifierId": "" });
+        })
 
         // Pip Listener
         html.find(".pip").click(async event => {
@@ -222,14 +241,19 @@ export class UHkRpgItemSheet extends ItemSheet {
         const droppedItem = await Item.fromDropData(data);
         if (!droppedItem) return;
 
+        console.log(droppedItem);
+
         if (droppedItem.type !== 'modifier') {
             return ui.notifications.warn("You can only add modifiers to this item.");
         }
-        if (this.item.type !== 'weapon') {
+        if (!["weapon", "armor", "shield"].includes(this.item.type)) {
             return ui.notifications.warn("Modifiers can only be added to weapons, armor, and shields.");
         }
         if (this.item.system.modifierId.length > 0) {
             return ui.notifications.warn("Items can only have a single modifier.");
+        }
+        if (this.item.type !== droppedItem.system.itemType) {
+            return ui.notifications.warn("The Modifier Type does not match the Item Type.");
         }
 
         let modifierToId = droppedItem;

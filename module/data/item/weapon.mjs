@@ -42,8 +42,8 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
      * Logic: Look on the parent Actor first, then the World.
      */
     get modifier() {
+        if(!this.modifierId) return null;
         const parentActor = this.parent.actor;
-
         return parentActor?.items.get(this.modifierId) || game.items.get(this.modifierId);
     }
 };
