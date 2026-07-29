@@ -64,6 +64,15 @@ U_HK_RPG.rarity = {
     }
 }
 
+U_HK_RPG.charmRarity = {
+    cursed: {
+        label: 'U_HK_RPG.Item.Rarity.Charms.Label',
+    },
+    fragile: {
+        label: 'U_HK_RPG.Item.Rarity.Charms.Label',
+    }
+}
+
 U_HK_RPG.weaponTypes = {
     nail: {
         label: 'U_HK_RPG.Item.Weapon.Type.Nail.Label',
@@ -322,4 +331,13 @@ U_HK_RPG.modifierTypes = {
     armor: {
         label: "U_HK_RPG.Item.ModifierTypes.Armor.Label",
     }
+}
+
+U_HK_RPG.lootTypes = {
+    collectible: {
+        label: "U_HK_RPG.Item.LootTypes.Collectible.Label",
+    },
+    treasure: {
+        label: "U_HK_RPG.Item.LootTypes.Treasure.Label",
+    },
 }

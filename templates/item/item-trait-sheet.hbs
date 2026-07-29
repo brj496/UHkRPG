@@ -19,5 +19,64 @@
             </h1>
         </div>
     </header>
+    <section class="sheet-body">
+        <label>
+            Type:
+            <select name="system.type">
+                <option value="" disabled {{#unless item.system.type}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.traitTypes
+                        selected=system.type
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+
+        <div class="base-fields flexrow grid-2col">
+            <p>Cute Modifier: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cuteMod"
+                        type="number"
+                        value="{{system.cuteMod}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Spook Modifier: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.spookMod"
+                        type="number"
+                        value="{{system.spookMod}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Hunger Modifier: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.hungerMod"
+                        type="number"
+                        value="{{system.hungerMod}}"
+                        data-dtype="Number"
+                />
+            </label>
+        </div>
+        <!-- TODO: Parent Trait Attachment-->
+        <!-- TODO: Natural Weapon Attachment-->
+        <h3>Description: </h3>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
+
 </form>
 {{!-- TODO: Trait item sheet--}}

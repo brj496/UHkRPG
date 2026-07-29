@@ -20,13 +20,12 @@ export default class UHkRpgTrait extends UHkRpgItemBase {
                 initial: "",
             }),
             //TODO: Look into how to link a parent trait via either UUID or object. It does not need to be added automatically
-
-            parentTrait: new StringField({
+            parentTraitId: new StringField({
                 initial: ""
             }),
 
             //TODO: Figure out how to Link a weapon that would be added to the character's inventory
-            naturalWeaponUUID: new StringField({
+            naturalWeaponId: new StringField({
                 initial: ""
             })
         }

@@ -1,4 +1,5 @@
 {{!-- TODO: For later - Could change the skill 1/2/3 in the top left to be the textbox for the skill name.--}}
+{{!-- TODO: Add a remove button for the skills.--}}
 
 <form class='{{cssClass}}' autocomplete='off'>
     <header class="sheet-header">
@@ -138,7 +139,7 @@
         </div>
 
         {{!-- RANK 2 SKILLS --}}
-        <h3>Rank 1 Skills</h3>
+        <h3>Rank 2 Skills</h3>
 
         <div class="skills-list">
 
@@ -205,8 +206,8 @@
         <div class="skills-list">
 
             {{#each system.ranks.rank3.skills as |skill index|}}
-                <fieldset class="skill-entry">
-                    <legend>Skill {{add index 1}}</legend>
+                <div class="skill-entry">
+                    <h4>Skill {{add index 1}}</h4>
 
                     <label>
                         Name:
@@ -226,9 +227,7 @@
                         />
                     </label>
 
-                    <label>
-                        Description:
-                    </label>
+                    <label>Description:</label>
 
                     <div class="tab">
                         {{editor
@@ -239,15 +238,7 @@
                                 editable=editable
                         }}
                     </div>
-
-                    <button
-                            type="button"
-                            class="remove-skill"
-                            data-rank="rank3"
-                            data-index="{{index}}">
-                        Remove Skill
-                    </button>
-                </fieldset>
+                </div>
             {{/each}}
         </div>
 

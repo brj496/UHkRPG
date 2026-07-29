@@ -36,11 +36,11 @@
             </select>
         </label>
         <br/>
-        <p>Rarity: </p>
+        <p>Rarity: </p> {{!-- TODO: Move this into everything but food, food does not have a rarity. --}}
         <label>
             <select name="system.rarity">
                 <option value="" disabled {{#unless item.system.rarity}}selected{{/unless}}>
-                    Select Type
+                    Select Rarity
                 </option>
                 {{selectOptions
                         config.rarity
@@ -67,12 +67,12 @@
                 <input
                         name="system.count"
                         type="number"
-                        value="{{system.cost}}"
+                        value="{{system.count}}"
                         data-dtype="Number"
                 />
             </label>
 
-            <p>Bulk: </p>
+            <p>Bulk per Item: </p>
             <label class="flexrow flex-group-left">
                 <input
                         name="system.bulk"
@@ -284,7 +284,7 @@
                     {{checked system.isReusable}}
                 />
             </div>
-            <p>Food Effect:</p>
+            <p>Trap Effect:</p>
             <div class="tab">
                 {{editor
                         system.foodEffect

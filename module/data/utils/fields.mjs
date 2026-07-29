@@ -19,12 +19,6 @@ export function equippableItemFields() {
     };
 }
 
-export function qualityField() {
-    return {
-        quality: new NumberField({initial: 1, min: 0, max: 3}),
-    };
-}
-
 export function poolField({value = 10, min = 0, max = 10, integer = true, extraFields = {}} = {}) {
     return new SchemaField({
         value: new NumberField({required: true, integer, min: 0, initial: value}),

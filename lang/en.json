@@ -120,6 +120,12 @@
                 },
                 "Legendary": {
                     "Label": "Legendary"
+                },
+                "Cursed": {
+                    "Label": "Cursed"
+                },
+                "Fragile": {
+                    "Label": "Fragile"
                 }
             },
             "Trait": {
@@ -273,6 +279,14 @@
                 "Weapon": {
                     "Label": "Weapon"
                 }
+            },
+            "LootTypes": {
+                "Collectible": {
+                    "Label": "Collectible"
+                },
+                "Treasure": {
+                    "Label": "Treasure"
+                }
             }
         },
         "Effect": {
@@ -346,20 +360,19 @@
             "npc": "NPC"
         },
         "Item": {
-            "proficiency": "Proficiency",
-            "trait": "Trait",
-            "path": "Path",
-            "charm": "Charm",
-            "technique": "Technique",
-            "weapon": "Weapon",
             "armor": "Armor",
-            "shield": "Shield",
-            "consumable": "Consumable",
-            "tool": "Tool",
-            "treasure": "Treasure",
-            "collectible": "Collectible",
             "beltItem": "Belt Item",
-            "modifier": "Modifier"
+            "charm": "Charm",
+            "consumable": "Consumable",
+            "loot": "Loot",
+            "modifier": "Modifier",
+            "path": "Path",
+            "proficiency": "Proficiency",
+            "shield": "Shield",
+            "technique": "Technique",
+            "trait": "Trait",
+            "tool": "Tool",
+            "weapon": "Weapon"
         }
     }
 }

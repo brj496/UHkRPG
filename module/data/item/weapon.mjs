@@ -1,5 +1,5 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
-import { physicalItemFields, equippableItemFields, qualityField } from "../utils/fields.mjs";
+import { physicalItemFields, equippableItemFields } from "../utils/fields.mjs";
 
 const {
     SchemaField,
@@ -15,8 +15,8 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             ...super.defineSchema(),
             ...physicalItemFields(),
             ...equippableItemFields(),
-            ...qualityField(),
 
+            quality: new NumberField({initial: 0, min: 0, max: 3}),
             type: new ArrayField(
                 new StringField({
                     required: true,
@@ -32,7 +32,6 @@ export default class UHkRpgWeapon extends UHkRpgItemBase {
             isArcaneFocus: new BooleanField({initial: false}),
             attuned: new BooleanField({initial: false}),
             naturalWeapon: new BooleanField({initial: false}),
-
             modifierId: new StringField({initial: ""}),
         }
     }

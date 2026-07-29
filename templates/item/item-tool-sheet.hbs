@@ -19,5 +19,76 @@
             </h1>
         </div>
     </header>
+    <section class="sheet-body">
+        <div class="tool-types">
+            <label>Can be used as:</label>
+
+            {{!-- Selected tags --}}
+            <div class="tags">
+                {{#each system.type as |type index|}}
+                    <span class="tag" data-index="{{index}}">
+                        {{localize (lookup (lookup @root.config.weaponTypes type) 'label')}}
+                        <a class="remove-tag" data-index="{{index}}">✖</a>
+                    </span>
+                {{/each}}
+            </div>
+
+            <div class="tag-controls">
+                <select name="new-type">
+                    {{#each config.weaponTypes as |type key|}}
+                        {{#unless (includes system.type key)}}
+                            <option value="{{key}}">
+                                {{localize type.label}}
+                            </option>
+                        {{/unless}}
+                    {{/each}}
+                </select>
+
+                <button type="button" class="add-tag">
+                    Add Type
+                </button>
+            </div>
+        </div>
+
+        <div class="base-fields flexrow grid-2col">
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Bulk: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.bulk"
+                        type="number"
+                        value="{{system.bulk}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Skills: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.skills"
+                        type="text"
+                        value="{{system.skills}}"
+                        data-dtype="String"
+                />
+            </label>
+        </div>
+        <h3>Description: </h3>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
 </form>
 <!--TODO: Tool edit sheet-->

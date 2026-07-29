@@ -1,5 +1,5 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
-import { physicalItemFields, qualityField } from "../utils/fields.mjs";
+import { physicalItemFields } from "../utils/fields.mjs";
 
 const {
     SchemaField,
@@ -12,16 +12,14 @@ export default class UHkRpgTool extends UHkRpgItemBase {
         return {
             ...super.defineSchema(),
             ...physicalItemFields(),
-            ...qualityField(),
 
-            skills: new ArrayField(
-                new SchemaField({
-                    skillName: new StringField({initial: "Skill Name"}),
-                }),
-            ),
-            weaponType: new ArrayField(
-                new SchemaField({
-                    typeName: new StringField({initial: "type"})
+            skills: new StringField({
+                initial: ""
+            }),
+            type: new ArrayField(
+                new StringField({
+                    required: true,
+                    choices: Object.keys(CONFIG.U_HK_RPG.weaponTypes)
                 })
             ),
         }

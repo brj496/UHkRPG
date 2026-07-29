@@ -19,17 +19,23 @@
             </h1>
         </div>
     </header>
+
     <section class="sheet-body">
+        <label>
+            Type:
+            <select name="system.type">
+                <option value="" disabled {{#unless item.system.type}}selected{{/unless}}>
+                    Select Type
+                </option>
+                {{selectOptions
+                        config.lootTypes
+                        selected=system.type
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
         <div class="base-fields flexrow grid-2col">
-            <p>Bulk: </p>
-            <label class="flexrow flex-group-left">
-                <input
-                        name="system.bulk"
-                        type="number"
-                        value="{{system.bulk}}"
-                        data-dtype="Number"
-                />
-            </label>
             <p>Cost: </p>
             <label class="flexrow flex-group-left">
                 <input
@@ -39,18 +45,17 @@
                         data-dtype="Number"
                 />
             </label>
-            <div class="flexrow grid-2col">
-                <p>On Belt?: </p>
-                <label>
-                    <input
-                            type="checkbox"
-                            name="system.isOnBelt"
-                        {{checked system.isOnBelt}}
-                    />
-                </label>
-            </div>
+            <p>Count: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.count"
+                        type="number"
+                        value="{{system.count}}"
+                        data-dtype="Number"
+                />
+            </label>
         </div>
-        <h3>Description: </h3>
+        <h2>Description:</h2>
         <div class="tab">
             {{editor
                     enrichedDescription

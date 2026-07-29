@@ -21,9 +21,44 @@
     </header>
     <section class="sheet-body">
         <div class="base-fields flexrow grid-2col">
-
+            <p>Bulk: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.bulk"
+                        type="number"
+                        value="{{system.bulk}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Quality: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.quality"
+                        type="number"
+                        value="{{system.quality}}"
+                        data-dtype="Number"
+                />
+            </label>
         </div>
-
+        <h3>Description: </h3>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
         <div class="form-group modifier-section">
             <label class="resource-label">Modifier:</label>
 

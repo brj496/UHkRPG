@@ -1,5 +1,5 @@
 import UHkRpgItemBase from "./templates/base-item.mjs";
-import { physicalItemFields, equippableItemFields, qualityField } from "../utils/fields.mjs";
+import { physicalItemFields, equippableItemFields } from "../utils/fields.mjs";
 
 const {
     SchemaField,
@@ -13,8 +13,8 @@ export default class UHkRpgShield extends UHkRpgItemBase {
             ...super.defineSchema(),
             ...physicalItemFields(),
             ...equippableItemFields(),
-            ...qualityField(),
 
+            quality: new NumberField({initial: 0, min: 0, max: 3}),
             damage: new SchemaField({
                 damageType: new StringField({}),
                 value: new NumberField({initial: 0, min: 0}),

@@ -1,0 +1,124 @@
+<form class='{{cssClass}}' autocomplete='off'>
+    <header class="sheet-header">
+        <img
+                class='profile-img'
+                src='{{item.img}}'
+                data-edit='img'
+                title='{{item.name}}'
+        />
+        <div class="header-fields">
+            <h1 class="charname">
+                <label>
+                    <input
+                            name="name"
+                            type="text"
+                            value="{{item.name}}"
+                            placeholder="Name"
+                    />
+                </label>
+            </h1>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <p>Rarity: </p> {{!-- TODO: Move this into everything but food, food does not have a rarity. --}}
+        <label>
+            <select name="system.rarity">
+                <option value="" disabled {{#unless item.system.rarity}}selected{{/unless}}>
+                    Select Rarity
+                </option>
+                {{selectOptions
+                        config.rarity
+                        selected=system.rarity
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+        <p>Negative Modifier: </p>
+        <label>
+            <select name="system.rarity">
+                <option value="">
+                    None
+                </option>
+                {{selectOptions
+                        config.charmRarity
+                        selected=system.negativeModifer
+                        labelAttr="label"
+                        localize=true
+                }}
+            </select>
+        </label>
+
+        <div class="base-fields flexrow grid-2col">
+            {{!-- TODO: Potentially Map Cost to rarity: Common = 100, Uncommon = 200, Rare = 300, Unique = 400, Legendary = Priceless--}}
+            {{!-- TODO: The Negative Mod affects the cost of the Charm: Cursed = -100 (to a min of 50), Fragile = -100 Geo discount (to a minimum of 50, may apply only to rare and lower rarity) --}}
+            <p>Cost: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.cost"
+                        type="number"
+                        value="{{system.cost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            {{!-- TODO: Could use pips like how the technique slots are sett up in the character technique tab --}}
+            <p>Slots: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.slotCost"
+                        type="number"
+                        value="{{system.slotCost}}"
+                        data-dtype="Number"
+                />
+            </label>
+            <p>Equipped?: </p>
+            <label>
+                <input
+                        type="checkbox"
+                        name="system.equipped"
+                    {{checked system.equipped}}
+                />
+            </label>
+            <p>Stash Bonus: </p>
+            <label class="flexrow flex-group-left">
+                <input
+                        name="system.stashBonus"
+                        type="number"
+                        value="{{system.stashBonus}}"
+                        data-dtype="Number"
+                />
+            </label>
+        </div>
+        <div class="flexrow grid-3col">
+            <div class="grid-span-2">Synergy: </div>
+            <div class="flex-group-left">
+                Synergy Charm:
+                <input
+                        name="system.synergy.synergyCharm"
+                        type="text"
+                        value="{{system.synergy.synergyCharm}}"
+                        data-dtype="String"
+                />
+                {{!-- TODO: Could change this to be an editor.--}}
+                Synergy Effect
+                <input
+                        name="system.synergy.synergyEffect"
+                        type="text"
+                        value="{{system.synergy.synergyEffect}}"
+                        data-dtype="String"
+                />
+            </div>
+        </div>
+        <h3>Description: </h3>
+        <div class="tab">
+            {{editor
+                    enrichedDescription
+                    target="system.description"
+                    engine="prosemirror"
+                    button=true
+                    editable=editable
+            }}
+        </div>
+    </section>
+</form>

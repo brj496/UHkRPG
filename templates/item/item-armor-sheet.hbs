@@ -21,16 +21,26 @@
     </header>
 
     <section class="sheet-body">
-        <div class="base-fields flexrow grid-2col">
-            <p>Durability: </p>
-            <label class="flexrow flex-group-left">
+        <div class="flexrow grid-3col">
+            <div class="grid-span-2">Durability: </div>
+            <div class="flex-group-left">
+                Max Durability:
+                <input
+                        name="system.durability.max"
+                        type="number"
+                        value="{{system.durability.max}}"
+                        data-dtype="Number"
+                />
+                Current Durability:
                 <input
                         name="system.durability.current"
                         type="number"
                         value="{{system.durability.current}}"
                         data-dtype="Number"
                 />
-            </label>
+            </div>
+        </div>
+        <div class="base-fields flexrow grid-2col">
             <p>Damage Reduction: </p>
             <label class="flexrow flex-group-left">
                 <input
@@ -69,12 +79,12 @@
                 </label>
             </div>
         </div>
-        <p>Effect: </p>
+        <h3>Description: </h3>
         <hr/>
         <div class="tab">
             {{editor
                     enrichedDescription
-                    target="system.effect"
+                    target="system.description"
                     engine="prosemirror"
                     button=true
                     editable=editable

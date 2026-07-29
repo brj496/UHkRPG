@@ -128,8 +128,7 @@ export class UHkRpgActorSheet extends ActorSheet {
         const shields = [];
         const consumables = [];
         const tools = [];
-        const treasures = [];
-        const collectibles = [];
+        const loot = [];
         const beltItems = [];
 
         // Iterate through items, allocating to containers
@@ -188,13 +187,9 @@ export class UHkRpgActorSheet extends ActorSheet {
             else if (i.type === 'tool') {
                 tools.push(i);
             }
-            // Append to treasures
-            else if (i.type === 'treasure') {
-                treasures.push(i);
-            }
-            // Append to collectibles
-            else if (i.type === 'collectible') {
-                collectibles.push(i);
+            // Append to loot
+            else if (i.type === 'loot') {
+                loot.push(i);
             }
             // Append to beltItems
             else if (i.type === 'beltItem') {
@@ -213,8 +208,7 @@ export class UHkRpgActorSheet extends ActorSheet {
         context.shields = shields;
         context.consumables = consumables;
         context.tools = tools;
-        context.treasures = treasures;
-        context.collectibles = collectibles;
+        context.loot = loot;
         context.beltItems = beltItems;
     }
 

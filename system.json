@@ -46,6 +46,11 @@
             }
         },
         "Item": {
+            "armor": {
+                "htmlFields": [
+                    "description"
+                ]
+            },
             "trait": {
                 "htmlFields": [
                     "description"
@@ -76,11 +81,6 @@
                     "description"
                 ]
             },
-            "armor": {
-                "htmlFields": [
-                    "description"
-                ]
-            },
             "shield": {
                 "htmlFields": [
                     "description"
@@ -96,12 +96,7 @@
                     "description"
                 ]
             },
-            "treasure": {
-                "htmlFields": [
-                    "description"
-                ]
-            },
-            "collectible": {
+            "loot": {
                 "htmlFields": [
                     "description"
                 ]
