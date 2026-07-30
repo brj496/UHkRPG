@@ -75,9 +75,15 @@ export default class UHkRpgConsumable extends UHkRpgItemBase {
             isAlcohol: new BooleanField({
                 initial: false,
             }),
-            strain: new NumberField({
-                initial: 0,
-                min: 0
+            strain: new SchemaField({
+                baseStrain: new NumberField({
+                    initial: 0,
+                    min: 0
+                }),
+                currStrain: new NumberField({
+                    initial: 0,
+                    min: 0
+                }),
             }),
             potionEffects: new SchemaField({
                 overdose: new StringField({

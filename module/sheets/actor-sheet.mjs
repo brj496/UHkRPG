@@ -238,11 +238,19 @@ export class UHkRpgActorSheet extends ActorSheet {
             const item = this.actor.items.get(li.data('itemId'));
 
             if (["weapon", "armor", "shield"].includes(item.type)) {
-                if (item.system.modifierId.length > 0) {
+                if (item.type === "weapon" && item.system.isArcaneFocus) {
+                    for (const techniqueId of item.system.techniqueIds) {
+                        const deleteItem = item.actor.items.find(i => i.id === techniqueId);
+                        if (deleteItem) {
+                            item.actor.deleteEmbeddedDocuments("Item", [deleteItem.id]);
+                        }
+                   }
+                }
+
+                else if (item.system.modifierId.length > 0) {
                     const modId = item.system.modifierId || "";
 
                     const deleteItem = item.actor.items.find(i => i.id === modId);
-
 
                     if (deleteItem) {
                         item.actor.deleteEmbeddedDocuments("Item", [deleteItem.id]);

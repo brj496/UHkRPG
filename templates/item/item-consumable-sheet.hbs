@@ -180,6 +180,13 @@
                             value="{{system.costPerServing}}"
                             data-dtype="Number"
                     />
+                    Rests Since Acquisition:
+                    <input
+                            name="system.numRests"
+                            type="number"
+                            value="{{system.numRests}}"
+                            data-dtype="Number"
+                    />
                     Spoiled?:
                     <input
                             type="checkbox"
@@ -187,17 +194,6 @@
                         {{checked system.spoilage.isSpoiled}}
                     />
                 </div>
-            </div>
-            <hr/>
-            <p>Food Effect:</p>
-            <div class="tab">
-                {{editor
-                        system.foodEffect
-                        target="system.foodEffect"
-                        engine="prosemirror"
-                        button=true
-                        editable=editable
-                }}
             </div>
         {{/ifEquals}}
         {{#ifEquals system.type "poison"}}
@@ -221,16 +217,6 @@
                     />
                 </div>
             </div>
-            <p>Poison Effect: </p>
-            <div class="tab">
-                {{editor
-                        system.poisonEffect
-                        target="system.poisonEffect"
-                        engine="prosemirror"
-                        button=true
-                        editable=editable
-                }}
-            </div>
         {{/ifEquals}}
         {{#ifEquals system.type "potion"}}
             <div class="flexrow grid-2col">
@@ -241,34 +227,30 @@
                     {{checked system.isAlcohol}}
                 />
             </div>
-            <div class="flexrow grid-2col">
-                <p>Strain: </p>
-                <input
-                        name="system.strain"
-                        type="number"
-                        value="{{system.strain}}"
-                        data-dtype="Number"
-                />
+            <div class="flexrow grid-3col">
+                <div class="grid-span-2">Strain: </div>
+                <div class="flex-group-left">
+                    Base Strain:
+                    <input
+                            name="system.strain.baseStrain"
+                            type="number"
+                            value="{{system.strain.baseStrain}}"
+                            data-dtype="Number"
+                    />
+                    Current Strain:
+                    <input
+                            name="system.strain.currStrain"
+                            type="number"
+                            value="{{system.strain.currStrain}}"
+                            data-dtype="Number"
+                    />
+                </div>
             </div>
-            <p>Potion Effects: </p>
-            <hr/>
-            <p>Overdose Effect: </p>
-            <hr/>
+            <h3>Overdose Effect: </h3>
             <div class="tab">
                 {{editor
                         system.potionEffects.overdose
                         target="system.potionEffects.overdose"
-                        engine="prosemirror"
-                        button=true
-                        editable=editable
-                }}
-            </div>
-            <p>Effect: </p>
-            <hr/>
-            <div class="tab">
-                {{editor
-                        system.potionEffects.effect
-                        target="system.potionEffects.effect"
                         engine="prosemirror"
                         button=true
                         editable=editable
@@ -284,19 +266,8 @@
                     {{checked system.isReusable}}
                 />
             </div>
-            <p>Trap Effect:</p>
-            <div class="tab">
-                {{editor
-                        system.foodEffect
-                        target="system.foodEffect"
-                        engine="prosemirror"
-                        button=true
-                        editable=editable
-                }}
-            </div>
         {{/ifEquals}}
-        <p>Description: </p>
-        <hr/>
+        <h3>Description: </h3>
         <div class="tab">
             {{editor
                     enrichedDescription

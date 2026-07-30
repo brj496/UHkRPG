@@ -94,21 +94,48 @@ export class UHkRpgItemSheet extends ItemSheet {
         // Prepare active effects for easier access
         context.effects = prepareActiveEffectCategories(this.item.effects);
 
-        const modifier = this.item.system.modifier;
+        if (["weapon", "armor", "shield"].includes(this.item.type)) {
+            const modifier = this.item.system.modifier;
 
-        if (modifier) {
-            // Enrich the modifier's description and attach it to the modifier object
-            modifier.enrichedDescription = await TextEditor.enrichHTML(
-                modifier.system.description || "",
-                {
-                    secrets: this.document.isOwner,
-                    async: true,
-                    rollData: modifier.getRollData(),
-                    relativeTo: modifier,
-                }
+            if (modifier) {
+                // Enrich the modifier's description and attach it to the modifier object
+                modifier.enrichedDescription = await TextEditor.enrichHTML(
+                    modifier.system.description || "",
+                    {
+                        secrets: this.document.isOwner,
+                        async: true,
+                        rollData: modifier.getRollData(),
+                        relativeTo: modifier,
+                    }
+                );
+
+                context.modifier = modifier;
+            }
+        }
+
+        if (this.item.type === "weapon") {
+            const techniqueIds = this.item.system.techniqueIds ?? [];
+
+            context.techniques = await Promise.all(
+                techniqueIds
+                    .map(id => this.actor?.items.get(id) || game.items.get(id))
+                    .filter(Boolean)
+                    .map(async (technique) => {
+                        return {
+                            ...technique.toObject(),
+                            id: technique.id,
+                            enrichedDescription: await TextEditor.enrichHTML(
+                                technique.system.description || "",
+                                {
+                                    secrets: this.document.isOwner,
+                                    async: true,
+                                    rollData: technique.getRollData(),
+                                    relativeTo: technique,
+                                }
+                            )
+                        };
+                    })
             );
-
-            context.modifier = modifier;
         }
 
         return context;
@@ -162,11 +189,9 @@ export class UHkRpgItemSheet extends ItemSheet {
         html.find(".add-skill").click(this._onAddSkill.bind(this));
         html.find(".remove-skill").click(this._onRemoveSkill.bind(this));
 
-        html.find(".remove-modifier").click(async (event) => {
-            event.preventDefault();
+        html.find(".remove-modifier").click(this._onRemoveModifier.bind(this));
 
-            await this.item.update({ "system.modifierId": "" });
-        })
+        html.find('.remove-technique').click(this._onRemoveTechnique.bind(this));
 
         // Pip Listener
         html.find(".pip").click(async event => {
@@ -231,6 +256,39 @@ export class UHkRpgItemSheet extends ItemSheet {
         });
     }
 
+    async _onRemoveModifier(event) {
+        event.preventDefault();
+
+        const modifierId = this.item.system.modifierId;
+
+        await this.item.update({ "system.modifierId": "" });
+
+        if (this.actor) {
+            const actorModifier = this.actor.items.get(modifierId);
+            if (actorModifier) {
+                await actorModifier.delete();
+            }
+        }
+    }
+
+    async _onRemoveTechnique(event) {
+        event.preventDefault();
+
+        const element = event.currentTarget;
+        const techniqueId = element.dataset.techniqueId;
+        const currentTechniques = Array.from(this.item.system.techniqueIds || []);
+        const updatedTechniques = currentTechniques.filter(t => t !== techniqueId);
+
+        await this.item.update({ "system.techniqueIds": updatedTechniques });
+
+        if (this.actor) {
+            const actorTechnique = this.actor.items.get(techniqueId);
+            if (actorTechnique) {
+                await actorTechnique.delete();
+            }
+        }
+    }
+
     async _onDrop(event) {
         if (!this.isEditable) return false;
 
@@ -241,34 +299,68 @@ export class UHkRpgItemSheet extends ItemSheet {
         const droppedItem = await Item.fromDropData(data);
         if (!droppedItem) return;
 
-        console.log(droppedItem);
+        //Check if it's an item that can have items added to it.
+        if (["weapon", "armor", "shield"].includes(this.item.type)){
+            // check if the item being dropped is a technique, and if the item being added to is an arcane focus
 
-        if (droppedItem.type !== 'modifier') {
-            return ui.notifications.warn("You can only add modifiers to this item.");
-        }
-        if (!["weapon", "armor", "shield"].includes(this.item.type)) {
-            return ui.notifications.warn("Modifiers can only be added to weapons, armor, and shields.");
-        }
-        if (this.item.system.modifierId.length > 0) {
-            return ui.notifications.warn("Items can only have a single modifier.");
-        }
-        if (this.item.type !== droppedItem.system.itemType) {
-            return ui.notifications.warn("The Modifier Type does not match the Item Type.");
-        }
+            if (droppedItem.type !== "technique" && this.item.system.isArcaneFocus) {
+                return ui.notifications.warn("You can only add techniques to Arcane Foci");
+            }
+            if (droppedItem.type !== "modifier" && !this.item.system.isArcaneFocus) {
+                return ui.notifications.warn("You can only add modifiers to Weapons, Armor, Or Shields.");
+            }
 
-        let modifierToId = droppedItem;
+            if (droppedItem.type === "technique" && this.item.system.isArcaneFocus) {
+                //Handle adding to a list of techniques
 
-        // If the weapon is on an actor, the modifier must also be on the actor to be "owned"
-        if (this.item.actor && droppedItem.parent !== this.item.actor) {
-            const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
-            modifierToId = created;
+                const qualitySlots = this.item.system.quality;
+                const usedSlots = this.item.system.techniqueIds.length;
+
+                if (!(usedSlots < qualitySlots)) {
+                    return ui.notifications.warn(`This Focus can only hold ${qualitySlots} techniques`);
+                }
+
+                let techniqueToId = droppedItem;
+
+                if (this.item.actor && droppedItem.parent !== this.item.actor) {
+                    const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
+                    techniqueToId = created;
+                }
+
+                else if (!this.item.actor && droppedItem.pack) {
+                    const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
+                    techniqueToId = created;
+                }
+
+                const techniqueIds = [...(this.item.system.techniqueIds || [])];
+                if (techniqueIds.includes(techniqueToId.id)) return;
+
+                techniqueIds.push(techniqueToId.id);
+                return this.item.update({ "system.techniqueIds": techniqueIds });
+            }
+            else { // Otherwise it isn't being added to a list of items.
+                if (this.item.system.modifierId.length > 0) {
+                    return ui.notifications.warn("Weapons, Armor, and Shields can only have a single modifier.");
+                }
+                if (this.item.type !== droppedItem.system.itemType) {
+                    return ui.notifications.warn("The Modifier Type does not match the Item Type.");
+                }
+
+                let modifierToId = droppedItem;
+
+                // If the weapon is on an actor, the modifier must also be on the actor to be "owned"
+                if (this.item.actor && droppedItem.parent !== this.item.actor) {
+                    const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
+                    modifierToId = created;
+                }
+
+                else if (!this.item.actor && droppedItem.pack) {
+                    const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
+                    modifierToId = created;
+                }
+
+                return this.item.update({"system.modifierId": modifierToId.id});
+            }
         }
-
-        else if (!this.item.actor && droppedItem.pack) {
-            const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
-            modifierToId = created;
-        }
-
-        return this.item.update({"system.modifierId": modifierToId.id});
     }
 }
