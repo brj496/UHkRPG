@@ -95,27 +95,39 @@
             <label class="resource-label">Modifier:</label>
 
             {{#if modifier}}
-                <div class="modifier-card" data-item-id="{{modifier.id}}">
-                    {{!-- Card Header: Icon, Name, Cost, and Remove Button --}}
-                    <div class="card-header">
-                        <img class="modifier-img" src="{{modifier.img}}" width="36" height="36" title="{{modifier.name}}"/>
+                <h3>Modifier</h3>
+                <div class="form-group modifier-section">
+                    <label class="resource-label">Modifier:</label>
 
-                        <div class="header-details">
-                            <h4 class="modifier-title">{{modifier.name}}</h4>
-                            {{#if modifier.system.cost}}
-                                <span class="modifier-cost"><strong>Cost:</strong> {{modifier.system.cost}}</span>
+                    {{#if modifier}}
+                        <div class="modifier-card" data-item-id="{{modifier.id}}">
+                            {{!-- Card Header: Icon, Name, Cost, and Remove Button --}}
+                            <div class="card-header">
+                                <img class="modifier-img" src="{{modifier.img}}" width="36" height="36" title="{{modifier.name}}"/>
+
+                                <div class="header-details">
+                                    <h4 class="modifier-title">{{modifier.name}}</h4>
+                                    {{#if modifier.system.cost}}
+                                        <span class="modifier-cost"><strong>Cost:</strong> {{modifier.system.cost}}</span>
+                                    {{/if}}
+                                </div>
+
+                                <a class="remove-modifier" title="Remove Modifier">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+
+                            {{!-- Card Body: Description --}}
+                            {{#if modifier.system.description}}
+                                <div class="card-body modifier-description">
+                                    {{{modifier.enrichedDescription}}}
+                                </div>
                             {{/if}}
                         </div>
-
-                        <a class="remove-modifier" title="Remove Modifier">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
-
-                    {{!-- Card Body: Description --}}
-                    {{#if modifier.system.description}}
-                        <div class="card-body modifier-description">
-                            {{{modifier.enrichedDescription}}}
+                    {{else}}
+                        <div class="modifier-card empty-slot">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Drag and drop a Modifier item here</span>
                         </div>
                     {{/if}}
                 </div>

@@ -95,22 +95,12 @@ export class UHkRpgItemSheet extends ItemSheet {
         context.effects = prepareActiveEffectCategories(this.item.effects);
 
         if (["weapon", "armor", "shield"].includes(this.item.type)) {
-            const modifier = this.item.system.modifier;
+            context.modifier = await this.enrichItemDescription("modifier");
+        }
 
-            if (modifier) {
-                // Enrich the modifier's description and attach it to the modifier object
-                modifier.enrichedDescription = await TextEditor.enrichHTML(
-                    modifier.system.description || "",
-                    {
-                        secrets: this.document.isOwner,
-                        async: true,
-                        rollData: modifier.getRollData(),
-                        relativeTo: modifier,
-                    }
-                );
-
-                context.modifier = modifier;
-            }
+        if (["trait"].includes(this.item.type)) {
+            context.naturalWeapon = await this.enrichItemDescription("naturalWeapon");
+            context.parentTrait = await this.enrichItemDescription("parentTrait");
         }
 
         if (this.item.type === "weapon") {
@@ -139,6 +129,32 @@ export class UHkRpgItemSheet extends ItemSheet {
         }
 
         return context;
+    }
+
+    /**
+     * Takes an item key and enriches it's description
+     * The item's schema must have a getter for this key to get the actual objects
+     * e.g. get modifiers in the weapon.mjs schema
+     * @param itemKey a string for the item key to enrich
+     * @returns {Promise<void>}
+     */
+    async enrichItemDescription(itemKey) {
+        const itemObject = this.item.system[itemKey];
+
+        if (itemObject) {
+            // Enrich the modifier's description and attach it to the modifier object
+            itemObject.enrichedDescription = await TextEditor.enrichHTML(
+                itemObject.system.description || "",
+                {
+                    secrets: this.document.isOwner,
+                    async: true,
+                    rollData: itemObject.getRollData(),
+                    relativeTo: itemObject,
+                }
+            );
+
+            return itemObject;
+        }
     }
 
     /* -------------------------------------------- */
@@ -189,7 +205,9 @@ export class UHkRpgItemSheet extends ItemSheet {
         html.find(".add-skill").click(this._onAddSkill.bind(this));
         html.find(".remove-skill").click(this._onRemoveSkill.bind(this));
 
-        html.find(".remove-modifier").click(this._onRemoveModifier.bind(this));
+        html.find(".remove-modifier").click((event) => this._onRemoveItem(event, "modifierId"));
+        html.find(".remove-natural-weapon").click((event) => this._onRemoveItem(event, "naturalWeaponId"));
+        html.find(".remove-parent-trait").click((event) => this._onRemoveItem(event, "parentTraitId"));
 
         html.find('.remove-technique').click(this._onRemoveTechnique.bind(this));
 
@@ -256,16 +274,16 @@ export class UHkRpgItemSheet extends ItemSheet {
         });
     }
 
-    async _onRemoveModifier(event) {
+    async _onRemoveItem(event, key) {
         event.preventDefault();
 
-        const modifierId = this.item.system.modifierId;
+        const itemId = this.item.system[key];
 
-        await this.item.update({ "system.modifierId": "" });
+        await this.item.update({ [`system.${key}`] : "" });
 
         if (this.actor) {
-            const actorModifier = this.actor.items.get(modifierId);
-            if (actorModifier) {
+            const actorModifier = this.actor.items.get(itemId);
+            if (actorModifier && key !== "parentTraitId") { //don't delete Parent Traits
                 await actorModifier.delete();
             }
         }
@@ -300,16 +318,14 @@ export class UHkRpgItemSheet extends ItemSheet {
         if (!droppedItem) return;
 
         //Check if it's an item that can have items added to it.
-        if (["weapon", "armor", "shield"].includes(this.item.type)){
+        if (["weapon", "armor", "shield", "trait"].includes(this.item.type)){
             // check if the item being dropped is a technique, and if the item being added to is an arcane focus
-
             if (droppedItem.type !== "technique" && this.item.system.isArcaneFocus) {
                 return ui.notifications.warn("You can only add techniques to Arcane Foci");
             }
-            if (droppedItem.type !== "modifier" && !this.item.system.isArcaneFocus) {
-                return ui.notifications.warn("You can only add modifiers to Weapons, Armor, Or Shields.");
+            if (!(droppedItem.type === "trait" || droppedItem.type === "weapon") && this.item.type === "trait") {
+                return ui.notifications.warn("You can only add Natural Weapons and Parent Traits to Traits.");
             }
-
             if (droppedItem.type === "technique" && this.item.system.isArcaneFocus) {
                 //Handle adding to a list of techniques
 
@@ -320,47 +336,100 @@ export class UHkRpgItemSheet extends ItemSheet {
                     return ui.notifications.warn(`This Focus can only hold ${qualitySlots} techniques`);
                 }
 
-                let techniqueToId = droppedItem;
-
-                if (this.item.actor && droppedItem.parent !== this.item.actor) {
-                    const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
-                    techniqueToId = created;
-                }
-
-                else if (!this.item.actor && droppedItem.pack) {
-                    const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
-                    techniqueToId = created;
-                }
-
-                const techniqueIds = [...(this.item.system.techniqueIds || [])];
-                if (techniqueIds.includes(techniqueToId.id)) return;
-
-                techniqueIds.push(techniqueToId.id);
-                return this.item.update({ "system.techniqueIds": techniqueIds });
+                this.addToItemList(droppedItem, "techniqueIds");
             }
             else { // Otherwise it isn't being added to a list of items.
-                if (this.item.system.modifierId.length > 0) {
-                    return ui.notifications.warn("Weapons, Armor, and Shields can only have a single modifier.");
-                }
-                if (this.item.type !== droppedItem.system.itemType) {
-                    return ui.notifications.warn("The Modifier Type does not match the Item Type.");
-                }
+                if (["weapon", "armor", "shield"].includes(this.item.type)) {
+                    if (droppedItem.type !== "modifier") {
+                        return ui.notifications.warn("You can only add modifiers to Weapons, Armor, Or Shields.");
+                    }
+                    if (this.item.system.modifierId.length > 0) {
+                        return ui.notifications.warn("Weapons, Armor, and Shields can only have a single modifier.");
+                    }
+                    if (this.item.type !== droppedItem.system.itemType) {
+                        return ui.notifications.warn("The Modifier Type does not match the Item Type.");
+                    }
 
-                let modifierToId = droppedItem;
-
-                // If the weapon is on an actor, the modifier must also be on the actor to be "owned"
-                if (this.item.actor && droppedItem.parent !== this.item.actor) {
-                    const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
-                    modifierToId = created;
+                    this.addItem(droppedItem, "modifierId");
                 }
+                if (this.item.type === "trait") {
+                    let key = "";
 
-                else if (!this.item.actor && droppedItem.pack) {
-                    const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
-                    modifierToId = created;
+                    console.log(droppedItem.type);
+
+                    switch (droppedItem.type) {
+                        case "trait":
+                            key = "trait";
+                            if (this.item.system.parentTraitId.length > 0) {
+                                return ui.notifications.warn("Traits can only have a single Parent Trait.");
+                                // TODO: This might be incorrect ^^
+                            }
+                            this.addItem(droppedItem, "parentTraitId");
+                            break;
+                        case "weapon":
+                            if (!droppedItem.system.naturalWeapon) {
+                                return ui.notifications.warn("Only Natural Weapon can be added to Traits");
+                            }
+                            if (this.item.system.naturalWeaponId.length > 0) {
+                                return ui.notifications.warn("Traits can only have a single Natural Weapon.");
+                            }
+                            if (this.item.system.type !== "naturalWeapon") {
+                                return ui.notifications.warn("Cannot Add a Natural Weapon to a Non-Natural Weapon Trait");
+                            }
+                            this.addItem(droppedItem, "naturalWeaponId");
+                            break;
+                    }
                 }
-
-                return this.item.update({"system.modifierId": modifierToId.id});
             }
         }
+    }
+
+    /**
+     * Adds a given item to a list of item ids stored on another item
+     * @param droppedItem
+     * @param key
+     * @returns {Promise<*>}
+     */
+    async addToItemList(droppedItem, key) {
+        let itemToAdd = droppedItem;
+
+        if (this.item.actor && droppedItem.parent !== this.item.actor) {
+            const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
+            itemToAdd = created;
+        }
+
+        else if (!this.item.actor && droppedItem.pack) {
+            const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
+            itemToAdd = created;
+        }
+
+        const itemIds = [...(this.item.system[key] || [])];
+        if (itemIds.includes(itemToAdd.id)) return;
+
+        itemIds.push(itemToAdd.id);
+        return this.item.update({ [`system.${key}`]: itemIds });
+    }
+
+    /**
+     * Adds a given item's ID to another item's given key
+     * @param droppedItem
+     * @param key
+     * @returns {Promise<*>}
+     */
+    async addItem(droppedItem, key) {
+        let itemToAdd = droppedItem;
+
+        // If the weapon is on an actor, the modifier must also be on the actor to be "owned"
+        if (this.item.actor && droppedItem.parent !== this.item.actor) {
+            const [created] = await this.item.actor.createEmbeddedDocuments("Item", [droppedItem.toObject()]);
+            itemToAdd = created;
+        }
+
+        else if (!this.item.actor && droppedItem.pack) {
+            const [created] = await Item.createDocuments([droppedItem.toObject()], {parent: null});
+            itemToAdd = created;
+        }
+
+        return this.item.update({[`system.${key}`]: itemToAdd.id});
     }
 }

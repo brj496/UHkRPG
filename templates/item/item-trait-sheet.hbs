@@ -64,6 +64,82 @@
                 />
             </label>
         </div>
+
+        <h3>Parent Trait</h3>
+        <div class="form-group modifier-section">
+            <label class="resource-label">Trait:</label>
+
+            {{#if parentTrait}}
+                <div class="modifier-card" data-item-id="{{parentTrait.id}}">
+                    {{!-- Card Header: Icon, Name, Cost, and Remove Button --}}
+                    <div class="card-header">
+                        <img class="modifier-img" src="{{parentTrait.img}}" width="36" height="36" title="{{parentTrait.name}}"/>
+
+                        <div class="header-details">
+                            <h4 class="modifier-title">{{parentTrait.name}}</h4>
+                            {{#if parentTrait.system.cost}}
+                                <span class="modifier-cost"><strong>Cost:</strong> {{parentTrait.system.cost}}</span>
+                            {{/if}}
+                        </div>
+
+                        <a class="remove-parent-trait" title="Remove Modifier">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </div>
+
+                    {{!-- Card Body: Description --}}
+                    {{#if parentTrait.system.description}}
+                        <div class="card-body modifier-description">
+                            {{{parentTrait.enrichedDescription}}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{else}}
+                <div class="modifier-card empty-slot">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Drag and drop a Trait item here</span>
+                </div>
+            {{/if}}
+        </div>
+
+        {{#ifEquals system.type "naturalWeapon"}}
+            <h3>Natural Weapon</h3>
+            <div class="form-group modifier-section">
+                <label class="resource-label">Weapon:</label>
+
+                {{#if naturalWeapon}}
+                    <div class="modifier-card" data-item-id="{{naturalWeapon.id}}">
+                        {{!-- Card Header: Icon, Name, Cost, and Remove Button --}}
+                        <div class="card-header">
+                            <img class="modifier-img" src="{{naturalWeapon.img}}" width="36" height="36" title="{{naturalWeapon.name}}"/>
+
+                            <div class="header-details">
+                                <h4 class="modifier-title">{{naturalWeapon.name}}</h4>
+                                {{#if naturalWeapon.system.cost}}
+                                    <span class="modifier-cost"><strong>Cost:</strong> {{naturalWeapon.system.cost}}</span>
+                                {{/if}}
+                            </div>
+
+                            <a class="remove-natural-weapon" title="Remove Modifier">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+
+                        {{!-- Card Body: Description --}}
+                        {{#if naturalWeapon.system.description}}
+                            <div class="card-body modifier-description">
+                                {{{naturalWeapon.enrichedDescription}}}
+                            </div>
+                        {{/if}}
+                    </div>
+                {{else}}
+                    <div class="modifier-card empty-slot">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Drag and drop a Natural Weapon item here</span>
+                    </div>
+                {{/if}}
+            </div>
+        {{/ifEquals}}
         <!-- TODO: Parent Trait Attachment-->
         <!-- TODO: Natural Weapon Attachment-->
         <h3>Description: </h3>

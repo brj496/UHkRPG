@@ -108,16 +108,19 @@ Hooks.once('ready', function () {
         // Only run for the person who performed the creation
         if (game.user.id !== userId) return;
 
-        // Only run if a weapon/armor/shield is being created on an Actor
-        if (["weapon", "armor", "shield"].includes(item.type) && item.parent instanceof Actor) {
+        // Only run if a weapon/armor/shield/trait is being created on an Actor
+        if (["weapon", "armor", "shield", "trait"].includes(item.type) && item.parent instanceof Actor) {
             // If the weapon is an Arcane Focus, stop modifiers from being attached, and only allow techniques to be attached.
             if (item.type === "weapon" && item.system.isArcaneFocus) {
                 await addItemToItem(item, item.system.techniqueIds, "system.techniqueIds");
             }
-            if (item.system.modifierId){
+            else if (item.system.modifierId){
                 await addItemToItem(item, item.system.modifierId, "system.modifierId");
             }
-
+            else if (item.type === "trait") {
+                await addItemToItem(item, item.system.parentTraitId, "system.parentTraitId");
+                await addItemToItem(item, item.system.naturalWeaponId, "system.naturalWeaponId");
+            }
         }
     });
 });
@@ -136,6 +139,8 @@ Hooks.once('ready', function () {
  */
 async function addItemToItem(item, addedItemId, path) {
     if (!addedItemId) return;
+
+    console.log("Creating: ", path);
 
     const actor = item.parent;
 
@@ -170,16 +175,14 @@ async function addItemToItem(item, addedItemId, path) {
     }
     else { //There can only be one of the item added
         const worldItem = game.items.get(addedItemId);
-        //check if the modifier being added matches the item's type
-        if (worldItem.system.itemType !== item.type) return;
 
-        // Check if the modifier is already on the actor
+        // Check if the item is already on the actor
         let actorItem = actor.items.get(addedItemId);
 
         // If not on the actor, find it in the World items
         if (!actorItem) {
             if (worldItem) {
-                // Check if the actor already has a modifier with the same name (can't use ids, ids are different between the character and world.)
+                // Check if the actor already has an item with the same name (can't use ids, ids are different between the character and world.)
                 actorItem = actor.items.find(i => i.name === worldItem.name);
 
                 if (!actorItem) {

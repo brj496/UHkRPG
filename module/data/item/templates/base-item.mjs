@@ -12,4 +12,13 @@ export default class UHkRpgItemBase extends UHkRpgDataModel {
         }
     }
 
+    get displayValues() {
+        const values = [];
+
+        if (this.description !== undefined) {
+            values.push({key: "description", label: "Description", value: this.description}); //an icon field could be added if one is needed.
+        }
+
+        return values;
+    }
 }

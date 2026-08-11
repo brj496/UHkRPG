@@ -237,7 +237,7 @@ export class UHkRpgActorSheet extends ActorSheet {
             const li = $(ev.currentTarget).parents('.item');
             const item = this.actor.items.get(li.data('itemId'));
 
-            if (["weapon", "armor", "shield"].includes(item.type)) {
+            if (["weapon", "armor", "shield", "trait"].includes(item.type)) {
                 if (item.type === "weapon" && item.system.isArcaneFocus) {
                     for (const techniqueId of item.system.techniqueIds) {
                         const deleteItem = item.actor.items.find(i => i.id === techniqueId);
@@ -247,13 +247,26 @@ export class UHkRpgActorSheet extends ActorSheet {
                    }
                 }
 
-                else if (item.system.modifierId.length > 0) {
+                else if (item.system.modifierId) {
                     const modId = item.system.modifierId || "";
 
                     const deleteItem = item.actor.items.find(i => i.id === modId);
 
                     if (deleteItem) {
                         item.actor.deleteEmbeddedDocuments("Item", [deleteItem.id]);
+                    }
+                }
+
+                //TODO: A Parent Trait should manage its children. If a child does not have its parent trait it should whine.
+                // could also handle removing child traits when its parent is removed.
+                else if (item.type === "trait") {
+                    // The parent Trait should not be deleted.
+                    const naturalWeaponId = item.system.naturalWeaponId || "";
+
+                    const deleteWeapon = item.actor.items.find(i => i.id === naturalWeaponId);
+
+                    if (deleteWeapon) {
+                        item.actor.deleteEmbeddedDocuments("Item", [deleteWeapon.id]);
                     }
                 }
             }

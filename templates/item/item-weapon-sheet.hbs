@@ -64,20 +64,31 @@
                         data-dtype="Number"
                 />
             </label>
-            <p>Range: </p>
+            <p>Range Type: </p>
             <label>
                 <select name="system.range">
                     <option value="" disabled {{#unless item.system.range}}selected{{/unless}}>
                         Select Range
                     </option>
                     {{selectOptions
-                            config.ranges
-                            selected=system.range
+                            config.weaponRanges
+                            selected=system.range.type
                             labelAttr="label"
                             localize=true
                     }}
                 </select>
             </label>
+            {{#ifEquals system.range "ranged"}}
+                <p>Range: </p>
+                <label class="flexrow flex-group-left">
+                    <input
+                            name="system.range.value"
+                            type="number"
+                            value="{{system.range.value}}"
+                            data-dtype="Number"
+                    />
+                </label>
+            {{/ifEquals}}
             <p>Hands: </p>
             <label>
                 <select name="system.hands">
@@ -204,7 +215,7 @@
                 {{/each}}
             </div>
         {{else}}
-            <h3>Modifiers</h3>
+            <h3>Modifier</h3>
             <div class="form-group modifier-section">
                 <label class="resource-label">Modifier:</label>
 

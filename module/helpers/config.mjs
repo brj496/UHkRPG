@@ -253,21 +253,33 @@ U_HK_RPG.durations = {
     }
 }
 
-U_HK_RPG.ranges = {
+U_HK_RPG.arcanaRanges = {
     self: {
-        label: "U_HK_RPG.Range.Self.Label",
+        label: "U_HK_RPG.Range.ArcanaRange.Self.Label",
     },
     touch: {
-        label: "U_HK_RPG.Range.Touch.Label",
+        label: "U_HK_RPG.Range.ArcanaRange.Touch.Label",
     },
     close: {
-        label: "U_HK_RPG.Range.Close.Label",
+        label: "U_HK_RPG.Range.ArcanaRange.Close.Label",
     },
     far: {
-        label: "U_HK_RPG.Range.Far.Label",
+        label: "U_HK_RPG.Range.ArcanaRange.Far.Label",
     },
     sense: {
-        label: "U_HK_RPG.Range.Sense.Label"
+        label: "U_HK_RPG.Range.ArcanaRange.Sense.Label"
+    }
+}
+
+U_HK_RPG.weaponRanges = {
+    melee: {
+        label: "U_HK_RPG.Range.WeaponRange.Melee.Label",
+    },
+    reach: {
+        label: "U_HK_RPG.Range.WeaponRange.Reach.Label",
+    },
+    ranged: {
+        label: "U_HK_RPG.Range.WeaponRange.Range.Label"
     }
 }
 

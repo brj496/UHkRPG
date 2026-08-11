@@ -297,22 +297,36 @@
             "Inactive": "Inactive Effects"
         },
         "Range": {
-            "Self": {
-                "Label": "Self"
+            "ArcanaRange": {
+                "Self": {
+                    "Label": "Self"
+                },
+                "Touch": {
+                    "Label": "Touch"
+                },
+                "Close": {
+                    "Label": "Close"
+                },
+                "Far": {
+                    "Label": "Far"
+                },
+                "Sense": {
+                    "Label": "Sense"
+                }
             },
-            "Touch": {
-                "Label": "Touch"
-            },
-            "Close": {
-                "Label": "Close"
-            },
-            "Far": {
-                "Label": "Far"
-            },
-            "Sense": {
-                "Label": "Sense"
+            "WeaponRange": {
+                "Melee": {
+                    "Label": "Melee"
+                },
+                "Reach": {
+                    "Label": "Reach"
+                },
+                "Ranged": {
+                    "Label": "Ranged"
+                }
             }
         },
+
         "Duration": {
             "Concentration": {
                 "Label": "Concentration"
